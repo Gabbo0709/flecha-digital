@@ -1,0 +1,25 @@
+{
+    "name": "flecha-digital",
+    "version": "0.1a",
+    "description": "Sistema de gestion de viajes y boleto digital para el grupo Flecha Amarilla",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Gabriel Arcos Martinez, Eric Gustavo Gonzalez Garcia, Ian Alexei Escalona Alvarez, Valente Arturo Cardenas Lara, Cesar Alberto Rodriguez Pacheco ",
+    "license": "ISC",
+    "dependencies": {
+        "bcrypt": "^5.0.0",
+        "body-parser": "^1.19.0",
+        "cors": "^2.8.5",
+        "express": "^4.17.1",
+        "jsonwebtoken": "^9.0.2",
+        "mssql": "^10.0.0",
+        "nodemon": "^2.0.6",
+        "passport": "^0.7.0",
+        "passport-jwt": "^4.0.0"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.6"
+    }
+}
