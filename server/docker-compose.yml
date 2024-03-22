@@ -1,0 +1,10 @@
+version: "3.8"
+
+services:
+  usuario:
+    build:
+      context: ./services/usuarios.api
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+  

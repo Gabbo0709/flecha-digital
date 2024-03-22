@@ -9,8 +9,8 @@ const sqlConfig = {
         idleTimeoutMillis: 30000
     },
     options: {
-        encrypt: false, // for azure change this to true
-        trustedConnection: true // change this according to your sql server configuration
+        encrypt: false, // para azure usar true
+        trustedConnection: true // cambiar esto en función de la configuración de la base de datos
     }
 }
 
