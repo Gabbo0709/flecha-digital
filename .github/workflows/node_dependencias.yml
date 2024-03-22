@@ -26,4 +26,4 @@ jobs:
         run: |
           cd tu_directorio_especifico
           npm install
-        if: setps.check.outputs.changed == 'true'
+        if: steps.check.outputs.changed == 'true'
