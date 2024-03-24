@@ -68,19 +68,25 @@ CREATE TABLE Asiento(
 	cve_tipo					INT FOREIGN KEY (cve_tipo) REFERENCES Tipo_Asiento(cve_tipo) NOT NULL
 )
 
---Paso: La ruta de este autobús comenzó en otra terminal y/o central, es decir, el autobús realiza una parada en este origen.
---Local:  La ruta de este autobús comienza en esta terminal y/o central.
+--Paso: La ruta de este autobÃºs comenzÃ³ en otra terminal y/o central, es decir, el autobÃºs realiza una parada en este origen.
+--Local:  La ruta de este autobÃºs comienza en esta terminal y/o central.
 CREATE TABLE Tipo_Viaje(
 	cve_tipo					INT PRIMARY KEY IDENTITY (1,1) NOT NULL,
 	tipo						NVARCHAR(128) NOT NULL,
 	descripcion_viaje			NVARCHAR(128)
 )	
 
+CREATE TABLE Ruta(
+	no_servicio					INT PRIMARY KEY IDENTITY (1,1),
+	origen_ruta					INT FOREIGN KEY (origen_ruta) REFERENCES Central(cve_central) NOT NULL,
+	destino_ruta				INT FOREIGN KEY (destino_ruta) REFERENCES Central(cve_central) NOT NULL,
+	id_camion					INT FOREIGN KEY (id_camion) REFERENCES Camion(id_camion)
+)
+
 CREATE TABLE Viaje(
-	no_servicio					INT PRIMARY KEY NOT NULL,
-	origen						INT FOREIGN KEY (origen) REFERENCES Central(cve_central) NOT NULL,
-	destino						INT FOREIGN KEY (destino) REFERENCES Central(cve_central) NOT NULL,
-	id_camion					INT FOREIGN KEY (id_camion) REFERENCES Camion(id_camion) NOT NULL,
+	no_servicio					INT FOREIGN KEY (no_servicio) REFERENCES Ruta(no_servicio) NOT NULL,
+	origen_viaje				INT FOREIGN KEY (origen_viaje) REFERENCES Central(cve_central) NOT NULL,
+	destino_viaje				INT FOREIGN KEY (destino_viaje) REFERENCES Central(cve_central) NOT NULL,
 	cve_tipo					INT FOREIGN KEY (cve_tipo) REFERENCES Tipo_Viaje(cve_tipo) NOT NULL,
 	fecha_salida				DATE NOT NULL,
 	hora_salida					TIME NOT NULL,
@@ -114,7 +120,7 @@ CREATE TABLE Estado_Boleto(
 CREATE TABLE Boleto(
 	no_boleto					INT PRIMARY KEY	NOT NULL,
 	no_operacion				INT FOREIGN KEY (no_operacion) REFERENCES Operacion (no_operacion) NOT NULL,
-	no_servicio					INT FOREIGN KEY (no_servicio) REFERENCES Viaje (no_servicio) NOT NULL,
+	no_servicio					INT FOREIGN KEY (no_servicio) REFERENCES Ruta (no_servicio) NOT NULL,
 	no_asiento					INT FOREIGN KEY (no_asiento) REFERENCES Asiento(no_asiento)NOT NULL,
 	cve_estado					INT FOREIGN KEY (cve_estado) REFERENCES Estado_Boleto(cve_estado) NOT NULL,
 	nombre_pas					NVARCHAR (128) NOT NULL,
@@ -162,8 +168,8 @@ INSERT INTO Clase_Servicio (cve_clase, cve_servicio) VALUES
 (4, 8)
 
 INSERT INTO Tipo_Viaje(tipo, descripcion_viaje) VALUES
-('Local', 'La ruta de este autobús comienza en esta terminal y/o central.'),
-('Paso', 'La ruta de este autobús comenzó en otra terminal y/o central, es decir, el autobús realiza una parada en este origen.')
+('Local', 'La ruta de este autobÃºs comienza en esta terminal y/o central.'),
+('Paso', 'La ruta de este autobÃºs comenzÃ³ en otra terminal y/o central, es decir, el autobÃºs realiza una parada en este origen.')
 
 ALTER AUTHORIZATION ON DATABASE::db_flecha TO sa
 
@@ -182,3 +188,5 @@ SELECT * FROM Estado_Asiento
 SELECT * FROM Estado_Boleto
 SELECT * FROM Usuario
 SELECT * FROM Servicio
+
+
