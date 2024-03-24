@@ -189,4 +189,5 @@ SELECT * FROM Estado_Boleto
 SELECT * FROM Usuario
 SELECT * FROM Servicio
 
+-- Path: base%20de%20datos/insert.test.sql
 
