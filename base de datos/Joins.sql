@@ -22,6 +22,6 @@ GO
 		INNER JOIN Viaje AS v
 		ON (r.origen_ruta = @origen_ruta OR v.origen_viaje = @origen_viaje) AND (r.destino_ruta = @destino_ruta OR v.destino_viaje = @destino_viaje);
 	END;
-	GO
+GO
 
 EXEC GetViajes 1, 1, 2, 2;
