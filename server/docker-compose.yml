@@ -1,10 +1,51 @@
 version: "3.8"
 
 services:
-  usuario:
+  usuarios:
     build:
       context: ./services/usuarios.api
       dockerfile: Dockerfile
     ports:
-      - "8000:8000"
+      - "3000:3000"
+
+  boletos:
+    build:
+      context: ./services/boletos.api
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3001"
   
+  incidencias:
+    build:
+      context: ./services/incidencias.api
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3002"
+    
+  pagos:
+    build:
+      context: ./services/pagos.api
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3003"
+
+  notificaciones:
+    build:
+      context: ./services/notificaciones.api
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3004"
+
+  reservas:
+    build:
+      context: ./services/reservas.api
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3005"
+  
+  viajes:
+    build:
+      context: ./services/viajes.api
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3006"
