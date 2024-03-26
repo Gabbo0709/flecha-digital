@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Flecha_Digital.Models
+namespace Flecha_Digital.Model
 {
-    internal class UserModel
+    internal class User
     {
     }
 }

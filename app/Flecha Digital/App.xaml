@@ -5,10 +5,35 @@
              x:Class="Flecha_Digital.App">
     <Application.Resources>
         <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
-                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
+            <Color x:Key="Principal">#DBF6EC</Color>
+            <Color x:Key="FuentePrincipal">#DBF6EC</Color>
+            <Color x:Key="FondoPrincipal">#DBF6EC</Color>
+            <Color x:Key="FondoSecundario">#4969A9</Color>
+            <Color x:Key="LetraAzul">#75A0EF</Color>
+            <Color x:Key="LetraRoja">#AA1A26</Color>
+            <Color x:Key="BotonRojo">#E34454</Color>
+            <Color x:Key="CelestePrincipal">#85DCF6</Color>
+            <Color x:Key="BotonAzul">#4C87BD</Color>
+            <Color x:Key="RojoTerciario">#E56568</Color>
+
+            <Style TargetType="Page" ApplyToDerivedTypes="True">
+                <Setter Property="BackgroundColor"
+                        Value="{StaticResource FondoPrincipal}"/>
+            </Style>
+            <Style ApplyToDerivedTypes="True" TargetType="NavigationPage">
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light=Red, Dark=Red}"/>
+                <Setter Property="BarTextColor" Value="{StaticResource RojoTerciario}"/>
+            </Style>
+                
+            <!--<Style TargetType="Label" x:Key="BaseLabel">
+                <Setter Property="FontFamily" Value="OpenSansRegular"/>
+                <Setter Property="TextColor" Value="LetraRoja"/>
+            </Style>
+                
+            <Style x:Key="MicroLabel" BasedOn="{StaticResource BaseLabel}">
+                <Setter Property="FontSize" Value="10"/>
+            </Style>-->
+    
         </ResourceDictionary>
     </Application.Resources>
 </Application>
