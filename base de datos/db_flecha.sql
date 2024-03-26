@@ -94,15 +94,20 @@ CREATE TABLE Viaje(
 	fecha_llegada				DATE NOT NULL,
 	hora_llegada				TIME NOT NULL	
 )
+--Activo, falta confirmacion, suspendido, inactivo
+CREATE TABLE Estado_Usuario(
+	cve_estado					INT PRIMARY KEY IDENTITY (1,1),
+	descripcion_edo_usuario		NVARCHAR(128) NOT NULL
+)
 
 CREATE TABLE Usuario(
 	id_usuario					INT PRIMARY KEY IDENTITY (1,1),
+	cve_estado					INT FOREIGN KEY (cve_estado) REFERENCES Estado_Usuario(cve_estado) DEFAULT 1,
 	nombre_user					NVARCHAR(128) NOT NULL,
 	apellido					NVARCHAR(128) NOT NULL,
 	usuario						NVARCHAR(128) NOT NULL,
-	edad						INT NOT NULL,
 	pass						NVARCHAR(256) NOT NULL,
-	tel_user					NUMERIC(12) NOT NULL
+	tel_user					NUMERIC(10) NOT NULL
 )
 
 CREATE TABLE Operacion(
