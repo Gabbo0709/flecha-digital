@@ -62,7 +62,8 @@ CREATE TABLE Tipo_Asiento(
 )
 
 CREATE TABLE Asiento(
-	no_asiento					INT PRIMARY KEY NOT NULL,
+	cve_asiento					INT PRIMARY KEY NOT NULL,
+	no_asiento					INT NOT NULL,
 	cve_estado					INT FOREIGN KEY (cve_estado) REFERENCES Estado_Asiento(cve_estado) NOT NULL,
 	id_camion					INT FOREIGN KEY (id_camion) REFERENCES Camion(id_camion) NOT NULL,
 	cve_tipo					INT FOREIGN KEY (cve_tipo) REFERENCES Tipo_Asiento(cve_tipo) NOT NULL
@@ -111,7 +112,7 @@ CREATE TABLE Usuario(
 )
 
 CREATE TABLE Operacion(
-	no_operacion				INT PRIMARY KEY IDENTITY (1,1) NOT NULL,
+	no_operacion				INT PRIMARY KEY NOT NULL,
 	id_usuario					INT FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario) NOT NULL,
 	cant_boletos				INT NOT NULL,
 	costo_total					MONEY NOT NULL
@@ -126,9 +127,10 @@ CREATE TABLE Boleto(
 	no_boleto					INT PRIMARY KEY	NOT NULL,
 	no_operacion				INT FOREIGN KEY (no_operacion) REFERENCES Operacion (no_operacion) NOT NULL,
 	no_servicio					INT FOREIGN KEY (no_servicio) REFERENCES Ruta (no_servicio) NOT NULL,
-	no_asiento					INT FOREIGN KEY (no_asiento) REFERENCES Asiento(no_asiento)NOT NULL,
+	cve_asiento					INT FOREIGN KEY (cve_asiento) REFERENCES Asiento(cve_asiento)NOT NULL,
 	cve_estado					INT FOREIGN KEY (cve_estado) REFERENCES Estado_Boleto(cve_estado) NOT NULL,
 	nombre_pas					NVARCHAR (128) NOT NULL,
+	no_asiento_boleto			INT NOT NULL,
 	puerta						NVARCHAR(128),
 	carril						INT,
 	anden						INT,
