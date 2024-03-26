@@ -10,24 +10,9 @@
         <CollectionView>
 
         </CollectionView>
-        <Button Text="Menu"
-                Grid.Column="0"/>
-            
-            <Button Text="Actividad"   
-                    Grid.Column="1"
-                    Grid.Row="1"
-        BackgroundColor="{StaticResource BotonAzul}"/>
-            <Button Text="Usuario"
-                    Grid.Row="1"
-                    Grid.Column="2"
-
-        BackgroundColor="{StaticResource CelestePrincipal}"/>
-        <Button Text="Contacto"
-                Grid.Column="3"
-                Grid.Row="1"
-        
-        BackgroundColor="{StaticResource CelestePrincipal}"/>
-
-
-    </Grid>
+        <CollectionView Background="{StaticResource FondoSecundario}"
+                        Grid.ColumnSpan="4"
+                        Grid.Row="1">
+        </CollectionView>
+    </Grid>     
 </ContentPage>
