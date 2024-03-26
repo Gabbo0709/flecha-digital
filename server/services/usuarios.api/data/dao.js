@@ -1,45 +1,35 @@
-const mysql = require('mysql');
+const sql = require('mssql');
+const dbConfig = require('../config/db');
 
-class Database {
-    constructor(config) {
-        this.connection = mysql.createConnection(config);
+const conexion = async () => {
+    try {
+        let pool = await sql.connect(dbConfig);
+        return pool;
+    } catch (error) {
+        console.log(error);
     }
+};
 
-    connect() {
-        return new Promise((resolve, reject) => {
-            this.connection.connect((error) => {
-                if (error) {
-                    reject(error);
-                } else {
-                    resolve();
-                }
-            });
-        });
+const pool = await conexion();
+
+const ejecutarQuery = async (query) => {
+    try {
+        let result = await pool.request().query(query);
+        return result.rowsAffected[0] > 0;
     }
-
-    query(sql, params) {
-        return new Promise((resolve, reject) => {
-            this.connection.query(sql, params, (error, results) => {
-                if (error) {
-                    reject(error);
-                } else {
-                    resolve(results);
-                }
-            });
-        });
+    catch (error) {
+        console.log(error);
     }
+};
 
-    close() {
-        return new Promise((resolve, reject) => {
-            this.connection.end((error) => {
-                if (error) {
-                    reject(error);
-                } else {
-                    resolve();
-                }
-            });
-        });
+const consultar = async (query) => {
+    try {
+        let result = await pool.request().query(query);
+        return result.recordset;
     }
-}
+    catch (error) {
+        console.log(error);
+    }
+};
 
-module.exports = Database;
+module.exports = { ejecutarQuery, consultar };
