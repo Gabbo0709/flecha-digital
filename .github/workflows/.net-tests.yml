@@ -1,4 +1,4 @@
-name: Pull Request Workflow
+name: .NET Test
 
 on:
     workflow_dispatch:
