@@ -38,9 +38,6 @@ jobs:
               with:
                     dotnet-version: '6.0.2xx'
 
-            - name: Restore dependencies
-              run: dotnet restore '/app/Flecha Digital/Flecha Digital.csproj'
-
             - name: Build and test
               run: dotnet build --configuration Debug --no-restore
               continue-on-error: false
