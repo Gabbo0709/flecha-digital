@@ -1,0 +1,45 @@
+name: Pull Request Workflow
+
+on:
+    pull_request:
+        types:
+            - opened
+            - synchronize
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+
+            - name: Setup .NET
+              uses: actions/setup-dotnet@v1
+              with:
+                    dotnet-version: '7.0.x'
+
+            - name: Restore dependencies
+              run: dotnet restore
+
+            - name: Build and test
+              run: dotnet build --configuration Debug --no-restore
+              continue-on-error: true
+
+            - name: Run tests
+              run: dotnet test --no-restore --verbosity normal
+
+            - name: Run unit tests
+              run: dotnet test --no-restore --verbosity normal --filter Category=Unit
+
+            - name: Run integration tests
+              run: dotnet test --no-restore --verbosity normal --filter Category=Integration
+
+            - name: Check test results
+              run: |
+                    if [ ${{ job.status }} == 'success' ]; then
+                        echo "Tests passed. Pull request can proceed."
+                    else
+                        echo "Tests failed. Pull request cannot proceed."
+                        exit 1
+                    fi

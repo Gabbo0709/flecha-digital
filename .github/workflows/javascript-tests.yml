@@ -1,0 +1,35 @@
+name: JavaScript Tests
+
+on:
+    pull_request:
+        types: 
+            - opened
+            - synchronize
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+
+            - name: Install Node.js
+              uses: actions/setup-node@v3
+              with:
+                    node-version: '20.11.1'
+
+            - name: Install dependencies
+              run: npm install
+
+            - name: Run tests
+              run: npm test
+
+            - name: Validate tests
+              run: |
+                    if [ ${{ job.status }} == 'success' ]; then
+                        echo "Tests passed. Proceeding with the pull request."
+                    else
+                        echo "Tests failed. The pull request will not be allowed."
+                        exit 1
+                    fi
