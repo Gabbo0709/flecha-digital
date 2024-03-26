@@ -43,6 +43,7 @@ jobs:
 
             - name: Run tests
               run: npm test
+              working-directory: ../server/services/*/tests
 
             - name: Validate tests
               run: |
