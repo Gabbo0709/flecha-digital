@@ -105,9 +105,9 @@ CREATE TABLE Usuario(
 	cve_estado					INT FOREIGN KEY (cve_estado) REFERENCES Estado_Usuario(cve_estado) DEFAULT 1,
 	nombre_user					NVARCHAR(128) NOT NULL,
 	apellido					NVARCHAR(128) NOT NULL,
-	usuario						NVARCHAR(128) NOT NULL,
 	pass						NVARCHAR(256) NOT NULL,
-	tel_user					NUMERIC(10) NOT NULL
+	email						NVARCHAR(128) NOT NULL,
+	tel_user					NUMERIC(10)
 )
 
 CREATE TABLE Operacion(
