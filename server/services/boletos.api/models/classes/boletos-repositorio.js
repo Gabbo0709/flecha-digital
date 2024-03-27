@@ -17,7 +17,7 @@ class BoletosRepositorio {
         }
         let query = `SELECT * FROM Boleto WHERE no_operacion = ${boleto.no_operacion}`;
         let result = await dao.consultar(query);
-        return result != null && result.length > 0 ? new Boleto() : null;
+        return result != null && result.length > 0 ? new Boleto(result) : null;
     }
     
     async buscarBoletoToken(boleto){

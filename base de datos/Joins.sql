@@ -66,7 +66,7 @@ GO
 EXEC GetViajes 1, 1;
 GO
 
-CREATE PROCEDURE GetAsietos
+CREATE PROCEDURE GetAsientos
 		@id_camion INT
 		AS
 		BEGIN 
@@ -84,7 +84,7 @@ CREATE PROCEDURE GetAsietos
 	END;
 GO
 
-EXEC GetAsietos 1;
+EXEC GetAsientos 1;
 GO
 
 CREATE PROCEDURE GetActividad
@@ -110,44 +110,40 @@ GO
 EXEC GetActividad 1;
 GO
 
-CREATE PROCEDURE CrearBoletos
-	@no_boleto INT,
-	@cve_tipo INT,
-	@no_operacion INT,
-	@cve_asiento INT,
-	@cve_estado INT,
-	@nombre_pas NVARCHAR(128),
-	@token_fac NVARCHAR(128),
-	@no_asiento_boleto INT,
-	@puerta NVARCHAR(128),
-	@carril INT,
-	@anden INT,
-	@metodo_pago NVARCHAR(128),
-	@tel_cliente NUMERIC(12),
-	@costo_boleto MONEY,
-    @cantidad INT
+CREATE PROCEDURE InsertarOperacionYBoletos
+    @no_operacion INT,
+    @id_usuario INT,
+    @cve_tipo_operacion INT,
+    @cant_boletos INT,
+    @costo_total MONEY
 AS
 BEGIN
---Tabla temporal
-    DECLARE @Numeros TABLE (Numero INT);
+    -- Insertar la operación
+    INSERT INTO Operacion(no_operacion, id_usuario, cve_tipo, cant_boletos, costo_total)
+    VALUES (@no_operacion, @id_usuario, @cve_tipo_operacion, @cant_boletos, @costo_total)
 
-    --Crea numeros a partir del 1 hasta la cantidad @numeros
-    WITH Numeros AS (
-        SELECT 1 AS Numero
-        UNION ALL
-        SELECT Numero + 1
-        FROM Numeros
-        WHERE Numero < @cantidad
-    )
-    INSERT INTO @Numeros
-    SELECT Numero FROM Numeros
-    OPTION (MAXRECURSION 0); --Permite 100 recursiones
-
+    -- Insertar los boletos
     INSERT INTO Boleto(no_boleto, cve_tipo, no_operacion, cve_asiento, cve_estado, nombre_pas, token_fac, no_asiento_boleto, puerta, carril, anden, metodo_pago, tel_cliente, costo_boleto)
-    SELECT Numero, @no_boleto, @cve_tipo, @no_operacion, @cve_asiento, @cve_estado, @nombre_pas, @token_fac, @no_asiento_boleto, @puerta, @carril, @anden, @metodo_pago, @tel_cliente, @costo_boleto
-    FROM @Numeros;
+    SELECT no_boleto, cve_tipo_boleto, @no_operacion, cve_asiento, cve_estado, nombre_pas, token_fac, no_asiento_boleto, puerta, carril, anden, metodo_pago, tel_cliente, costo_boleto
+    FROM #BoletosTemporales
 END
-GO
-EXEC CrearBoletos 1, 1, 1, 1, 1, 'nombre', 'token', 1, 'puerta', 1, 1, 'metodo', 1234567890, 100.00, 2;
-	
 
+CREATE TABLE #BoletosTemporales(
+    no_boleto INT,
+    cve_tipo_boleto INT,
+    cve_asiento INT,
+    cve_estado INT,
+    nombre_pas NVARCHAR(128),
+    token_fac NVARCHAR(128),
+    no_asiento_boleto INT,
+    puerta NVARCHAR(128),
+    carril INT,
+    anden INT,
+    metodo_pago NVARCHAR(128),
+    tel_cliente NUMERIC(12),
+    costo_boleto MONEY
+)
+--Los boletos se insertan en el mismo orden en que se compraron
+INSERT INTO @boletos VALUES (1, 1, 1, 1, 'Juan Perez', '123456', 1, 'A', 1, 1, 'Efectivo', 1234567890, 100.00)
+--Llamar el procedimiento almacenado y los datos de la operacion
+EXEC InsertarOperacionYBoletos @no_operacion = 1, @id_usuario = 1, @cve_tipo_operacion = 1, @cant_boletos = 2, @costo_total = 300.00, @boletos = @boletos

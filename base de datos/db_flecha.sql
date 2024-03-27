@@ -107,6 +107,7 @@ CREATE TABLE Operacion( -- Operación de compra de boletos
 	no_operacion				INT PRIMARY KEY NOT NULL,
 	id_usuario					INT FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario) NOT NULL,
 	cve_tipo					INT FOREIGN KEY (cve_tipo) REFERENCES Tipo_Operacion(cve_tipo) NOT NULL,
+	cant_boletos				INT NOT NULL,
 	costo_total					MONEY NOT NULL
 )
 
