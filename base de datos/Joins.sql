@@ -88,29 +88,66 @@ EXEC GetAsietos 1;
 GO
 
 CREATE PROCEDURE GetActividad
-	@id_usuario INT
-	AS
-	BEGIN
-SELECT
-	
-	TOP 1 
-	O.no_operacion,
-	OV.no_servicio,
-	OV.origen_viaje,
-	fecha_salida
-	FROM Operacion_Viaje OV 
-	JOIN Operacion O ON OV.cve_viaje = O.cve_viaje
-	WHERE O.id_usuario = @id_usuario
-	ORDER BY fecha_salida ASC;
-	
-	SELECT TOP 1 OV.destino_viaje
-	FROM Operacion_Viaje OV
-	JOIN Operacion O ON OV.cve_viaje = O.cve_viaje
-	WHERE O.id_usuario = @id_usuario
-	ORDER BY fecha_salida DESC;
-END;
+		@id_usuario INT
+AS
+BEGIN
+    SELECT 
+        OV.no_operacion,
+        V.no_servicio,
+        (SELECT TOP 1 origen_viaje FROM Viaje WHERE no_servicio = V.no_servicio ORDER BY fecha_salida ASC) AS origen_viaje,
+        V.fecha_salida,
+        (SELECT TOP 1 destino_viaje FROM Viaje WHERE no_servicio = V.no_servicio ORDER BY fecha_salida DESC) AS destino_viaje
+    FROM 
+        Operacion_Viaje OV
+    INNER JOIN 
+        Viaje V ON OV.cve_viaje = V.cve_viaje
+	INNER JOIN Operacion O ON OV.no_operacion = O.no_operacion
+	WHERE 
+		O.id_usuario = @id_usuario;
+END
 GO
 
 EXEC GetActividad 1;
+GO
+
+CREATE PROCEDURE CrearBoletos
+	@no_boleto INT,
+	@cve_tipo INT,
+	@no_operacion INT,
+	@cve_asiento INT,
+	@cve_estado INT,
+	@nombre_pas NVARCHAR(128),
+	@token_fac NVARCHAR(128),
+	@no_asiento_boleto INT,
+	@puerta NVARCHAR(128),
+	@carril INT,
+	@anden INT,
+	@metodo_pago NVARCHAR(128),
+	@tel_cliente NUMERIC(12),
+	@costo_boleto MONEY,
+    @cantidad INT
+AS
+BEGIN
+--Tabla temporal
+    DECLARE @Numeros TABLE (Numero INT);
+
+    --Crea numeros a partir del 1 hasta la cantidad @numeros
+    WITH Numeros AS (
+        SELECT 1 AS Numero
+        UNION ALL
+        SELECT Numero + 1
+        FROM Numeros
+        WHERE Numero < @cantidad
+    )
+    INSERT INTO @Numeros
+    SELECT Numero FROM Numeros
+    OPTION (MAXRECURSION 0); --Permite 100 recursiones
+
+    INSERT INTO Boleto(no_boleto, cve_tipo, no_operacion, cve_asiento, cve_estado, nombre_pas, token_fac, no_asiento_boleto, puerta, carril, anden, metodo_pago, tel_cliente, costo_boleto)
+    SELECT Numero, @no_boleto, @cve_tipo, @no_operacion, @cve_asiento, @cve_estado, @nombre_pas, @token_fac, @no_asiento_boleto, @puerta, @carril, @anden, @metodo_pago, @tel_cliente, @costo_boleto
+    FROM @Numeros;
+END
+GO
+EXEC CrearBoletos 1, 1, 1, 1, 1, 'nombre', 'token', 1, 'puerta', 1, 1, 'metodo', 1234567890, 100.00, 2;
 	
 
