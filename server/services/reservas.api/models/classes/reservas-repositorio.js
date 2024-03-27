@@ -3,20 +3,28 @@ const Operacion = require('./operacion');
 const dao = require('../../data/dao');
 
 class reservasRepositorio{
-    async crearOperacion(operacion){
-        if(!(operacion instanceof Operacion)){
+    async crearOperacionYBoleto(operacion, boleto){
+        if(!(operacion instanceof Operacion || boleto instanceof Boleto)){
             return false;
         }
-        let query = `INSERT INTO Operacion(no_servicio, id_usuario, costo_total) VALUES(${operacion.no_servicio}, ${operacion.id_usuario}, ${operacion.costo_total})`;
+        let query = `CREATE TABLE #BoletosTemporales(
+            no_boleto INT,
+            cve_tipo_boleto INT,
+            cve_asiento INT,
+            cve_estado INT,
+            nombre_pas NVARCHAR(128),
+            token_fac NVARCHAR(128),
+            no_asiento_boleto INT,
+            puerta NVARCHAR(128),
+            carril INT,
+            anden INT,
+            metodo_pago NVARCHAR(128),
+            tel_cliente NUMERIC(12),
+            costo_boleto MONEY
+        )
+        INSERT INTO #BoletosTemporales VALUES${this.definirBoletos(boleto)}`;
+        query += ` EXEC InsertarOperacionYBoleto ${operacion.no_operacion}, ${operacion.id_usuario}, ${operacion.cve_tipo}, ${operacion.cant_boletos}, ${operacion.costo_total}`;
         return dao.ejecutarQuery(query);
-    }
-
-    async crearBoleto(boleto){
-        if(!(boleto[0] instanceof Boleto)){
-            return false;
-        }
-        let query = `INSERT INTO Boleto (no_boleto, no_operacion, cve_asiento, cve_estado, nombre_pas, token_fac, no_asiento_boleto, puerta, carril, anden, metodo_pago, tel_cliente, costo) VALUES${this.definirBoletos(boleto)}`;
-        return await dao.ejecutarQuery(query);
     }
     definirBoletos(boleto){
         let result = "";

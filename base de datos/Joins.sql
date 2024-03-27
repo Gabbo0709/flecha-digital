@@ -144,6 +144,4 @@ CREATE TABLE #BoletosTemporales(
     costo_boleto MONEY
 )
 --Los boletos se insertan en el mismo orden en que se compraron
-INSERT INTO @boletos VALUES (1, 1, 1, 1, 'Juan Perez', '123456', 1, 'A', 1, 1, 'Efectivo', 1234567890, 100.00)
---Llamar el procedimiento almacenado y los datos de la operacion
-EXEC InsertarOperacionYBoletos @no_operacion = 1, @id_usuario = 1, @cve_tipo_operacion = 1, @cant_boletos = 2, @costo_total = 300.00, @boletos = @boletos
+INSERT INTO #BoletosTemporales VALUES (1, 1, 1, 1, 'Juan Perez', '123456', 1, 'A', 1, 1, 'Efectivo', 1234567890, 100.00) EXEC InsertarOperacionYBoletos 1, 1, 1, 2, 300.00
