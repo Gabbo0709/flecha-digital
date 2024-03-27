@@ -17,7 +17,7 @@ class ViajeRepositorio{
         }
         let query = `EXEC GetViajes ${ruta.origen_ruta}, ${viaje.origen_viaje}, ${ruta.destino_ruta}, ${viaje.destino_viaje}`;
         let result = await dao.consultar(query);
-        return result != null && result.length > 0;
+        return result != null && result.length > 0 ? new Viaje(result[0]) : null;
     };
 
     async actualizarViaje(viaje, tiempo){
@@ -28,8 +28,7 @@ class ViajeRepositorio{
         SET fecha_salida = ADDTIME(fecha_salida, '${tiempo}'),
             hora_llegada = ADDTIME(hora_llegada, '${tiempo}')
         WHERE EXISTS (SELECT 1 FROM Viaje v WHERE v.no_operacion = ${viaje.no_servicio} GROUP BY v.no_operacion HAVING COUNT(*) > 1)`;
-        let result = await dao.ejecutarQuery(query);
-        return result;
+        return await dao.ejecutarQuery(query);
     };
 }
 

@@ -7,20 +7,28 @@ app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("getViajes:origen_ruta:origen_viaje:destino_ruta:origen_ruta", async(  req, res ) => {
-    let viaje = new models.viaje();
-    viaje.origen_ruta = req.params.origen_ruta;
-    viaje.origen_viaje = req.params.origen_viaje;
-    viaje.destino_ruta = req.params.destino_ruta;
-    viaje.destino_viaje = req.params.destino_viaje;
-    let result = await models.viajesRepositorio.getViajes(viaje);
+
+app.get("/buscarViajes", async(  req, res ) => {
+    const {origen_ruta, origen_viaje, destino_ruta, destino_viaje} = req.query;
+    let viaje = new models.viaje(
+        origen_viaje,
+        destino_viaje
+    );
+    let ruta = new models.ruta(
+        origen_ruta,
+        destino_ruta
+    );
+    let result = await models.viajesRepositorio.buscarViaje(ruta, viaje);
+    res.send(result);
 });
 
-app.get("updateViaje:no_servicio:tiempo", async(  req, res ) => {
-    let viaje = new models.viaje();
-    viaje.no_servicio = req.params.no_servicio;
-    let result = await models.viajesRepositorio.updateViaje(viaje, req.params.tiempo);
+app.post("/actualizarViaje", async(  req, res ) => {
+    const {no_servicio, tiempo} = req.body;
+    const viaje = new models.viaje(no_servicio);
+    let result = await models.viajesRepositorio.actualizarViaje(viaje, tiempo);
+    res.send(result);
 });
+
 
 app.listen(env.puertoServidor, () => {
     console.log(`Server listening on port ${env.port}`);
