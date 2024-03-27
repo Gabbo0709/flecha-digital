@@ -11,6 +11,12 @@ class UsuariosRepositorio {
         return result != null && result.length > 0 ? new Usuario(result[0]) : null;
     }
 
+    static async buscarUsuarioCorreoStatic(email) {
+        let query = `SELECT * FROM Usuario WHERE email = '${email}'`;
+        let result = await dao.consultar(query);
+        return result != null && result.length > 0 ? new Usuario(result[0]) : null;
+    }
+
     async autenticarUsuario(usuario) {
         if(!(usuario instanceof Usuario)) {
             return false;
