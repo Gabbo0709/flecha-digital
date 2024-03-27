@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Flecha_Digital.Model
 {
-    internal class Camion{
-
+    internal class Camion
+    {
+        
     }
 }
