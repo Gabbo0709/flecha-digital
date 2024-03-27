@@ -23,10 +23,9 @@ CREATE PROCEDURE GetViajes
 	BEGIN
 SELECT 
     R.no_servicio,
+	L.cve_linea,
     L.nombre_linea,
-    R.origen_ruta,
     V.origen_viaje,
-    R.destino_ruta,
     V.destino_viaje,
     C.descripcion_clase,
     V.fecha_salida,
@@ -64,5 +63,26 @@ GROUP BY
 	END;
 GO
 
-
 EXEC GetViajes 1, 1;
+GO
+
+CREATE PROCEDURE GetAsietos
+		@id_camion INT
+		AS
+		BEGIN 
+	SELECT 
+		A.cve_asiento,
+		A.no_asiento,
+		A.estado_asiento
+	FROM 
+		Asiento A
+		JOIN
+		Estado_Asiento E
+		ON 
+		A.cve_estado = E.cve_estado
+		WHERE A.id_camion = @id_camion;
+	END;
+GO
+
+EXEC GetAsietos 1;
+GO

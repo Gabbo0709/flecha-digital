@@ -17,6 +17,13 @@ app.get("/buscarViajes", async(  req, res ) => {
     res.send(result);
 });
 
+app.get("/obtenerAsientos", async(  req, res ) => {
+    const {id_camion} = req.query;
+    let asiento = new models.asiento(id_camion);
+    let result = await models.viajesRepositorio.obtenerAsiento(asiento);
+    res.send(result);
+});
+
 app.post("/actualizarViaje", async(  req, res ) => {
     const {no_servicio, tiempo} = req.body;
     const viaje = new models.viaje(no_servicio);

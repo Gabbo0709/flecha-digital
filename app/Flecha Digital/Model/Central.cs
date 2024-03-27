@@ -8,9 +8,9 @@ namespace Flecha_Digital.Model
 {
     internal class Central
     {
-        private int cve_central { get; set; }
-        private string nombre_central { get; set; }
-        private string municipio { get; set; }
-        private string estado { get; set; }
+        public int cve_central { get; set; }
+        public string nombre_central { get; set; }
+        public string municipio { get; set; }
+        public string estado { get; set; }
     }
 }
