@@ -99,9 +99,14 @@ CREATE TABLE Usuario( -- Usuarios que pueden comprar boletos
 	tel_user					NUMERIC(10)
 )
 
+CREATE TABLE Tipo_Operacion(
+	cve_tipo					INT PRIMARY KEY IDENTITY (1,1),
+	descripcion_tipo_operacion	NVARCHAR(128) NOT NULL
+)
 CREATE TABLE Operacion( -- Operación de compra de boletos
 	no_operacion				INT PRIMARY KEY NOT NULL,
 	id_usuario					INT FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario) NOT NULL,
+	cve_tipo					INT FOREIGN KEY (cve_tipo) REFERENCES Tipo_Operacion(cve_tipo) NOT NULL,
 	costo_total					MONEY NOT NULL
 )
 
