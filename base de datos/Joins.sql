@@ -63,3 +63,6 @@ GROUP BY
     TV.descripcion_viaje;
 	END;
 GO
+
+
+EXEC GetViajes 1, 1;
