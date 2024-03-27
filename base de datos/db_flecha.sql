@@ -101,9 +101,13 @@ CREATE TABLE Usuario( -- Usuarios que pueden comprar boletos
 
 CREATE TABLE Operacion( -- Operación de compra de boletos
 	no_operacion				INT PRIMARY KEY NOT NULL,
-	no_servicio					INT FOREIGN KEY (no_servicio) REFERENCES Ruta (no_servicio) NOT NULL,
 	id_usuario					INT FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario) NOT NULL,
 	costo_total					MONEY NOT NULL
+)
+
+CREATE TABLE Operacion_Viaje(
+	no_operacion				INT FOREIGN KEY (no_operacion) REFERENCES Operacion(no_operacion) NOT NULL,
+	cve_viaje					INT FOREIGN KEY (cve_viaje) REFERENCES Viaje(cve_viaje) NOT NULL
 )
 --Adulto, niño, adulto mayor, estudiante, profesor
 CREATE TABLE Tipo_Boleto( -- Tipos de boletos que se pueden comprar
