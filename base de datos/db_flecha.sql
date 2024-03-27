@@ -13,9 +13,6 @@ GO
 CREATE TABLE  Central(
 	cve_central					INT PRIMARY KEY NOT NULL,
 	nombre_central				NVARCHAR(128) NOT NULL,
-	calle						NVARCHAR(128) NOT NULL,
-	numero						NVARCHAR(128) NOT NULL,
-	colonia						NVARCHAR(128) NOT NULL,
 	municipio					NVARCHAR(128) NOT NULL,
 	estado						NVARCHAR(128) NOT NULL
 )

@@ -10,6 +10,7 @@ class BoletosRepositorio {
         let result = await dao.consultar(query);
         return result != null && result.length > 0 ? new Boleto(result[0]) : null;
     }
+
     async buscarBoletos(boleto){
         if(!(boleto instanceof Boleto)) {
             return null;
@@ -27,6 +28,7 @@ class BoletosRepositorio {
         let result = await dao.consultar(query);
         return result != null && result.length > 0 ? new Boleto(result[0]) : null;
     }
+    
     async actualizarEstadoBoleto(boleto, estado){
         if(!(boleto instanceof Boleto)) {
             return false;
