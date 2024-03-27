@@ -1,10 +1,11 @@
 class Boleto{
-    constructor(no_boleto, no_operacion, cve_asiento, cve_estado, nombre_pas, no_asiento_boleto, puerta, carril, anden, metodo_pago, tel_cliente, costo){
+    constructor(no_boleto, no_operacion, cve_asiento, cve_estado, nombre_pas, token_fac, no_asiento_boleto, puerta, carril, anden, metodo_pago, tel_cliente, costo){
         this.no_boleto = no_boleto;
         this.no_operacion = no_operacion;
         this.cve_asiento = cve_asiento;
         this.cve_estado = cve_estado;
         this.nombre_pas = nombre_pas;
+        this.token_fac = token_fac;
         this.no_asiento_boleto = no_asiento_boleto;
         this.puerta = puerta;
         this.carril = carril;
@@ -19,6 +20,7 @@ class Boleto{
         this.cve_asiento = boleto.cve_asiento;
         this.cve_estado = boleto.cve_estado;
         this.nombre_pas = boleto.nombre_pas;
+        this.token_fac = boleto.token_fac;
         this.no_asiento_boleto = boleto.no_asiento_boleto;
         this.puerta = boleto.puerta;
         this.carril = boleto.carril;
