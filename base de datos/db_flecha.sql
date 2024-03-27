@@ -64,7 +64,7 @@ CREATE TABLE Tipo_Viaje(
 	cve_tipo					INT PRIMARY KEY IDENTITY (1,1) NOT NULL,
 	tipo						NVARCHAR(128) NOT NULL,
 	descripcion_viaje			NVARCHAR(128)
-)	
+)
 
 CREATE TABLE Ruta(	
 	no_servicio					INT PRIMARY KEY IDENTITY (1,1),

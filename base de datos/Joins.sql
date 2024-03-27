@@ -1,40 +1,54 @@
 Use db_flecha
 GO
 
-SELECT descripcion_clase, descripcion_servicio FROM Clase AS c
+
+SELECT descripcion_clase, descripcion_servicio, nombre_linea FROM Linea AS l
+	INNER JOIN Clase AS c
+	ON l.cve_clase = c.cve_clase
 	INNER JOIN Clase_Servicio AS cs
 	ON c.cve_clase = cs.cve_clase
 	INNER JOIN Servicio AS s
-	ON s.cve_servicio = cs.cve_servicio;
-GO
-	CREATE PROCEDURE GetUsuarioOperacion
-		@no_operacion INT
-	AS
-	BEGIN
-		SELECT u.* FROM Usuario AS u
-		INNER JOIN Operacion AS o
-		ON u.id_usuario = o.id_usuario
-		WHERE no_operacion = @no_operacion;
-	END;
+	ON cs.cve_servicio = s.cve_servicio
+	WHERE cve_linea = 1;
 GO
 
-EXEC GetUsuarioOperacion 1;
 
-SELECT origen_ruta, origen_viaje, destino_ruta, destino_viaje FROM Ruta AS r
-	INNER JOIN Viaje AS v
-	ON (r.origen_ruta = 1 OR v.origen_viaje = 1) AND (r.destino_ruta = 2 OR v.destino_viaje = 2);
-GO
-	CREATE PROCEDURE GetViajes
+CREATE PROCEDURE GetViajes
 		@origen_ruta INT,
 		@origen_viaje INT,
 		@destino_ruta INT,
-		@destino_viaje INT
+		@destino_viaje INT,
+		@cve_ruta INT
 	AS
 	BEGIN
-		SELECT origen_ruta, origen_viaje, destino_ruta, destino_viaje FROM Ruta AS r
-		INNER JOIN Viaje AS v
-		ON (r.origen_ruta = @origen_ruta OR v.origen_viaje = @origen_viaje) AND (r.destino_ruta = @destino_ruta OR v.destino_viaje = @destino_viaje);
+SELECT 
+    L.nombre_linea,
+    R.origen_ruta,
+    V.origen_viaje,
+    R.destino_ruta,
+    V.destino_viaje,
+    C.descripcion_clase,
+    V.fecha_salida,
+    V.fecha_llegada,
+    STRING_AGG(S.descripcion_servicio, ', ') AS descripcion_servicio,
+    TV.descripcion_viaje
+FROM 
+    Viaje V
+JOIN 
+    Ruta R ON V.no_servicio = R.no_servicio
+JOIN 
+    Camion CM ON R.id_camion = CM.id_camion
+JOIN 
+    Linea L ON CM.cve_linea = L.cve_linea
+JOIN 
+    Clase C ON L.cve_clase = C.cve_clase
+JOIN 
+    Clase_Servicio CS ON C.cve_clase = CS.cve_clase
+JOIN 
+    Servicio S ON CS.cve_servicio = S.cve_servicio
+JOIN 
+    Tipo_Viaje TV ON V.cve_tipo = TV.cve_tipo
+WHERE (R.origen_ruta = @origen_ruta AND R.destino_ruta = @destino_ruta) OR (V.origen_viaje = @origen_viaje AND V.destino_viaje = @destino_viaje)
 	END;
 GO
 
-EXEC GetViajes 1, 1, 2, 2;
