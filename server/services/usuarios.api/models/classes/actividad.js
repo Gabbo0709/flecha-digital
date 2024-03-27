@@ -1,0 +1,5 @@
+/*
+    Clase Actividad
+    Esta clase representa la actividad reciente de un usuario.
+    Por actividad se entienden los viajes realizados y reservados por el usuario.
+*/
