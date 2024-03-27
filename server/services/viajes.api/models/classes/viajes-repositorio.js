@@ -1,5 +1,6 @@
 const Viaje = require('./viaje');
 const Ruta = require('./ruta');
+const Asiento = require('./asientos');
 const dao = require('../../data/dao');
 
 class ViajeRepositorio{
@@ -19,7 +20,14 @@ class ViajeRepositorio{
         let result = await dao.consultar(query);
         return result != null && result.length > 0 ? new Viaje(result[0]) : null;
     };
-
+    async obtenerAsiento(asiento){
+        if (!(asiento instanceof Asiento)){
+            return null;
+        }
+        let query = `EXEC GetAsientos ${id_camion};`;
+        resutl = await dao.consultar(query);
+        return result != null && result.length > 0 ? new Asiento() : null;
+    }
     async actualizarViaje(viaje, tiempo){
         if(!(viaje instanceof Viaje)){
             return false;
