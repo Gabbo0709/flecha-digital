@@ -86,3 +86,31 @@ GO
 
 EXEC GetAsietos 1;
 GO
+
+CREATE PROCEDURE GetActividad
+	@id_usuario INT
+	AS
+	BEGIN
+SELECT
+	
+	TOP 1 
+	O.no_operacion,
+	OV.no_servicio,
+	OV.origen_viaje,
+	fecha_salida
+	FROM Operacion_Viaje OV 
+	JOIN Operacion O ON OV.cve_viaje = O.cve_viaje
+	WHERE O.id_usuario = @id_usuario
+	ORDER BY fecha_salida ASC;
+	
+	SELECT TOP 1 OV.destino_viaje
+	FROM Operacion_Viaje OV
+	JOIN Operacion O ON OV.cve_viaje = O.cve_viaje
+	WHERE O.id_usuario = @id_usuario
+	ORDER BY fecha_salida DESC;
+END;
+GO
+
+EXEC GetActividad 1;
+	
+
