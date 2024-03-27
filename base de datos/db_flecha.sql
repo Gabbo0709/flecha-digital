@@ -54,19 +54,11 @@ CREATE TABLE Estado_Asiento(
 	descripcion_edo_asiento		NVARCHAR (128) NOT NULL
 )
 
-CREATE TABLE Tipo_Asiento(
-	cve_tipo					INT PRIMARY KEY IDENTITY (1,1),
-	descripcion_tipo_asiento	NVARCHAR(128) NOT NULL,
-	costo_asiento				MONEY NOT NULL,
-	cantidad_disponible			INT NOT NULL
-)
-
 CREATE TABLE Asiento(
 	cve_asiento					INT PRIMARY KEY NOT NULL,
 	no_asiento					INT NOT NULL,
 	cve_estado					INT FOREIGN KEY (cve_estado) REFERENCES Estado_Asiento(cve_estado) NOT NULL,
-	id_camion					INT FOREIGN KEY (id_camion) REFERENCES Camion(id_camion) NOT NULL,
-	cve_tipo					INT FOREIGN KEY (cve_tipo) REFERENCES Tipo_Asiento(cve_tipo) NOT NULL
+	id_camion					INT FOREIGN KEY (id_camion) REFERENCES Camion(id_camion) NOT NULL
 )
 
 --Paso: La ruta de este autobús comenzó en otra terminal y/o central, es decir, el autobús realiza una parada en este origen.
@@ -77,7 +69,7 @@ CREATE TABLE Tipo_Viaje(
 	descripcion_viaje			NVARCHAR(128)
 )	
 
-CREATE TABLE Ruta(
+CREATE TABLE Ruta(	
 	no_servicio					INT PRIMARY KEY IDENTITY (1,1),
 	origen_ruta					INT FOREIGN KEY (origen_ruta) REFERENCES Central(cve_central) NOT NULL,
 	destino_ruta				INT FOREIGN KEY (destino_ruta) REFERENCES Central(cve_central) NOT NULL,
@@ -85,15 +77,14 @@ CREATE TABLE Ruta(
 )
 
 CREATE TABLE Viaje(
+	cve_viaje					INT PRIMARY KEY NOT NULL,
 	no_servicio					INT FOREIGN KEY (no_servicio) REFERENCES Ruta(no_servicio) NOT NULL,
 	origen_viaje				INT FOREIGN KEY (origen_viaje) REFERENCES Central(cve_central) NOT NULL,
 	destino_viaje				INT FOREIGN KEY (destino_viaje) REFERENCES Central(cve_central) NOT NULL,
 	cve_tipo					INT FOREIGN KEY (cve_tipo) REFERENCES Tipo_Viaje(cve_tipo) NOT NULL,
-	fecha_salida				DATE NOT NULL,
-	hora_salida					TIME NOT NULL,
+	fecha_salida				DATETIME NOT NULL,
 	duracion					TIME NOT NULL,
-	fecha_llegada				DATE NOT NULL,
-	hora_llegada				TIME NOT NULL	
+	fecha_llegada				DATETIME NOT NULL	
 )
 --Activo, falta confirmacion, suspendido, inactivo
 CREATE TABLE Estado_Usuario(
@@ -113,11 +104,24 @@ CREATE TABLE Usuario(
 
 CREATE TABLE Operacion(
 	no_operacion				INT PRIMARY KEY NOT NULL,
+	no_servicio					INT FOREIGN KEY (no_servicio) REFERENCES Ruta (no_servicio) NOT NULL,
 	id_usuario					INT FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario) NOT NULL,
+	token_fac					NVARCHAR(128) NOT NULL,
 	cant_boletos				INT NOT NULL,
 	costo_total					MONEY NOT NULL
 )
+--Adulto, niño, adulto mayor, estudiante, profesor
+CREATE TABLE Tipo_Boleto(
+	cve_tipo					INT PRIMARY KEY IDENTITY (1,1),
+	descripcion_tipo_boleto		NVARCHAR(128) NOT NULL
+)
 
+CREATE TABLE Costo_Tipo(
+	cve_viaje					INT FOREIGN KEY (cve_viaje) REFERENCES Viaje(cve_viaje) NOT NULL,
+	cve_tipo					INT FOREIGN KEY (cve_tipo) REFERENCES Tipo_Boleto(cve_tipo) NOT NULL,
+	disponibles					INT NOT NULL
+)
+--Pagado, pendiente, cancelado, reembolsado, usado
 CREATE TABLE Estado_Boleto(
 	cve_estado					INT PRIMARY KEY IDENTITY NOT NULL,
 	descripcion_edo_boleto		NVARCHAR(128) NOT NULL
@@ -125,8 +129,8 @@ CREATE TABLE Estado_Boleto(
 
 CREATE TABLE Boleto(
 	no_boleto					INT PRIMARY KEY	NOT NULL,
+	cve_tipo 					INT FOREIGN KEY (cve_tipo) REFERENCES Tipo_Boleto(cve_tipo) NOT NULL,
 	no_operacion				INT FOREIGN KEY (no_operacion) REFERENCES Operacion (no_operacion) NOT NULL,
-	no_servicio					INT FOREIGN KEY (no_servicio) REFERENCES Ruta (no_servicio) NOT NULL,
 	cve_asiento					INT FOREIGN KEY (cve_asiento) REFERENCES Asiento(cve_asiento)NOT NULL,
 	cve_estado					INT FOREIGN KEY (cve_estado) REFERENCES Estado_Boleto(cve_estado) NOT NULL,
 	nombre_pas					NVARCHAR (128) NOT NULL,
@@ -134,7 +138,6 @@ CREATE TABLE Boleto(
 	puerta						NVARCHAR(128),
 	carril						INT,
 	anden						INT,
-	token_fac					NVARCHAR(128) NOT NULL,
 	metodo_pago					NVARCHAR(128) NOT NULL,	
 	tel_cliente					NUMERIC(12) NOT NULL,
 	costo_boleto				MONEY NOT NULL

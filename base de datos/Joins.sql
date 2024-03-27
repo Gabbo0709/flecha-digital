@@ -6,6 +6,19 @@ SELECT descripcion_clase, descripcion_servicio FROM Clase AS c
 	ON c.cve_clase = cs.cve_clase
 	INNER JOIN Servicio AS s
 	ON s.cve_servicio = cs.cve_servicio;
+GO
+	CREATE PROCEDURE GetUsuarioOperacion
+		@no_operacion INT
+	AS
+	BEGIN
+		SELECT u.* FROM Usuario AS u
+		INNER JOIN Operacion AS o
+		ON u.id_usuario = o.id_usuario
+		WHERE no_operacion = @no_operacion;
+	END;
+GO
+
+EXEC GetUsuarioOperacion 1;
 
 SELECT origen_ruta, origen_viaje, destino_ruta, destino_viaje FROM Ruta AS r
 	INNER JOIN Viaje AS v
