@@ -43,6 +43,13 @@ app.post('/actualizar', async (req, res) => {
     res.send(result);
 });
 
+app.post('/actualizarPass', async (req, res) => {
+    const { email, pass } = req.body;
+    const usuario = new models.usuario(null, null, pass, email, null);
+    const result = await models.usuariosRepositorio.actualizarPass(usuario);
+    res.send(result);
+});
+
 app.post('/activar', async (req, res) => {
     let usuario = new models.usuario(null, null, null, req.body.email, null);
     usuario.cve_estado = 1; // Activo
@@ -64,8 +71,16 @@ app.post('/suspender', async (req, res) => {
     res.send(result);
 });
 
-app.get('/consultar', async (req, res) => {
-    
+app.get('/obtenerActividades', async (req, res) => {
+    const usuario = new models.usuario(null, null, null, req.body.email, null);
+    const result = await models.actividadesRepositorio.obtenerActividadesUsuario(usuario);
+    res.send(result);
+});
+
+app.get('/obtenerBoletosActividad', async (req, res) => {
+    const actividad = new models.actividad(req.body.no_operacion);
+    const result = await models.boletosRepositorio.obtenerBoletosActividad(actividad);
+    res.send(result);
 });
 
 
