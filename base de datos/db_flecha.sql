@@ -103,7 +103,6 @@ CREATE TABLE Operacion(
 	no_operacion				INT PRIMARY KEY NOT NULL,
 	no_servicio					INT FOREIGN KEY (no_servicio) REFERENCES Ruta (no_servicio) NOT NULL,
 	id_usuario					INT FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario) NOT NULL,
-	cant_boletos				INT NOT NULL,
 	costo_total					MONEY NOT NULL
 )
 --Adulto, niño, adulto mayor, estudiante, profesor
