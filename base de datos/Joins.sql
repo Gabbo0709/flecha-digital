@@ -22,6 +22,7 @@ CREATE PROCEDURE GetViajes
 	AS
 	BEGIN
 SELECT 
+    R.no_servicio,
     L.nombre_linea,
     R.origen_ruta,
     V.origen_viaje,
@@ -48,7 +49,17 @@ JOIN
     Servicio S ON CS.cve_servicio = S.cve_servicio
 JOIN 
     Tipo_Viaje TV ON V.cve_tipo = TV.cve_tipo
-WHERE (R.origen_ruta = @origen_ruta AND R.destino_ruta = @destino_ruta) OR (V.origen_viaje = @origen_viaje AND V.destino_viaje = @destino_viaje)
+WHERE (V.origen_viaje = @origen_viaje AND V.destino_viaje = @destino_viaje)
+GROUP BY 
+    R.no_servicio,
+    L.nombre_linea,
+    R.origen_ruta,
+    V.origen_viaje,
+    R.destino_ruta,
+    V.destino_viaje,
+    C.descripcion_clase,
+    V.fecha_salida,
+    V.fecha_llegada,
+    TV.descripcion_viaje;
 	END;
 GO
-
