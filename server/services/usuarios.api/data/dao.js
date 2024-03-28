@@ -3,7 +3,7 @@ const dbConfig = require('../config/db');
 
 const conexion = async () => {
     try {
-        let pool = await sql.connect(dbConfig);
+        let pool = sql.connect(dbConfig);
         return pool;
     } catch (error) {
         console.log(error);

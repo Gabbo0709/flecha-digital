@@ -130,7 +130,7 @@ CREATE TABLE Costo_Tipo( -- Disponibilidad de boletos de un tipo en un viaje.
 	cve_tipo					INT FOREIGN KEY (cve_tipo) REFERENCES Tipo_Boleto(cve_tipo) NOT NULL,
 	disponibles					INT NOT NULL
 )
---Pagado, pendiente, cancelado, reembolsado, usado
+--1. Pagado, 2. pendiente, 3. cancelado, 4. reembolsado, 5. usado 
 CREATE TABLE Estado_Boleto( -- Estados de los boletos comprados
 	cve_estado					INT PRIMARY KEY IDENTITY NOT NULL,
 	descripcion_edo_boleto		NVARCHAR(128) NOT NULL

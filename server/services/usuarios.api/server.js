@@ -1,6 +1,6 @@
 const express = require('express');
-const env = require('./config/environment.js');
-const models = require('./models/models.js');
+const env = require('./config/environment');
+const models = require('./models/models');
 
 const app = express();
 
@@ -86,15 +86,18 @@ app.post('/actualizarPass', async (req, res) => {
 });
 
 // Rutas de actividades relacionadas con el usuario
-
+// Formato de peticion GET url/obtenerActividades?email=correo
 app.get('/obtenerActividades', async (req, res) => {
-    const usuario = new models.usuario(null, null, null, req.body.email, null);
-    const result = await models.actividadesRepositorio.obtenerActividadesUsuario(usuario);
+    const { email } = req.query; // Obtener el correo del usuario del query de la URL
+    const usuario_recibido = { email: email }; // Crear un objeto con el correo del usuario
+    const usuario = new models.usuario(usuario_recibido); // Crear un objeto de la clase usuario con el correo del usuario
+    const result = await models.actividadesRepositorio.obtenerActividadesUsuario(usuario); 
     res.send(JSON.stringify(result));
 });
 
 app.get('/obtenerBoletosActividad', async (req, res) => {
-    const actividad = new models.actividad(req.body.no_operacion);
+    const { no_operacion } = req.query;
+    const actividad = { no_operacion: no_operacion };
     const result = await models.boletosRepositorio.obtenerBoletosActividad(actividad);
     res.send(JSON.stringify(result)); // Convertir arreglo de boletos a JSON
 });

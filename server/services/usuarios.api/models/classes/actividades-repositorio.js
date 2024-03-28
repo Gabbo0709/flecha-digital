@@ -5,11 +5,11 @@ const dao = require('../../data/dao');
 class ActividadesRepositorio {
     /**
      * @param {Usuario} usuario
-     *  @returns {Promise<Actividad[]>}
+     * @returns {Promise<Actividad[]>}
      */
 
     static async obtenerActividadesUsuario(usuario) {
-        let user = await UsuarioRepositorio.buscarUsuarioCorreoStatic(usuario.email);
+        let user = await UsuarioRepositorio.buscarUsuarioCorreo(usuario.email);
         if(user == null || user.length == 0 || !(user instanceof Usuario)){
             return null;
         }
