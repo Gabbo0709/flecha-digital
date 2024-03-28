@@ -1,6 +1,6 @@
 const express = require('express');
-const env = require('../config/enviroment.js');
-const models = require('./models/models.js');
+const env = require('../config/enviroment');
+const models = require('./models/models');
 
 app = express();
 

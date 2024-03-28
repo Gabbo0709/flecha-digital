@@ -1,4 +1,4 @@
-const dbConfig = require('/c:/Users/egusg/OneDrive/Documentos/GitHub/flecha-digital/server/services/boletos.api/config/db.js');
+const dbConfig = require('/c:/Users/egusg/OneDrive/Documentos/GitHub/flecha-digital/server/services/boletos.api/config/db');
 
 describe('Database Configuration', () => {
   it('should have the correct SQL configuration', () => {
