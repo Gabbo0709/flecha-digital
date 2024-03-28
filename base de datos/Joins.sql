@@ -49,9 +49,7 @@ WHERE (V.origen_viaje = @origen_viaje AND V.destino_viaje = @destino_viaje)
 GROUP BY 
     R.no_servicio,
     L.nombre_linea,
-    R.origen_ruta,
     V.origen_viaje,
-    R.destino_ruta,
     V.destino_viaje,
     C.descripcion_clase,
     V.fecha_salida,
@@ -108,21 +106,21 @@ GO
 CREATE PROCEDURE InsertarOperacionYBoletos
     @no_operacion INT,
     @id_usuario INT,
-    @cve_tipo_operacion INT,
+    @cve_metodo INT,
     @cant_boletos INT,
     @costo_total MONEY
 AS
 BEGIN
     -- Insertar la operación
-    INSERT INTO Operacion(no_operacion, id_usuario, cve_tipo, cant_boletos, costo_total)
-    VALUES (@no_operacion, @id_usuario, @cve_tipo_operacion, @cant_boletos, @costo_total)
+    INSERT INTO Operacion(no_operacion, id_usuario, cve_metodo, cant_boletos, costo_total)
+    VALUES (@no_operacion, @id_usuario, @cve_metodo, @cant_boletos, @costo_total)
 
     -- Insertar los boletos
-    INSERT INTO Boleto(no_boleto, cve_tipo, no_operacion, cve_asiento, cve_estado, nombre_pas, token_fac, no_asiento_boleto, puerta, carril, anden, metodo_pago, tel_cliente, costo_boleto)
-    SELECT no_boleto, cve_tipo_boleto, @no_operacion, cve_asiento, cve_estado, nombre_pas, token_fac, no_asiento_boleto, puerta, carril, anden, metodo_pago, tel_cliente, costo_boleto
+    INSERT INTO Boleto(no_boleto, cve_tipo, no_operacion, cve_asiento, cve_estado, nombre_pas, token_fac, no_asiento_boleto, puerta, carril, anden, tel_cliente, costo_boleto)
+    SELECT no_boleto, cve_tipo_boleto, @no_operacion, cve_asiento, cve_estado, nombre_pas, token_fac, no_asiento_boleto, puerta, carril, anden, tel_cliente, costo_boleto
     FROM #BoletosTemporales
 END
-
+--Se crea tabla temporal para los boletos
 CREATE TABLE #BoletosTemporales(
     no_boleto INT,
     cve_tipo_boleto INT,
@@ -134,7 +132,6 @@ CREATE TABLE #BoletosTemporales(
     puerta NVARCHAR(128),
     carril INT,
     anden INT,
-    metodo_pago NVARCHAR(128),
     tel_cliente NUMERIC(12),
     costo_boleto MONEY
 )

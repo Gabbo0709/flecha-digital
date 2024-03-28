@@ -18,18 +18,17 @@ class reservasRepositorio{
             puerta NVARCHAR(128),
             carril INT,
             anden INT,
-            metodo_pago NVARCHAR(128),
             tel_cliente NUMERIC(12),
             costo_boleto MONEY
         )
         INSERT INTO #BoletosTemporales VALUES${this.definirBoletos(boleto)}`;
-        query += ` EXEC InsertarOperacionYBoleto ${operacion.no_operacion}, ${operacion.id_usuario}, ${operacion.cve_tipo}, ${operacion.cant_boletos}, ${operacion.costo_total}`;
+        query += ` EXEC InsertarOperacionYBoleto ${operacion.no_operacion}, ${operacion.id_usuario}, ${operacion.cve_metodo}, ${operacion.cant_boletos}, ${operacion.costo_total}`;
         return dao.ejecutarQuery(query);
     }
     definirBoletos(boleto){
         let result = "";
         for(let b of boleto){
-            result += ` (${b.no_boleto}, ${b.no_operacion}, ${b.cve_asiento}, ${b.cve_estado}, '${b.nombre_pas}', '${b.token_fac}', ${b.no_asiento_boleto}, ${b.puerta}, ${b.carril}, ${b.anden}, '${b.metodo_pago}', '${b.tel_cliente}', ${b.costo}),`;
+            result += ` (${b.no_boleto}, ${b.no_operacion}, ${b.cve_asiento}, ${b.cve_estado}, '${b.nombre_pas}', '${b.token_fac}', ${b.no_asiento_boleto}, ${b.puerta}, ${b.carril}, ${b.anden}, '${b.tel_cliente}', ${b.costo}),`;
         }
         return result.substring(0, result.length - 1);
     }
