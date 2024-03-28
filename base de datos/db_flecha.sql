@@ -99,14 +99,14 @@ CREATE TABLE Usuario( -- Usuarios que pueden comprar boletos
 	tel_user					NUMERIC(10)
 )
 
-CREATE TABLE Tipo_Operacion(
-	cve_tipo					INT PRIMARY KEY IDENTITY (1,1),
+CREATE TABLE MetodoPago_Operacion( -- Métodos de pago que se pueden utilizar para comprar boletos
+	cve_metodo					INT PRIMARY KEY IDENTITY (1,1),
 	descripcion_tipo_operacion	NVARCHAR(128) NOT NULL
 )
 CREATE TABLE Operacion( -- Operación de compra de boletos
 	no_operacion				INT PRIMARY KEY NOT NULL,
 	id_usuario					INT FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario) NOT NULL,
-	cve_tipo					INT FOREIGN KEY (cve_tipo) REFERENCES Tipo_Operacion(cve_tipo) NOT NULL,
+	cve_metodo					INT FOREIGN KEY (cve_metodo) REFERENCES MetodoPago_Operacion(cve_metodo) NOT NULL,
 	cant_boletos				INT NOT NULL,
 	costo_total					MONEY NOT NULL
 )
@@ -144,7 +144,6 @@ CREATE TABLE Boleto( -- Boletos comprados por los usuarios
 	puerta						NVARCHAR(128),
 	carril						INT,
 	anden						INT,
-	metodo_pago					NVARCHAR(128) NOT NULL,	
 	tel_cliente					NUMERIC(12) NOT NULL,
 	costo_boleto				MONEY NOT NULL
 )
