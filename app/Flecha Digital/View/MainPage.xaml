@@ -10,9 +10,5 @@
         <CollectionView>
 
         </CollectionView>
-        <CollectionView Background="{StaticResource FondoSecundario}"
-                        Grid.ColumnSpan="4"
-                        Grid.Row="1">
-        </CollectionView>
     </Grid>     
 </ContentPage>
