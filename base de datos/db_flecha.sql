@@ -45,17 +45,15 @@ CREATE TABLE Camion( -- Camiones de la linea
 	no_camion					INT NOT NULL,
 	cant_asientos				INT NOT NULL
 )
-
-CREATE TABLE Estado_Asiento( -- Estados de los asientos de los camiones
+--Estado: Disponible, ocupado, exlusivo para mujer
+CREATE TABLE Estado_Asiento( -- Estados de los asientos
 	cve_estado					INT PRIMARY KEY IDENTITY (1,1),
 	descripcion_edo_asiento		NVARCHAR (128) NOT NULL
 )
 
-CREATE TABLE Asiento( -- Asientos de los camiones
+CREATE TABLE Asiento( -- Asiento y su número de asiento 
 	cve_asiento					INT PRIMARY KEY NOT NULL,
-	no_asiento					INT NOT NULL,
-	cve_estado					INT FOREIGN KEY (cve_estado) REFERENCES Estado_Asiento(cve_estado) NOT NULL,
-	id_camion					INT FOREIGN KEY (id_camion) REFERENCES Camion(id_camion) NOT NULL
+	no_asiento					INT NOT NULL
 )
 
 --Paso: La ruta de este autobús comenzó en otra terminal y/o central, es decir, el autobús realiza una parada en este origen.
@@ -82,6 +80,12 @@ CREATE TABLE Viaje( -- Viajes que se realizan en una ruta (Pueden ser de A a B o
 	fecha_salida				DATETIME NOT NULL,
 	duracion					TIME NOT NULL,
 	fecha_llegada				DATETIME NOT NULL
+)
+
+CREATE TABLE Asiento_Edo_Viaje(--El estado de los asientos dependen del VIAJE
+	cve_asiento					INT FOREIGN KEY (cve_asiento) REFERENCES Asiento(cve_asiento) NOT NULL,
+	cve_viaje					INT FOREIGN KEY (cve_viaje) REFERENCES Viaje(cve_viaje) NOT NULL,
+	cve_estado					INT FOREIGN KEY (cve_estado) REFERENCES Estado_Asiento(cve_estado) NOT NULL
 )
 --Activo, falta confirmacion, suspendido, inactivo
 CREATE TABLE Estado_Usuario( -- Estados de las cuentas de usuario
