@@ -15,12 +15,12 @@ services:
     ports:
       - "3001:3000"
   
-  incidencias:
-    build:
-      context: ./services/incidencias.api
-      dockerfile: Dockerfile
-    ports:
-      - "3002:3000"
+  # incidencias:
+  #   build:
+  #     context: ./services/incidencias.api
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "3002:3000"
     
   pagos:
     build:
