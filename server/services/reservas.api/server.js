@@ -1,6 +1,6 @@
 const express = require('express');
-const env = require('../config/enviroment.js');
-const models = require('../models/models.js');
+const env = require('./config/enviroment.js');
+const models = require('./models/models.js');
 
 app = express();
 
@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.post("/crearOperacionYBoleto", async (req, res) => {
     const { no_operacion, id_usuario, cve_metodo, cant_boletos, costo_total} = req.body.operacion;
-    const operacion = new models.operacion(
+    const operacion = new models.reservasRepositorio.operacion(
         no_operacion,
         id_usuario,
         cve_metodo,
@@ -17,7 +17,7 @@ app.post("/crearOperacionYBoleto", async (req, res) => {
         costo_total
     );
     const boleto = req.body.boleto.map(b => new models.boleto(b));
-    let result = await models.reservasRepositorio.crearOperacion(operacion, boleto);
+    let result = await models.reservasRepositorio.crearOperacionYBoleto(operacion, boleto);
     res.send(result);
 });
 

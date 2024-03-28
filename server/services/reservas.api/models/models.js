@@ -1,5 +1,5 @@
-const boleto = require('./classes/boleto');
-const operacion = require('./classes/operacion');
-const reservasRepositorio = require('./classes/reservas-repositorio');
+const boleto = require('./classes/boleto.js');
+const operacion = require('./classes/operacion.js');
+const reservasRepositorio = require('./classes/reservas-repositorio.js');
 
 module.exports = { boleto, operacion, reservasRepositorio };

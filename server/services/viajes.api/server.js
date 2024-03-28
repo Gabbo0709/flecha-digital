@@ -13,21 +13,21 @@ app.get("/buscarViajes", async(  req, res ) => {
         origen_viaje,
         destino_viaje
     );
-    result = await models.viajesRepositorio.buscarViaje(viaje);
-    res.send(result);
+    result = await models.viajesRepositorios.buscarViaje(viaje);
+    res.send(JSON.stringify(result));
 });
 
 app.get("/obtenerAsientos", async(  req, res ) => {
     const {id_camion} = req.query;
     let asiento = new models.asiento(id_camion);
-    let result = await models.viajesRepositorio.obtenerAsiento(asiento);
-    res.send(result);
+    let result = await models.viajesRepositorios.obtenerAsiento(asiento);
+    res.send(JSON.stringify(result));
 });
 
 app.post("/actualizarViaje", async(  req, res ) => {
     const {no_servicio, tiempo} = req.body;
     const viaje = new models.viaje(no_servicio);
-    let result = await models.viajesRepositorio.actualizarViaje(viaje, tiempo);
+    let result = await models.viajesRepositorios.actualizarViaje(viaje, tiempo);
     res.send(result);
 });
 

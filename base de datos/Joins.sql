@@ -55,7 +55,7 @@ GROUP BY
     V.fecha_salida,
     V.fecha_llegada,
     TV.descripcion_viaje;
-	END;
+	END
 GO
 
 EXEC GetViajes 1, 1;
@@ -73,7 +73,7 @@ BEGIN
         JOIN Ruta R ON V.no_servicio = R.no_servicio
     WHERE V.origen_viaje = @origen AND V.destino_viaje = @destino
     GROUP BY A.cve_asiento, A.no_asiento, AEV.cve_estado;
-END;
+END
 GO
 
 EXEC GetAsientos 1, 3;
@@ -137,3 +137,26 @@ CREATE TABLE #BoletosTemporales(
 )
 --Los boletos se insertan en el mismo orden en que se compraron
 INSERT INTO #BoletosTemporales VALUES (1, 1, 1, 1, 'Juan Perez', '123456', 1, 'A', 1, 1, 'Efectivo', 1234567890, 100.00) EXEC InsertarOperacionYBoletos 1, 1, 1, 2, 300.00
+GO
+
+CREATE PROCEDURE CancelarBoletosPorServicio
+    @NoServicio INT
+AS
+BEGIN
+    UPDATE Boleto 
+    SET cve_estado = 2
+    WHERE no_boleto IN (
+        SELECT no_boleto
+        FROM Boleto b
+        JOIN Operacion o 
+        ON b.no_operacion = o.no_operacion
+        JOIN Operacion_Viaje ov 
+        ON o.no_operacion = ov.no_operacion
+        JOIN Viaje v 
+        ON ov.cve_viaje = v.cve_viaje
+        WHERE v.no_servicio = @NoServicio AND b.cve_estado = 1
+    )
+END
+
+EXEC CancelarBoletosPorServicio 1;
+

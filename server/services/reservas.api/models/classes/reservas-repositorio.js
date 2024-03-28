@@ -3,7 +3,13 @@ const Operacion = require('./operacion');
 const dao = require('../../data/dao');
 
 class reservasRepositorio{
-    async crearOperacionYBoleto(operacion, boleto){
+    /**
+     * 
+     * @param {Operacion} operacion 
+     * @param {Boleto[]} boleto 
+     * @returns {Promise<boolean>}
+     */
+    static async crearOperacionYBoleto(operacion, boleto){
         if(!(operacion instanceof Operacion || boleto instanceof Boleto)){
             return false;
         }
@@ -25,7 +31,12 @@ class reservasRepositorio{
         query += ` EXEC InsertarOperacionYBoleto ${operacion.no_operacion}, ${operacion.id_usuario}, ${operacion.cve_metodo}, ${operacion.cant_boletos}, ${operacion.costo_total}`;
         return dao.ejecutarQuery(query);
     }
-    definirBoletos(boleto){
+    /**
+     * @param {Boleto[]} boleto
+     * @returns {string}     
+     */
+
+    static definirBoletos(boleto){
         let result = "";
         for(let b of boleto){
             result += ` (${b.no_boleto}, ${b.no_operacion}, ${b.cve_asiento}, ${b.cve_estado}, '${b.nombre_pas}', '${b.token_fac}', ${b.no_asiento_boleto}, ${b.puerta}, ${b.carril}, ${b.anden}, '${b.tel_cliente}', ${b.costo}),`;

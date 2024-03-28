@@ -1,4 +1,4 @@
-const boleto = require('./classes/boleto');
-const boletosRepositorios = require('./classes/boletos-repositorio');
+const boleto = require('./classes/boleto.js');
+const boletosRepositorios = require('./classes/boletos-repositorio.js');
 
 module.exports = { boleto, boletosRepositorios };

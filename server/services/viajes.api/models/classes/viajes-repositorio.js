@@ -1,34 +1,41 @@
 const Viaje = require('./viaje');
-const Ruta = require('./ruta');
-const Asiento = require('./asientos');
+const Asiento = require('./asiento');
+const ConcentradoViaje = require('./concentradoViaje');
 const dao = require('../../data/dao');
 
 class ViajeRepositorio{
-    async getViajes(viaje){
-        if (!(viaje instanceof Viaje)){
-            return null;
-        }
-        let query = `SELECT * FROM Viaje WHERE no_servicio = ${no_servicio}`;
-        let result = await dao.consultar(query);
-        return result != null && result.length > 0 ? new Viaje(result[0]) : null;
-    }
-    async buscarViaje(ruta, viaje){
-        if(!(ruta instanceof Ruta) || !(viaje instanceof Viaje)){
+
+    /**
+     * @param {Viaje} viaje
+     * @returns {Promise<ConcentradoViaje[]>}
+     */
+    static async buscarViaje(viaje){
+        if(!(viaje instanceof Viaje)){
             return null;
         }
         let query = `EXEC GetViajes ${viaje.origen_viaje}, ${viaje.destino_viaje}`;
         let result = await dao.consultar(query);
         return result != null && result.length > 0 ? new Viaje(result[0]) : null;
     };
-    async obtenerAsiento(asiento){
-        if (!(asiento instanceof Asiento)){
+    /**
+     * @param {Viaje} viaje 
+     * @returns {Promise<Asiento[]>} 
+     */
+    static async obtenerAsiento(viaje){
+        if (!(viaje instanceof Viaje)){
             return null;
         }
-        let query = `EXEC GetAsientos ${id_camion};`;
-        resutl = await dao.consultar(query);
+        let query = `EXEC GetAsientos ${viaje.origen_viaje, viaje.destino_viaje};`;
+        result = await dao.consultar(query);
         return result != null && result.length > 0 ? new Asiento() : null;
     }
-    async actualizarViaje(viaje, tiempo){
+    /**
+     * 
+     * @param {Viaje} viaje 
+     * @param {string} tiempo 
+     * @returns {Promise<boolean>}
+     */
+    static async actualizarViaje(viaje, tiempo){
         if(!(viaje instanceof Viaje)){
             return false;
         }
