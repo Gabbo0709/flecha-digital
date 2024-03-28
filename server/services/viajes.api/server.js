@@ -9,25 +9,28 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get("/buscarViajes", async(  req, res ) => {
     const {origen_viaje, destino_viaje} = req.query;
-    let viaje = new models.viaje(
+    const viaje_recibido = {
         origen_viaje,
         destino_viaje
-    );
+    };
+    const viaje = new models.viaje(viaje_recibido);
     result = await models.viajesRepositorios.buscarViaje(viaje);
     res.send(JSON.stringify(result));
 });
 
 app.get("/obtenerAsientos", async(  req, res ) => {
     const {id_camion} = req.query;
-    let asiento = new models.asiento(id_camion);
-    let result = await models.viajesRepositorios.obtenerAsiento(asiento);
+    const asiento_recibido = {id_camion};
+    const asiento = new models.asiento(asiento_recibido);
+    const result = await models.viajesRepositorios.obtenerAsiento(asiento);
     res.send(JSON.stringify(result));
 });
 
 app.post("/actualizarViaje", async(  req, res ) => {
     const {no_servicio, tiempo} = req.body;
-    const viaje = new models.viaje(no_servicio);
-    let result = await models.viajesRepositorios.actualizarViaje(viaje, tiempo);
+    const viaje_recibido = {no_servicio};
+    const viaje = new models.viaje(viaje_recibido);
+    const result = await models.viajesRepositorios.actualizarViaje(viaje, tiempo);
     res.send(result);
 });
 

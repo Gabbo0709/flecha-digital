@@ -14,7 +14,7 @@ app.post("/actualizarEstadoBoleto", async (req, res) => {
 })
 
 app.post("/cancelarBoletosServicio" , async (req, res) => {
-    const { no_servicio } = req.query;
+    const { no_servicio } = req.body;
     let result = await models.boletosRepositorios.cancelarBoletosServicio(no_servicio);
     res.send(JSON.stringify(result));
 })
