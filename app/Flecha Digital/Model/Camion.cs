@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace Flecha_Digital.Model
 {
-    internal class Camion
+    public class Camion
     {
+        public int id_camion { get; set; }
+        public int cant_asientos { get; set; }
         
     }
 }

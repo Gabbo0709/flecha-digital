@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Flecha_Digital.Model
 {
-    class Linea
+    public class Linea
     {
         public int cve_linea { get; set; }
         public string nombre { get; set; }

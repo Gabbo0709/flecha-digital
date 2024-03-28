@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Flecha_Digital.Model
 {
-    internal class Operacion
+    public class Operacion
     {
         public int no_operacion { get; set; }
         public int no_servicio { get; set; }

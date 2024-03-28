@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Flecha_Digital.Model
 {
-    internal class Central
+    public class Central
     {
         public int cve_central { get; set; }
         public string nombre_central { get; set; }

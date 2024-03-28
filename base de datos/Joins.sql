@@ -86,7 +86,7 @@ GO
 
 EXEC GetAsientos 1;
 GO
-
+--Corregir, agregar nombre central origen y nombre central destino
 CREATE PROCEDURE GetActividad
 		@id_usuario INT
 AS
@@ -94,6 +94,7 @@ BEGIN
     SELECT 
         OV.no_operacion,
         V.no_servicio,
+        O.cantidad_boletos,
         (SELECT TOP 1 origen_viaje FROM Viaje WHERE no_servicio = V.no_servicio ORDER BY fecha_salida ASC) AS origen_viaje,
         V.fecha_salida,
         (SELECT TOP 1 destino_viaje FROM Viaje WHERE no_servicio = V.no_servicio ORDER BY fecha_salida DESC) AS destino_viaje
