@@ -13,7 +13,6 @@ class BoletosRepositorio {
         let query = `UPDATE Boleto SET cve_estado = ${estado} WHERE no_boleto = ${boleto.no_boleto}`;
         return await dao.ejecutarQuery(query);
     }
-
     /**
     *@param {int} no_servicio 
     *@returns {Promise<boolean>}
