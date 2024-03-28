@@ -5,21 +5,18 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:view="clr-namespace:Flecha_Digital.View"
     Shell.FlyoutBehavior="Disabled">
-    
-    <Shell.Resources>
-        <ResourceDictionary>
-            <Style x:Key="BaseStyle" TargetType="Element">
-                <Setter Property="Shell.BackgroundColor" Value="#DBF6EC"/>
-                <Setter Property="Shell.ForegroundColor" Value="#AA1A26"/>
-                <Setter Property="Shell.TitleColor" Value="White"/>
-            </Style>
-            <Style BasedOn="{StaticResource BaseStyle}" TargetType="Shell"/>
-        </ResourceDictionary>
-    </Shell.Resources>
-    <ShellContent
-        Shell.NavBarIsVisible="True"
-        Title="Menu principal"
-        ContentTemplate="{DataTemplate view:MainPage}"
-        Route="MainPage" />
-
+    <TabBar>
+        <ShellContent Title="Inicio"
+                  Icon="dotnet_bot.svg"
+                  ContentTemplate="{DataTemplate view:MainPage}"/>
+        <ShellContent Title="Actividad"
+                  Icon="dotnet_bot.svg"
+                  ContentTemplate="{DataTemplate view:Actividad}"/>
+        <ShellContent Title="Contactanos"
+                  Icon="dotnet_bot.svg"
+                  ContentTemplate="{DataTemplate view:Contactanos}"/>
+        <ShellContent Title="Perfil"
+                  Icon="dotnet_bot.svg"
+                  ContentTemplate="{DataTemplate view:Perfil}"/>
+    </TabBar>
 </Shell>

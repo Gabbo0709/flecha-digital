@@ -10,6 +10,6 @@ namespace Flecha_Digital.Model
     {
         public int cve_asiento { get; set; }
         public int no_asiento { get; set; }
-        public string estado_asiento { get; set; }
+        public string cve_estado { get; set; }
     }
 }

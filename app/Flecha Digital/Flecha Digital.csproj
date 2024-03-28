@@ -83,6 +83,9 @@
 	  <MauiXaml Update="View\NuevaPass.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="View\Perfil.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="View\RecuperarPass.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
