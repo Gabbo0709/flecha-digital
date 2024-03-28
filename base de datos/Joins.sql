@@ -14,11 +14,8 @@ GO
 
 
 CREATE PROCEDURE GetViajes
-		@origen_ruta INT,
 		@origen_viaje INT,
-		@destino_ruta INT,
-		@destino_viaje INT,
-		@cve_ruta INT
+		@destino_viaje INT
 	AS
 	BEGIN
 SELECT 
@@ -67,24 +64,21 @@ EXEC GetViajes 1, 1;
 GO
 
 CREATE PROCEDURE GetAsientos
-		@id_camion INT
-		AS
-		BEGIN 
-	SELECT 
-		A.cve_asiento,
-		A.no_asiento,
-		A.estado_asiento
-	FROM 
-		Asiento A
-		JOIN
-		Estado_Asiento E
-		ON 
-		A.cve_estado = E.cve_estado
-		WHERE A.id_camion = @id_camion;
-	END;
+    @origen INT,
+    @destino INT
+AS
+BEGIN
+    SELECT A.cve_asiento, A.no_asiento, AEV.cve_estado
+    FROM Asiento_Edo_Viaje AEV
+        JOIN Asiento A ON AEV.cve_asiento = A.cve_asiento
+        JOIN Viaje V ON AEV.cve_viaje = V.cve_viaje
+        JOIN Ruta R ON V.no_servicio = R.no_servicio
+    WHERE V.origen_viaje = @origen AND V.destino_viaje = @destino
+    GROUP BY A.cve_asiento, A.no_asiento, AEV.cve_estado;
+END;
 GO
 
-EXEC GetAsientos 1;
+EXEC GetAsientos 1, 3;
 GO
 --Corregir, agregar nombre central origen y nombre central destino
 CREATE PROCEDURE GetActividad
