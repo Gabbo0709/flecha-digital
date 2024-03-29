@@ -7,7 +7,7 @@ namespace Flecha_Digital
 	{
 		public App()
 		{
-			InitializeComponent();
+			InitializeComponent();     
 
 			MainPage = new AppShell();
 		}
