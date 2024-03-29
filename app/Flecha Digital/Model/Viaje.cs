@@ -17,7 +17,7 @@ namespace Flecha_Digital.Model
         public DateTime fecha_salida { get; set; }
         public DateTime fecha_llegada { get; set; }
         public string descripcion_servicios { get; set; }
-        public string descrpcion_viaje { get; set; }
+        public string descripcion_viaje { get; set; }
         public double costo_total { get; set; }
     }
 }

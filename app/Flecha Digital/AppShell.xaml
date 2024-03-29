@@ -8,15 +8,19 @@
     <TabBar>
         <ShellContent Title="Inicio"
                   Icon="dotnet_bot.svg"
-                  ContentTemplate="{DataTemplate view:MainPage}"/>
+                  ContentTemplate="{DataTemplate view:MainPage}"
+                  Route="MainPage"/>
         <ShellContent Title="Actividad"
                   Icon="dotnet_bot.svg"
-                  ContentTemplate="{DataTemplate view:Actividad}"/>
+                  ContentTemplate="{DataTemplate view:Actividad}"
+                  Route="Actividad"/>
         <ShellContent Title="Contactanos"
                   Icon="dotnet_bot.svg"
-                  ContentTemplate="{DataTemplate view:Contactanos}"/>
+                  ContentTemplate="{DataTemplate view:Contactanos}"
+                  Route="Contactanos"/>
         <ShellContent Title="Perfil"
                   Icon="dotnet_bot.svg"
-                  ContentTemplate="{DataTemplate view:Perfil}"/>
+                  ContentTemplate="{DataTemplate view:Perfil}"
+                  Route="Perfil"/>
     </TabBar>
 </Shell>

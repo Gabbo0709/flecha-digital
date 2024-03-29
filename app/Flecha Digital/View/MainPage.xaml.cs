@@ -7,6 +7,6 @@ public partial class MainPage : ContentPage
 	public MainPage(InicioViewModel viewModel)
 	{
         InitializeComponent();
-        BindingContext = viewModel.Centrales;//Muestra automaticamente las centrales al entrar en la aplicación o página
+        BindingContext = viewModel.Centrales;
     }
 }

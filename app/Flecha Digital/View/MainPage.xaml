@@ -10,7 +10,6 @@
     <Grid ColumnDefinitions="*"
           ColumnSpacing="30"
           Padding="20">
-        <Frame HeightRequest="125">
         <VerticalStackLayout Padding="10" Spacing="10" HorizontalOptions="Center" VerticalOptions="Center">
             <Label Text="Origen"
                    FontAttributes="Bold"
@@ -24,7 +23,7 @@
                                 PlaceholderColor="Gray"
                                 DisplayMemberPath="Name"
                                 TextMemberPath="Name"
-                                SelectedItem="{Binding viaje.origen}"/>
+                                SelectedItem="{Binding Viaje.origen}"/>
             <Label Text="Destino"
                    FontAttributes="Bold"
                    FontSize="Medium"
@@ -32,7 +31,7 @@
             <editors:SfComboBox x:Name="central_destino"
                                 ItemsSource="{Binding Centrales}"
                                 BackgroundColor="{StaticResource BotonAzul}"
-                                SelectedItem="{Binding viaje.destino}"
+                                SelectedItem="{Binding Viaje.destino}"
                                 IsEditable="True"
                                 Placeholder="Origen"
                                 PlaceholderColor="Gray"
@@ -40,35 +39,35 @@
                                 TextMemberPath="Name"/>
             <Grid ColumnDefinitions="*,*"
                   RowDefinitions="*,*">
-                    <Label Text="Fecha ida"
+                <Label Text="Fecha ida"
                        TextColor="Black"
                        Grid.Column="0"
                        Grid.Row="0"/>
-                    <DatePicker x:Name="FechaIda"
-                            Date="{Binding hoy}"
+                <DatePicker x:Name="FechaIda"
+                            Date="{Binding Hoy}"
                             MinimumDate="{Binding Hoy}"
                            
                             HorizontalOptions="Center"
                             TextColor="Black"
                             Grid.Column="0"
                             Grid.Row="1"/>
-                
+
                 <Label Text="Fecha Regreso(Opcional)"
                        Grid.Column="1"
                        Grid.Row="0"
                        TextColor="Black"/>
-                    <DatePicker MinimumDate="{Binding Hoy}"
+                <DatePicker MinimumDate="{Binding Hoy}"
                             TextColor="Black"
                             x:Name="FechaRegreso"
                             HorizontalOptions="Center"
                             Grid.Column="1"
                             Grid.Row="1"/>
 
-                </Grid>
-                <Button Text="Buscar Viaje"
+            </Grid>
+            <Button Text="Buscar Viaje"
+                    BackgroundColor="{StaticResource BotonAzul}"
                     CommandParameter="{Binding Viaje}"
                     Command="{Binding Source={RelativeSource AncestorType={x:Type model:Viaje}}, Path=GoToAgendarViajeCommand}"/>
-            </VerticalStackLayout>
-        </Frame>
+        </VerticalStackLayout>
     </Grid>
 </ContentPage>

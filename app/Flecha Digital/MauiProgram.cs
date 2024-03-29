@@ -18,7 +18,7 @@ namespace Flecha_Digital
 					fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 					fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");					
 				});
-			builder.Services.AddSingleton<MainPage>();
+			builder.Services.AddTransient<MainPage>();
 			
 			builder.Services.AddSingleton<InicioViewModel>();
 			builder.Services.AddSingleton<ServicioUsuarios>();
@@ -27,7 +27,7 @@ namespace Flecha_Digital
 			builder.Services.AddTransient<ViajeViewModel>();
 			builder.Services.AddTransient<AgendarViaje>();
 
-			builder.Services.AddTransient<AutobusViewModel>();
+			builder.Services.AddTransient<AsientoViewModel>();
 			builder.Services.AddTransient<Autobus>();
 
 #if DEBUG

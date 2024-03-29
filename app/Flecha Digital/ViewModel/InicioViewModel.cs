@@ -8,6 +8,7 @@ public partial class InicioViewModel : BaseViewModel
 
     [ObservableProperty]
     public string hoy = DateTime.Today.ToString("MM/dd/yyyy");
+
     ServicioUsuarios servicioUsuarios;
     public ObservableCollection<Central> Centrales { get; } = new();
     public InicioViewModel(ServicioUsuarios servicioUsuarios)
@@ -53,7 +54,5 @@ public partial class InicioViewModel : BaseViewModel
         {
             IsBusy = false;
         }
-        
-
     }
 }
