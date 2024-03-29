@@ -1,6 +1,6 @@
 const express = require('express');
-const env = require('./config/enviroment.js');
-const models = require('./models/models.js');
+const env = require('./config/enviroment');
+const models = require('./models/models');
 
 app = express();
 
@@ -11,18 +11,19 @@ app.get("/buscarViajes", async(  req, res ) => {
     const {origen_viaje, destino_viaje} = req.query;
     const viaje_recibido = {
         origen_viaje,
-        destino_viaje
+        destino_viaje,
+        fecha_salida
     };
     const viaje = new models.viaje(viaje_recibido);
-    result = await models.viajesRepositorios.buscarViaje(viaje);
+    const result = await models.viajesRepositorios.buscarViaje(viaje);
     res.send(JSON.stringify(result));
 });
 
-app.get("/obtenerAsientos", async(  req, res ) => {
-    const {id_camion} = req.query;
-    const asiento_recibido = {id_camion};
-    const asiento = new models.asiento(asiento_recibido);
-    const result = await models.viajesRepositorios.obtenerAsiento(asiento);
+app.get("/obtenerAsiento", async(  req, res ) => {
+    const {origen_viaje, destino_viaje, no_servicio} = req.query;
+    const viaje_recibido = {origen_viaje, destino_viaje, no_servicio};
+    const viaje = new models.asiento(viaje_recibido);
+    const result = await models.viajesRepositorios.obtenerAsiento(viaje);
     res.send(JSON.stringify(result));
 });
 

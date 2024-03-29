@@ -9,14 +9,16 @@ app.use(express.urlencoded({ extended: true }));
 
 app.post("/crearOperacionYBoleto", async (req, res) => {
     const { no_operacion, id_usuario, cve_metodo, cant_boletos, costo_total} = req.body.operacion;
-    const operacion = new models.reservasRepositorio.operacion(
+    const operacion_recibida = new models.reservasRepositorio.operacion(
         no_operacion,
         id_usuario,
         cve_metodo,
         cant_boletos,
         costo_total
     );
-    const boleto = req.body.boleto.map(b => new models.boleto(b));
+    const operacion = new models.operacion(operacion_recibida);
+    const boleto_recibido = req.body.boleto;
+    const boleto = new models.boleto(boleto_recibido);
     let result = await models.reservasRepositorio.crearOperacionYBoleto(operacion, boleto);
     res.send(result);
 });

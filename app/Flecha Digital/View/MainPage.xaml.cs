@@ -1,15 +1,12 @@
-﻿namespace Flecha_Digital.View
+﻿using Flecha_Digital.ViewModel;
+
+namespace Flecha_Digital.View;
+
+public partial class MainPage : ContentPage
 {
-	public partial class MainPage : ContentPage
+	public MainPage(InicioViewModel viewModel)
 	{
-
-		public MainPage()
-		{
-			InitializeComponent();
-		}
-
-		private void OnCounterClicked(object sender, EventArgs e)
-		{
-		}
-	}
+        InitializeComponent();
+        BindingContext = viewModel.Centrales;//Muestra automaticamente las centrales al entrar en la aplicación o página
+    }
 }

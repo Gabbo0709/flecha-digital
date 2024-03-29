@@ -13,7 +13,7 @@ class ViajeRepositorio{
         if(!(viaje instanceof Viaje)){
             return null;
         }
-        let query = `EXEC GetViajes ${viaje.origen_viaje}, ${viaje.destino_viaje}`;
+        let query = `EXEC GetViajes ${viaje.origen_viaje}, ${viaje.destino_viaje}, ${viaje.fecha_salida};`;
         let result = await dao.consultar(query);
         return result != null && result.length > 0 ? new Viaje(result[0]) : null;
     };
@@ -25,7 +25,7 @@ class ViajeRepositorio{
         if (!(viaje instanceof Viaje)){
             return null;
         }
-        let query = `EXEC GetAsientos ${viaje.origen_viaje, viaje.destino_viaje};`;
+        let query = `EXEC GetAsientos ${viaje.origen_viaje, viaje.destino_viaje, no_servicio};`;
         result = await dao.consultar(query);
         return result != null && result.length > 0 ? new Asiento() : null;
     }

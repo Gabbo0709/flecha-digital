@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace Flecha_Digital.Services
 {
-    class ServicioPagos
+    public class ServicioPagos
     {
+        HttpClient httpClient;
+        string baseUrl = "https://localhost:3001/server/services/pagos.api/server/";
+        public ServicioPagos()
+        {
+            httpClient = new HttpClient();
+        }
     }
 }

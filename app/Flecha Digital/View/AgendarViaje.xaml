@@ -1,12 +1,77 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+             xmlns:model="clr-namespace:Flecha_Digital.Model"
+             xmlns:viewmodel="clr-namespace:Flecha_Digital.ViewModel"
+             x:DataType="viewmodel:ViajeViewModel" 
              x:Class="Flecha_Digital.View.AgendarViaje"
-             Title="AgendarViaje">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             xmlns:editors="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
+             Title="Agendar Viaje">
+    <Grid ColumnDefinitions="*,*,*,*"
+          ColumnSpacing="5"
+          RowDefinitions="*,Auto"
+          RowSpacing="0">
+        <CollectionView Background="{StaticResource FondoSecundario}"
+                        Grid.ColumnSpan="4"
+                        ItemsSource="{Binding Viajes}"
+                        SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Viaje">
+                    <Grid Padding="10">
+                        <Frame HeightRequest="125"
+                           Padding="0">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer CommandParameter="{Binding .}"
+                                                      Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ViajeViewModel}}, Path=GoToAutobusCommand}"/>
+                            </Frame.GestureRecognizers>
+                            <Grid Padding = "5"
+                              ColumnDefinitions="100,*"
+                              RowDefinitions="*,Auto">
+                                <Image Aspect="AspectFill"
+                                     Source="{Binding Imagen}"
+                                     Grid.RowSpan="2"
+                                     HeightRequest="100"
+                                     WidthRequest="100"/>
+                                <HorizontalStackLayout Grid.Column="1"
+                                                  Padding ="5"
+                                                  VerticalOptions="Center">
+                                    <Label Text="{Binding fecha_salida} "
+                                       FontSize="Large"
+                                       FontAttributes="Bold"/>
+                                    <Label Text="{Binding fecha_llegada}"
+                                       FontSize="Large"
+                                       FontAttributes="Bold"/>
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout>
+                                    <Label Text="{Binding descripcion_viaje, StringFormat='Tipo de viaje:{0}'}"
+                                       FontSize="Medium"/>
+                                </HorizontalStackLayout>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <HorizontalStackLayout Grid.ColumnSpan="4" Grid.Row="1">
+            <editors:SfComboBox x:Name="origen_viaje"
+                                IsEnabled="{Binding IsNotBusy}"
+                                ItemsSource="{Binding Viaje.origen}"
+                                SelectedItem="{Binding Viaje.origen}"/>
+            <editors:SfComboBox x:Name="destino_viaje"
+                                IsEnabled="{Binding IsNotBusy}"
+                                ItemsSource="{Binding Viaje.destino}"
+                                SelectedItem="{Binding Viaje.destino}"/>
+            <DatePicker x:Name="fecha_salida"
+                        IsEnabled="{Binding IsNotBusy}"
+                        />
+            <DatePicker x:Name="fecha_regreso"
+                        IsEnabled="{Binding IsNotBusy}"/>
+        </HorizontalStackLayout>
+        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsNotBusy}"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           Grid.RowSpan="2"
+                           Grid.ColumnSpan="4"/>
+    </Grid>
 </ContentPage>

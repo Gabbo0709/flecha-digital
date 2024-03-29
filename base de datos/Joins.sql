@@ -15,7 +15,8 @@ GO
 
 CREATE PROCEDURE GetViajes
 		@origen_viaje INT,
-		@destino_viaje INT
+		@destino_viaje INT,
+        @fecha_salida DATE
 	AS
 	BEGIN
 SELECT 
@@ -46,6 +47,7 @@ JOIN
 JOIN 
     Tipo_Viaje TV ON V.cve_tipo = TV.cve_tipo
 WHERE (V.origen_viaje = @origen_viaje AND V.destino_viaje = @destino_viaje)
+AND CONVERT(DATE , V.fecha_salida) = @fecha_salida
 GROUP BY 
     R.no_servicio,
     L.nombre_linea,
@@ -58,12 +60,13 @@ GROUP BY
 	END
 GO
 
-EXEC GetViajes 1, 1;
+EXEC GetViajes 1, 1, "01/04/2024";
 GO
 
 CREATE PROCEDURE GetAsientos
     @origen INT,
-    @destino INT
+    @destino INT,
+    @no_servicio INT
 AS
 BEGIN
     SELECT A.cve_asiento, A.no_asiento, AEV.cve_estado
@@ -71,7 +74,7 @@ BEGIN
         JOIN Asiento A ON AEV.cve_asiento = A.cve_asiento
         JOIN Viaje V ON AEV.cve_viaje = V.cve_viaje
         JOIN Ruta R ON V.no_servicio = R.no_servicio
-    WHERE V.origen_viaje = @origen AND V.destino_viaje = @destino
+    WHERE V.origen_viaje = @origen AND V.destino_viaje = @destino AND R.no_servicio = @no_servicio
     GROUP BY A.cve_asiento, A.no_asiento, AEV.cve_estado;
 END
 GO

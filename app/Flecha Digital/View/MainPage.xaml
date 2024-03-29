@@ -2,16 +2,73 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:model="clr-namespace:Flecha_Digital.Model"
+             xmlns:viewmodel="clr-namespace:Flecha_Digital.ViewModel"
+             x:DataType="viewmodel:InicioViewModel"
              x:Class="Flecha_Digital.View.MainPage"
+             xmlns:editors="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"             
              Title="Inicio">
     <Grid ColumnDefinitions="*"
-          ColumnSpacing="5"
-          Padding="10">
-        <HorizontalStackLayout>
-            <Label>
+          ColumnSpacing="30"
+          Padding="20">
+        <Frame HeightRequest="125">
+        <VerticalStackLayout Padding="10" Spacing="10" HorizontalOptions="Center" VerticalOptions="Center">
+            <Label Text="Origen"
+                   FontAttributes="Bold"
+                   FontSize="Medium"
+                   TextColor="Black"/>
+            <editors:SfComboBox x:Name="central_origen"
+                                ItemsSource="{Binding Centrales}"
+                                BackgroundColor="{StaticResource BotonAzul}"
+                                IsEditable="True"
+                                Placeholder="Origen"
+                                PlaceholderColor="Gray"
+                                DisplayMemberPath="Name"
+                                TextMemberPath="Name"
+                                SelectedItem="{Binding viaje.origen}"/>
+            <Label Text="Destino"
+                   FontAttributes="Bold"
+                   FontSize="Medium"
+                   TextColor="Black"/>
+            <editors:SfComboBox x:Name="central_destino"
+                                ItemsSource="{Binding Centrales}"
+                                BackgroundColor="{StaticResource BotonAzul}"
+                                SelectedItem="{Binding viaje.destino}"
+                                IsEditable="True"
+                                Placeholder="Origen"
+                                PlaceholderColor="Gray"
+                                DisplayMemberPath="Name"
+                                TextMemberPath="Name"/>
+            <Grid ColumnDefinitions="*,*"
+                  RowDefinitions="*,*">
+                    <Label Text="Fecha ida"
+                       TextColor="Black"
+                       Grid.Column="0"
+                       Grid.Row="0"/>
+                    <DatePicker x:Name="FechaIda"
+                            Date="{Binding hoy}"
+                            MinimumDate="{Binding Hoy}"
+                           
+                            HorizontalOptions="Center"
+                            TextColor="Black"
+                            Grid.Column="0"
+                            Grid.Row="1"/>
                 
-            </Label>
+                <Label Text="Fecha Regreso(Opcional)"
+                       Grid.Column="1"
+                       Grid.Row="0"
+                       TextColor="Black"/>
+                    <DatePicker MinimumDate="{Binding Hoy}"
+                            TextColor="Black"
+                            x:Name="FechaRegreso"
+                            HorizontalOptions="Center"
+                            Grid.Column="1"
+                            Grid.Row="1"/>
 
-        </HorizontalStackLayout>
-    </Grid>     
+                </Grid>
+                <Button Text="Buscar Viaje"
+                    CommandParameter="{Binding Viaje}"
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type model:Viaje}}, Path=GoToAgendarViajeCommand}"/>
+            </VerticalStackLayout>
+        </Frame>
+    </Grid>
 </ContentPage>

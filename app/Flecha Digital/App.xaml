@@ -24,7 +24,14 @@
                 <Setter Property="BackgroundColor" Value="{AppThemeBinding Light=Red, Dark=Red}"/>
                 <Setter Property="BarTextColor" Value="{StaticResource RojoTerciario}"/>
             </Style>
-                
+            <Style x:Key="CardView" TargetType="Frame">
+                <Setter Property="BorderColor" Value="#DDDDDD"/>
+                <Setter Property="HasShadow" Value="True"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="Background" Value="{StaticResource FondoSecundario}"/>
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="IsClippedToBounds" Value="True"/>
+            </Style>
             <!--<Style TargetType="Label" x:Key="BaseLabel">
                 <Setter Property="FontFamily" Value="OpenSansRegular"/>
                 <Setter Property="TextColor" Value="LetraRoja"/>

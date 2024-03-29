@@ -10,6 +10,12 @@ app.use(express.urlencoded({ extended: true }));
 
 // Set up routes
 
+//Obtener centrales
+app.get('/obtenerCentrales', async (res) => {
+    const result = await models.centralRepositorio.obtenerCentrales();
+    res.send(JSON.stringify(result));
+});
+
 // Rutas de usuarios
 
 app.post('/iniciar', async (req, res) => {
@@ -75,13 +81,6 @@ app.post('/suspender', async (req, res) => {
     let usuario = new models.usuario(null, null, null, req.body.email, null);
     usuario.cve_estado = 3; // Suspendido
     const result = await models.usuariosRepositorio.actualizarEstado(usuario);
-    res.send(result);
-});
-
-app.post('/actualizarPass', async (req, res) => {
-    const { email, pass } = req.body;
-    const usuario = new models.usuario(null, null, pass, email, null);
-    const result = await models.usuariosRepositorio.actualizarPass(usuario);
     res.send(result);
 });
 
