@@ -10,26 +10,5 @@ namespace Flecha_Digital.Utilidades
     public class Carga
     {
 
-        async Task ObtenerCentrales()
-        {
-            try
-            {
-                var centrales = await ServicioUsuarios.ObtenerCentral();
-                if (centrales.Count != 0)
-                    centrales.Clear();
-                foreach (var central in centrales)
-                {
-                    Centrales.Add(central);
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex);
-                await Shell.Current.DisplayAlert("Error", $"No se lograron cargar las centrales: {ex.Message}", "OK");
-            }
-            finally
-            {
-            }
-        }
     }
 }

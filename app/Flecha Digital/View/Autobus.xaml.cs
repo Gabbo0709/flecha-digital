@@ -4,7 +4,7 @@ namespace Flecha_Digital.View;
 
 public partial class Autobus : ContentPage
 {
-	public Autobus(AsientoViewModel viewModel)
+	public Autobus(AutobusViewModel viewModel)
 	{
 		InitializeComponent();
 		BindingContext = viewModel;

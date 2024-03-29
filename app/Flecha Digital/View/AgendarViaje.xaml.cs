@@ -14,4 +14,8 @@ public partial class AgendarViaje : ContentPage
         base.OnNavigatedTo(args);
     }
 
+    private void ObtenerViajesCommand(object sender, Syncfusion.Maui.Inputs.SelectionChangedEventArgs e)
+    {
+
+    }
 }

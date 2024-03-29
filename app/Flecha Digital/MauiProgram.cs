@@ -18,17 +18,28 @@ namespace Flecha_Digital
 					fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 					fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");					
 				});
+			//En esta seccion se agregan los modelos, las paginas y los viewmodels de la app
+			//Singleton se usa para que solo haya una instancia de la clase
+			//Transient se usa para que se cree una nueva instancia cada vez que se solicite
+			//Inicio
 			builder.Services.AddTransient<MainPage>();
-			
 			builder.Services.AddSingleton<InicioViewModel>();
 			builder.Services.AddSingleton<ServicioUsuarios>();
 
-			builder.Services.AddSingleton<ServicioViajes>();
+            //Toda la seccion de viajes y asientos
+            builder.Services.AddSingleton<ServicioViajes>();
 			builder.Services.AddTransient<ViajeViewModel>();
 			builder.Services.AddTransient<AgendarViaje>();
-
-			builder.Services.AddTransient<AsientoViewModel>();
+			builder.Services.AddTransient<AutobusViewModel>();
 			builder.Services.AddTransient<Autobus>();
+			builder.Services.AddTransient<Asiento>();
+			//Seccion de reserva y pago
+			builder.Services.AddSingleton<ServicioReservas>();
+			builder.Services.AddTransient<ViajeConfirmarViewModel>();
+			builder.Services.AddTransient<ViajePagoViewModel>();
+			builder.Services.AddTransient<ViajePago>();
+
+			//Seccion de perfil
 
 #if DEBUG
 		builder.Logging.AddDebug();

@@ -2,11 +2,15 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Flecha_Digital.View.ViajeConfirmar"
+             xmlns:model="clr-namespace:Flecha_Digital.Model"
+             xmlns:viewmodel="clr-namespace:Flecha_Digital.ViewModel"
+             x:DataType="viewmodel:ViajeConfirmarViewModel"
              Title="ViajeConfirmar">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <CollectionView ItemsSource="{Binding Asiento}">
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="model:Asiento">
+                <Label Text="{Binding no_asiento}"/>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
 </ContentPage>

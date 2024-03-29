@@ -3,11 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodel="clr-namespace:Flecha_Digital.ViewModel"
              xmlns:model="clr-namespace:Flecha_Digital.Model"
-             x:DataType="viewmodel:AsientoViewModel"
+             x:DataType="viewmodel:AutobusViewModel"
              x:Class="Flecha_Digital.View.Autobus"
              Title="Asientos disponibles">
-    <VerticalStackLayout>
-        <Label />
-
-    </VerticalStackLayout>
+    <Grid>
+        <CollectionView ItemsSource="{Binding Asientos}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Asiento">
+                    <Grid>
+                        <Label Text="{Binding no_asiento}"/>
+                        <Label Text="{Binding cve_estado}"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
 </ContentPage>

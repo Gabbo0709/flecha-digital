@@ -3,15 +3,15 @@
 
 namespace Flecha_Digital.ViewModel;
 [QueryProperty("Viaje", "viaje")]
-public partial class AsientoViewModel : BaseViewModel
+public partial class AutobusViewModel : BaseViewModel
 {
     [ObservableProperty]
-    Viaje viaje;
+    public Viaje viaje;
 
     public ObservableCollection<Asiento> Asientos { get; } = new();
 
     ServicioViajes servicioViajes;
-    public AsientoViewModel(ServicioViajes servicioViajes)
+    public AutobusViewModel(ServicioViajes servicioViajes)
     {
         this.servicioViajes = servicioViajes;
     }

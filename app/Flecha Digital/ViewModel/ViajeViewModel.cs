@@ -20,7 +20,7 @@ public partial class ViajeViewModel : BaseViewModel
         try
         {
             IsBusy = true;
-            var viajes = await servicioViajes.ObtenerViajes(viaje);
+            var viajes = await servicioViajes.ObtenerViajes(Viaje);
             if(viajes.Count != 0)
                 viajes.Clear();
             foreach(var viaje in viajes)
