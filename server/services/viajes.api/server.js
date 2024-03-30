@@ -15,7 +15,18 @@ app.get("/buscarViajes", async(  req, res ) => {
         fecha_salida
     };
     const viaje = new models.viaje(viaje_recibido);
-    const result = await models.viajesRepositorios.buscarViaje(viaje);
+    let result = await models.viajesRepositorios.buscarViaje(viaje);
+    for(x in result){
+        x.boletosDisponibles = await models.viajesRepositorios.obtenerBoletosDisponibles(x.no_servicio);
+    }
+    res.send(JSON.stringify(result));
+});
+
+app.get("/obtenerTiposBoletoDisponibles", async(  req, res ) => {
+    const {no_servicio} = req.query;
+    const viaje_recibido = {no_servicio};
+    const viaje = new models.viaje(viaje_recibido);
+    const result = await models.viajesRepositorios.obtenerTipoBoleto(viaje);
     res.send(JSON.stringify(result));
 });
 
