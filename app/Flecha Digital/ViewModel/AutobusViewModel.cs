@@ -27,7 +27,7 @@ public partial class AutobusViewModel : BaseViewModel
         });
     }
 
-    [RelayCommand]
+    [RelayCommand]//Obtiene los asientos del viaje seleccionado
     async Task ObtenerAsientos()
     {
         if (IsBusy)

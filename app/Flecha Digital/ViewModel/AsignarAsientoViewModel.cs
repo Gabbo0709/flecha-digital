@@ -14,7 +14,7 @@ public partial class AsignarAsientoViewModel : BaseViewModel
         Title = "Asignar Asiento";
     }
 
-    [RelayCommand]
+    [RelayCommand] //Navega hacia Viaje confirmar
     async Task GoToViajeConfirmar(Boleto boleto)
     {
         if (boleto is null)

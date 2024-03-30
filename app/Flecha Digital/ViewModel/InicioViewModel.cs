@@ -39,7 +39,7 @@ public partial class InicioViewModel : BaseViewModel
             IsBusy = true;
             var centrales = await servicioUsuarios.ObtenerCentral();
             if(centrales.Count != 0)
-            centrales.Clear();
+            Centrales.Clear();
             foreach(var central in centrales)
             {
                 Centrales.Add(central);
