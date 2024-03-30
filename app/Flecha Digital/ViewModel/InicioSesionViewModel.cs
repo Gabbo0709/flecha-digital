@@ -10,6 +10,17 @@ public partial class InicioSesionViewModel : BaseViewModel
         servicioUsuarios = new ServicioUsuarios();
     }
     [RelayCommand]
+    async Task GoToRegistro()
+    {
+        await Shell.Current.GoToAsync($"{nameof(Registro)}");
+    }
+    [RelayCommand]
+    async Task GoToRecuperarPass()
+    {
+        await Shell.Current.GoToAsync($"{nameof(RecuperarPass)}");
+    }
+
+    [RelayCommand]
     async Task IniciarSesion(Usuario usuario)
     {
         if(IsBusy)
@@ -17,7 +28,7 @@ public partial class InicioSesionViewModel : BaseViewModel
         try
         {
             IsBusy = true;
-            if (usuario is null)
+            if (usuario.pass is null || usuario.email is null)
             {
                 await Shell.Current.DisplayAlert("Error", "Debe llenar los campos de usuario y contraseña", "OK");
                 return;

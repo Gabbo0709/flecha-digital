@@ -39,10 +39,7 @@ class ViajeRepositorio{
         if(!(viaje instanceof Viaje)){
             return false;
         }
-        let query = `UPDATE Viaje
-        SET fecha_salida = ADDTIME(fecha_salida, '${tiempo}'),
-            hora_llegada = ADDTIME(hora_llegada, '${tiempo}')
-        WHERE EXISTS (SELECT 1 FROM Viaje v WHERE v.no_operacion = ${viaje.no_servicio} GROUP BY v.no_operacion HAVING COUNT(*) > 1)`;
+        const query = `EXEC UpdateViaje ${tiempo}, ${viaje.no_servicio};`;
         return await dao.ejecutarQuery(query);
     };
 }

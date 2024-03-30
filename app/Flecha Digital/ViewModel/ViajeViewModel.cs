@@ -22,7 +22,7 @@ public partial class ViajeViewModel : BaseViewModel
             IsBusy = true;
             var viajes = await servicioViajes.ObtenerViajes(Viaje);
             if(viajes.Count != 0)
-                viajes.Clear();
+                Viajes.Clear();
             foreach(var viaje in viajes)
             {
                 Viajes.Add(viaje);
@@ -43,6 +43,8 @@ public partial class ViajeViewModel : BaseViewModel
     {
         if(viaje is null)
             return;
+        //Guardar el viaje en un archivo JSON
+        await File.WriteAllTextAsync("viaje.json", JsonSerializer.Serialize(viaje));
         await Shell.Current.GoToAsync($"{nameof(Autobus)}", true,
                    new Dictionary<string, object>
                    {

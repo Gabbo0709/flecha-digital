@@ -162,4 +162,37 @@ BEGIN
 END
 
 EXEC CancelarBoletosPorServicio 1;
+GO
 
+CREATE PROCEDURE GetTokensViaje
+    @no_servicio INT
+AS
+BEGIN
+    SELECT token_usuario
+    FROM Usuario u 
+    JOIN Token t
+    ON u.id_usuario = t.id_usuario
+    JOIN Operacion o
+    ON u.id_usuario = o.id_usuario
+    JOIN Operacion_Viaje ov
+    ON o.no_operacion = ov.no_operacion
+    JOIN Viaje v
+    ON ov.cve_viaje = v.cve_viaje
+    JOIN Boleto b
+    ON o.no_operacion = b.no_operacion
+    WHERE v.no_servicio = @no_servicio AND b.cve_estado = 1
+END 
+GO
+
+CREATE PROCEDURE UpdateViaje
+    @tiempo TIME,
+    @no_servicio INT
+AS
+BEGIN
+UPDATE Viaje
+        SET fecha_salida = ADDTIME(fecha_salida, @tiempo),
+            hora_llegada = ADDTIME(hora_llegada, @tiempo)
+        WHERE EXISTS (SELECT 1 FROM Viaje v WHERE v.no_servicio = @no_servicio GROUP BY v.no_servicio HAVING COUNT > 1)
+END
+
+EXEC UpdateViaje '01:00:00', 1;
