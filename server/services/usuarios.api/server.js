@@ -105,7 +105,7 @@ app.get('/obtenerActividades', async (req, res) => {
     const { email } = req.query; // Obtener el correo del usuario del query de la URL
     const usuario_recibido = { email: email }; // Crear un objeto con el correo del usuario
     const usuario = new models.usuario(usuario_recibido); // Crear un objeto de la clase usuario con el correo del usuario
-    const result = await models.actividadesRepositorio.obtenerActividadesUsuario(usuario); 
+    const result = await models.actividadesRepositorio.obtenerActividadesUsuario(usuario);
     res.send(JSON.stringify(result));
 });
 
