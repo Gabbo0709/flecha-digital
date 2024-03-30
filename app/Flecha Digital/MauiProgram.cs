@@ -2,6 +2,7 @@
 using Flecha_Digital.Services;
 using Flecha_Digital.ViewModel;
 using Syncfusion.Maui.Core.Hosting;
+using Flecha_Digital.Utilidades;
 
 namespace Flecha_Digital
 {
@@ -40,6 +41,9 @@ namespace Flecha_Digital
 			builder.Services.AddTransient<ViajePago>();
 
 			//Seccion de perfil
+
+			//Carga o actualizacion de centrales
+			Carga.ObtenerCentrales().Wait();
 
 #if DEBUG
 		builder.Logging.AddDebug();
