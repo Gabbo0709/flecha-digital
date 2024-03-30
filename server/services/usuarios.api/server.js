@@ -8,9 +8,19 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Set up routes
+//#region Set up routes
 
-//Obtener centrales
+// Ejemplo de peticion GET con parametros en la URL
+// http://urlservidor:puerto/{nombre_ruta}?parametro1=valor1&parametro2=valor2
+
+// Ejemplo de peticion POST con parametros en el cuerpo de la peticion
+// http://urlservidor:puerto/{nombre_ruta}
+// {
+//     "parametro1": "valor1",
+//     "parametro2": "valor2"
+// }
+
+// Obtener centrales de camiones de la base de datos.
 app.get('/obtenerCentrales', async (res) => {
     const result = await models.centralRepositorio.obtenerCentrales();
     res.send(JSON.stringify(result));
@@ -18,6 +28,10 @@ app.get('/obtenerCentrales', async (res) => {
 
 // Rutas de usuarios
 
+// Iniciar sesion del usuario con el correo y la contraseña
+// Se espera recibir un objeto JSON con el correo y la contraseña del usuario
+// Se respondera un mensaje verdadero si el usuario existe y la contraseña es correcta
+// Se respondera un mensaje falso si el usuario no existe o la contraseña es incorrecta
 app.post('/iniciar', async (req, res) => {
     const { email, pass } = req.body;
     const usuario_recibido = { email: email, pass: pass };
@@ -25,6 +39,7 @@ app.post('/iniciar', async (req, res) => {
     const result = await models.usuariosRepositorio.autenticarUsuario(usuario);
     res.send(result);
 });
+
 
 app.post('/registrar', async (req, res) => {
     const { nombre_user, apellido, pass, email, tel_user } = req.body;
@@ -100,6 +115,8 @@ app.get('/obtenerBoletosActividad', async (req, res) => {
     const result = await models.boletosRepositorio.obtenerBoletosActividad(actividad);
     res.send(JSON.stringify(result)); // Convertir arreglo de boletos a JSON
 });
+
+//#endregion
 
 // Start the server
 app.listen(env.puertoServidor, () => {

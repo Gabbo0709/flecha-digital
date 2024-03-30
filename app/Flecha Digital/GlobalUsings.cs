@@ -12,3 +12,5 @@ global using System.Text.Json.Serialization;
 global using System.Collections;
 global using System.Text;
 global using System.Net.Http.Json;
+global using System.Threading.Tasks;
+global using System.IO;
