@@ -13,6 +13,7 @@ GO
 CREATE TABLE  Central( -- Centrales de autobuses
 	cve_central					INT PRIMARY KEY NOT NULL,
 	nombre_central				NVARCHAR(128) NOT NULL,
+	abreviacion					NVARCHAR(128) NOT NULL,
 	municipio					NVARCHAR(128) NOT NULL,
 	estado						NVARCHAR(128) NOT NULL
 )
@@ -150,6 +151,11 @@ CREATE TABLE Boleto( -- Boletos comprados por los usuarios
 	anden						INT,
 	tel_cliente					NUMERIC(12) NOT NULL,
 	costo_boleto				MONEY NOT NULL
+)
+
+CREATE TABLE Token(
+	token_usuario				NVARCHAR(256) PRIMARY KEY NOT NULL,
+	id_usuario					INT FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario) NOT NULL
 )
 
 ALTER AUTHORIZATION ON DATABASE::db_flecha TO sa
