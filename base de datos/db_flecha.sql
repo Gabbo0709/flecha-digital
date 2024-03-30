@@ -116,7 +116,7 @@ CREATE TABLE Operacion( -- Operación de compra de boletos
 	costo_total					MONEY NOT NULL
 )
 
-CREATE TABLE Operacion_Viaje(
+CREATE TABLE Operacion_Viaje( -- Relación entre la compra de boletos y los viajes
 	no_operacion				INT FOREIGN KEY (no_operacion) REFERENCES Operacion(no_operacion) NOT NULL,
 	cve_viaje					INT FOREIGN KEY (cve_viaje) REFERENCES Viaje(cve_viaje) NOT NULL
 )
@@ -153,7 +153,7 @@ CREATE TABLE Boleto( -- Boletos comprados por los usuarios
 	costo_boleto				MONEY NOT NULL
 )
 
-CREATE TABLE Token(
+CREATE TABLE Token( --Token de usuario para firebase
 	token_usuario				NVARCHAR(256) PRIMARY KEY NOT NULL,
 	id_usuario					INT FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario) NOT NULL
 )
