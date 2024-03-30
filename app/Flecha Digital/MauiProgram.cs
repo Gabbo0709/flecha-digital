@@ -3,6 +3,8 @@ using Flecha_Digital.Services;
 using Flecha_Digital.ViewModel;
 using Syncfusion.Maui.Core.Hosting;
 using Flecha_Digital.Utilidades;
+using Flecha_Digital.Extensions;
+using Plugin.Firebase.Crashlytics;
 
 namespace Flecha_Digital
 {
@@ -13,12 +15,15 @@ namespace Flecha_Digital
 			var builder = MauiApp.CreateBuilder();
 			builder
 				.UseMauiApp<App>()
+				.RegisterFirebaseServices()
                 .ConfigureSyncfusionCore()
                 .ConfigureFonts(fonts =>
 				{
 					fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 					fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");					
 				});
+
+			CrossFirebaseCrashlytics.Current.SetCrashlyticsCollectionEnabled(true);
 			//En esta seccion se agregan los modelos, las paginas y los viewmodels de la app
 			//Singleton se usa para que solo haya una instancia de la clase
 			//Transient se usa para que se cree una nueva instancia cada vez que se solicite
@@ -44,6 +49,9 @@ namespace Flecha_Digital
 
 			//Carga o actualizacion de centrales
 			Carga.ObtenerCentrales().Wait();
+
+			//Envio de token a Firebase
+			Carga.EnviarFirebaseToken().Wait();
 
 #if DEBUG
 		builder.Logging.AddDebug();

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "407013947694",
+    "project_id": "flecha-amarilla-7fe86",
+    "storage_bucket": "flecha-amarilla-7fe86.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:407013947694:android:db50974a6ea4ae331ba2bf",
+        "android_client_info": {
+          "package_name": "com.companyname.flecha_digital"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6IkQn8vHpbTGgQQyIVdZTMKvLtZ_GsAs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

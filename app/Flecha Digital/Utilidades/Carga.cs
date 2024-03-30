@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Flecha_Digital.Model;
 using System.Configuration;
+using Plugin.Firebase;
+using Plugin.Firebase.CloudMessaging;
 
 namespace Flecha_Digital.Utilidades
 {
@@ -36,6 +38,21 @@ namespace Flecha_Digital.Utilidades
 				// Vaciar el archivo y escribir la nueva información
 				await File.WriteAllTextAsync("centrales.json", string.Empty);
 				await File.WriteAllTextAsync("centrales.json", JsonSerializer.Serialize(centrales));
+			}
+		}
+
+		public static async Task EnviarFirebaseToken()
+		{
+			await CrossFirebaseCloudMessaging.Current.CheckIfValidAsync();
+			var token = await CrossFirebaseCloudMessaging.Current.GetTokenAsync();
+			var client = new HttpClient();
+			//Get URL from App.config
+			var url = ConfigurationManager.AppSettings["URL"];
+			var response = await client.GetAsync($@"{url}/enviarToken?token={token}");
+			var result = response.IsSuccessStatusCode ? await response.Content.ReadAsStringAsync() : null;
+			if (result != "ok")
+			{
+				// Log error
 			}
 		}
 	}
