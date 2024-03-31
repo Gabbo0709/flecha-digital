@@ -1,7 +1,6 @@
 const dao = require('../../data/dao');
 const Boleto = require('./boleto');
-const Usuario = require('./usuario');
-const UsuarioRepositorio = require('./usuarios-repositorio');
+const Actividad = require('./actividad');
 
 class BoletosRepositorio {
     /**

@@ -7,6 +7,18 @@ describe('Test de obetener actividades de usuario', () => {
         const usuario = { email: 'gabbo0709@gmail.com' };
         const user = new Usuario(usuario);
         const result = await ActividadesRepositorio.obtenerActividadesUsuario(user);
-        expect(result).toBeNull();
+        expect(result).not.toBeNull();
+        expect(result).toBeInstanceOf(Array);
+        expect(result.length).toBe(0);
+    });
+    test('Actividades del usuario', async () => {
+        const usuario = { email: 'gabbo0709@gmail.com' };
+        const user = new Usuario(usuario);
+        const result = await ActividadesRepositorio.obtenerActividadesUsuario(user);
+        expect(result).not.toBeNull();
+        expect(result).toBeInstanceOf(Array);
+        expect(result.length).toBeGreaterThan(0);
+        expect(result[0]).toBeInstanceOf(Actividad);
+        console.log(result);
     });
 });
