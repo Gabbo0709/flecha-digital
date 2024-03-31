@@ -9,7 +9,7 @@ class CentralesRepositorio {
     static async obtenerCentrales() {
         const query = `SELECT * FROM Central`;
         const result = await dao.consultar(query);
-        return result != null ? new Central() : null;
+        return result.map(central => new Central(central));
     };
 }
 
