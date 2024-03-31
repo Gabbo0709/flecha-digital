@@ -35,26 +35,27 @@ GO
 EXEC GetAsientos 1, 3;
 GO
 --Corregir, agregar nombre central origen y nombre central destino
-CREATE PROCEDURE GetActividad
-		@id_usuario INT
+CREATE PROCEDURE GetActividadUsuario
+    @id_usuario INT
 AS
 BEGIN
     SELECT 
-        OV.no_operacion,
-        V.no_servicio,
-        O.cantidad_boletos,
-        (SELECT TOP 1 origen_viaje FROM Viaje WHERE no_servicio = V.no_servicio ORDER BY fecha_salida ASC) AS origen_viaje,
-        V.fecha_salida,
-        (SELECT TOP 1 destino_viaje FROM Viaje WHERE no_servicio = V.no_servicio ORDER BY fecha_salida DESC) AS destino_viaje
+        O.no_operacion,
+        O.cant_boletos,
+        CO.nombre_central AS central_origen,
+        CD.nombre_central AS central_destino,
+        AU.fecha_salida
     FROM 
-        Operacion_Viaje OV
+        Operacion O
     INNER JOIN 
-        Viaje V ON OV.cve_viaje = V.cve_viaje
-	INNER JOIN Operacion O ON OV.no_operacion = O.no_operacion
-	WHERE 
-		O.id_usuario = @id_usuario;
-END
-GO
+        Actividad_Usuario AU ON O.no_operacion = AU.no_operacion
+    INNER JOIN 
+        Central CO ON AU.cve_central_origen = CO.cve_central
+    INNER JOIN 
+        Central CD ON AU.cve_central_destino = CD.cve_central
+    WHERE
+        O.id_usuario = @id_usuario;
+END;
 
 EXEC GetActividad 1;
 GO
@@ -81,12 +82,20 @@ CREATE PROCEDURE InsertarOperacionYBoletos
     @id_usuario INT,
     @cve_metodo INT,
     @cant_boletos INT,
-    @costo_total MONEY
+    @costo_total MONEY,
+    @cve_central_origen INT,
+    @cve_central_destino INT,
+    @fecha_salida DATETIME,
+    @fecha_operacion DATETIME
 AS
 BEGIN
     -- Insertar la operación
     INSERT INTO Operacion(no_operacion, id_usuario, cve_metodo, cant_boletos, costo_total)
     VALUES (@no_operacion, @id_usuario, @cve_metodo, @cant_boletos, @costo_total)
+
+    --Insertar la actividad del usuario
+    INSERT INTO Actividad_Usuario(no_operacion, cve_central_origen, cve_central_destino, fecha_salida, fecha_operacion)
+    VALUES (@no_operacion, @cve_central_origen, @cve_central_destino, @fecha_salida, @fecha_operacion)
 
     -- Insertar los boletos
     INSERT INTO Boleto(no_boleto, cve_tipo, no_operacion, cve_asiento, cve_estado, nombre_pas, token_fac, no_asiento_boleto, puerta, carril, anden, tel_cliente, costo_boleto)
@@ -108,8 +117,13 @@ CREATE TABLE #BoletosTemporales(
     tel_cliente NUMERIC(12),
     costo_boleto MONEY
 )
+--EJEMPLO DE USO
 --Los boletos se insertan en el mismo orden en que se compraron
-INSERT INTO #BoletosTemporales VALUES (1, 1, 1, 1, 'Juan Perez', '123456', 1, 'A', 1, 1, 'Efectivo', 1234567890, 100.00) EXEC InsertarOperacionYBoletos 1, 1, 1, 2, 300.00
+INSERT INTO #BoletosTemporales VALUES 
+(1, 1, 1, 2, 'Juan Perez', '123456', 1, 'A', 1, 1, 'En linea', 1234567890, 100.00),
+(2, 2, 1, 3, 'Mariana Perez', '123457', 2, 'B', 2, 2, 'En linea', 1234567891, 50.00),
+(3, 3, 1, 2, 'Pedro Perez', '123458', 3, 'C', 3, 3, 'En linea', 1234567892, 300.00)
+EXEC InsertarOperacionYBoletos 1, 1, 1, 2, 300.00, 1, 3, '2024-04-01 10:00:00', '2024-03-31 10:00:00';
 GO
 
 CREATE PROCEDURE CancelarBoletosPorServicio
