@@ -15,7 +15,7 @@ INSERT INTO Servicio(descripcion_servicio) VALUES
 ('Sanitario mixto'),
 ('Semicama'),
 ('Luz de lectura'),
-('Pantalla genera'),
+('Pantalla general'),
 ('Wi-Fi')
 
 
@@ -42,7 +42,7 @@ INSERT INTO Tipo_Viaje(tipo, descripcion_viaje) VALUES
 ('Local', 'La ruta de este autobús comienza en esta terminal y/o central.'),
 ('Paso', 'La ruta de este autobús comenzó en otra terminal y/o central, es decir, el autobús realiza una parada en este origen.')
 
--- INSERT statements for Central table
+
 INSERT INTO Central (cve_central, nombre_central, abreviatura, municipio, estado)
 VALUES 
 (1, 'Central Camionera de Guadalajara', 'GDL', 'Guadalajara', 'JAL'),
@@ -91,18 +91,18 @@ VALUES
 (44, 'Terminal San Jerónimo Monterrey', 'MTY', 'Monterrey', 'NL'),
 (45, 'Terminal Toluca', 'TLC', 'Toluca', 'MEX');
 
--- INSERT statements for Linea table
+
 INSERT INTO Linea (cve_linea, nombre_linea, cve_clase)
 VALUES
 (1, 'Primera Plus', 1),
 (2, 'ADO', 2),
 (3, 'Linea', 3);
 
---INSERT statements for Camion table
+
 INSERT INTO Camion (id_camion, cve_linea, no_camion, cant_asientos)
 VALUES
 (1, 1, 123, 30),
 (2, 2, 456, 40),
 (3, 3, 789, 36);
--- INSERT statements for Ruta table
+
 
