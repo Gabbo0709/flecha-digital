@@ -1,5 +1,6 @@
 class Usuario {
     constructor(usuario) {
+        this.id_usuario = usuario.id_usuario || null;
         this.nombre_user = usuario.nombre_user || null;
         this.apellido = usuario.apellido || null;
         this.pass = usuario.pass || null;
