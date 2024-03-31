@@ -17,9 +17,11 @@ app.post("/crearOperacionYBoleto", async (req, res) => {
         costo_total
     );
     const operacion = new models.operacion(operacion_recibida);
-    const boleto_recibido = req.body.boleto;
-    const boleto = new models.boleto(boleto_recibido);
-    let result = await models.reservasRepositorio.crearOperacionYBoleto(operacion, boleto);
+    const { boletos_recibidos } = req.body.boletos; //req.body.boletos debe ser un arreglo de objetos en formato JSON
+    const boletos = boletos_recibidos.map(boleto => new models.boleto(boleto));
+    const { actividad_recibida } = req.body.actividad;
+    const actividad = new models.actividad(actividad_recibida);
+    let result = await models.reservasRepositorio.crearOperacionYBoleto(operacion, boletos, actividad);
     res.send(result);
 });
 

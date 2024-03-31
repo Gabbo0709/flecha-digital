@@ -4,12 +4,13 @@ const dao = require('../../data/dao');
 
 class reservasRepositorio{
     /**
-     * 
-     * @param {Operacion} operacion 
-     * @param {Boleto[]} boleto 
+     *
+     * @param {Operacion} operacion
+     * @param {Boleto[]} boleto
+     * @param {Reserva} reserva
      * @returns {Promise<boolean>}
      */
-    static async crearOperacionYBoleto(operacion, boleto){
+    static async crearOperacionYBoleto(operacion, boleto, reserva){
         if(!(operacion instanceof Operacion || boleto instanceof Boleto)){
             return false;
         }
@@ -33,7 +34,7 @@ class reservasRepositorio{
     }
     /**
      * @param {Boleto[]} boleto
-     * @returns {string}     
+     * @returns {string}
      */
 
     static definirBoletos(boleto){
