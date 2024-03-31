@@ -45,7 +45,23 @@ namespace Flecha_Digital
 			builder.Services.AddTransient<ViajePagoViewModel>();
 			builder.Services.AddTransient<ViajePago>();
 
+			//Seccion de Inicio de sesion y registro
+			builder.Services.AddSingleton<InicioSesion>();
+			builder.Services.AddSingleton<InicioSesionViewModel>();
+			builder.Services.AddSingleton<Registro>();
+			builder.Services.AddSingleton<RegistroViewModel>();
+			builder.Services.AddSingleton<RegistroPass>();
+			builder.Services.AddSingleton<RegistroPassViewModel>();
+
 			//Seccion de perfil
+			builder.Services.AddTransient<Perfil>();
+			builder.Services.AddSingleton<CambiarPass>();
+			builder.Services.AddSingleton<CambiarPassViewModel>();
+			builder.Services.AddSingleton<CambiarCorreo>();
+			builder.Services.AddSingleton<CambiarCorreoViewModel>();
+
+			//Comprueba si el usuario esta logueado
+			Carga.RegistroToken().Wait();
 
 			//Carga o actualizacion de centrales
 			Carga.ObtenerCentrales().Wait();

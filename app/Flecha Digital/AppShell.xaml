@@ -4,23 +4,26 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:view="clr-namespace:Flecha_Digital.View"
+    xmlns:model="clr-namespace:Flecha_Digital.Model"
+    x:DataType="model:Usuario"
     Shell.FlyoutBehavior="Disabled">
     <TabBar>
         <ShellContent Title="Inicio"
-                  Icon="dotnet_bot.svg"
-                  ContentTemplate="{DataTemplate view:MainPage}"
-                  Route="MainPage"/>
+                      Icon="dotnet_bot.svg"
+                      ContentTemplate="{DataTemplate view:MainPage}"
+                      Route="MainPage"/>
         <ShellContent Title="Actividad"
-                  Icon="dotnet_bot.svg"
-                  ContentTemplate="{DataTemplate view:Actividad}"
-                  Route="Actividad"/>
+                      Icon="dotnet_bot.svg"
+                      ContentTemplate="{DataTemplate view:Actividad}"
+                      Route="Actividad"/>
         <ShellContent Title="Contactanos"
-                  Icon="dotnet_bot.svg"
-                  ContentTemplate="{DataTemplate view:Contactanos}"
-                  Route="Contactanos"/>
+                      Icon="dotnet_bot.svg"
+                      ContentTemplate="{DataTemplate view:Contactanos}"
+                      Route="Contactanos"/>
         <ShellContent Title="Perfil"
-                  Icon="dotnet_bot.svg"
-                  ContentTemplate="{DataTemplate view:Perfil}"
-                  Route="Perfil"/>
+                      Icon="dotnet_bot.svg"
+                      ContentTemplate="{DataTemplate view:Perfil}"
+                      Route="Perfil"
+                      Shell.NavBarIsVisible="False"/>
     </TabBar>
 </Shell>

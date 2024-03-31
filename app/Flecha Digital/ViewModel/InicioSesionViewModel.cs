@@ -5,9 +5,9 @@ namespace Flecha_Digital.ViewModel;
 public partial class InicioSesionViewModel : BaseViewModel
 {
     ServicioUsuarios servicioUsuarios;
-    public InicioSesionViewModel()
+    public InicioSesionViewModel(ServicioUsuarios servicioUsuarios)
     {
-        servicioUsuarios = new ServicioUsuarios();
+        this.servicioUsuarios = servicioUsuarios;
     }
     [RelayCommand]
     async Task GoToRegistro()
@@ -35,6 +35,7 @@ public partial class InicioSesionViewModel : BaseViewModel
             }
             if(await servicioUsuarios.AutenticarUsuario(usuario.email, usuario.pass))
             {
+                await Shell.Current.DisplayAlert("Bienvenido", "Inicio de sesión exitoso", "OK");
                 await Shell.Current.GoToAsync($"{nameof(MainPage)}");
             }
             else

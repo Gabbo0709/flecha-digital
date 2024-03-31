@@ -1,8 +1,13 @@
 using Flecha_Digital.Services;
+using System.Collections.Generic;
 
 namespace Flecha_Digital.ViewModel;
+
 public partial class InicioViewModel : BaseViewModel
 {
+    [ObservableProperty]
+    Usuario usuario;
+
     [ObservableProperty]
     public Viaje viaje;
 
@@ -11,16 +16,17 @@ public partial class InicioViewModel : BaseViewModel
 
     ServicioUsuarios servicioUsuarios;
     public ObservableCollection<Central> Centrales { get; } = new();
-    public InicioViewModel(ServicioUsuarios servicioUsuarios)
+    public InicioViewModel()
     {
         Title = "Flecha Digital";
-        this.servicioUsuarios = servicioUsuarios;
+        Centrales = JsonSerializer.Deserialize<ObservableCollection<Central>>(File.ReadAllText("centrales.json"));
+        Usuario = JsonSerializer.Deserialize<Usuario>(File.ReadAllText("usuario.json"));
     }
 
     [RelayCommand]
     async Task GoToAgendarViaje(Viaje viaje)
     {
-        if(viaje is null)
+        if (viaje is null)
             return;
         await Shell.Current.GoToAsync($"{nameof(AgendarViaje)}", true,
         new Dictionary<string, object>
@@ -28,31 +34,36 @@ public partial class InicioViewModel : BaseViewModel
             { "Viaje", viaje }
         });
     }
+    [RelayCommand]
+    async Task CerrarSesion()
+    {
+        File.Delete("usuario.json");
+        if (!File.Exists("usuario.json"))
+        {
+            Usuario = null;
+            await Shell.Current.GoToAsync($"{nameof(InicioSesion)}");
+        }
+        else
+            await Shell.Current.DisplayAlert("Error", "No se pudo cerrar sesión", "OK");
+    }
 
     [RelayCommand]
-    async Task ObtenerCentrales()
+    async Task CambiarPass()
     {
-        if(IsBusy)
-            return;
-        try
-        {
-            IsBusy = true;
-            var centrales = await servicioUsuarios.ObtenerCentral();
-            if(centrales.Count != 0)
-            Centrales.Clear();
-            foreach(var central in centrales)
+        await Shell.Current.GoToAsync($"{nameof(CambiarPass)}", true,
+            new Dictionary<string, object>
             {
-                Centrales.Add(central);
-            }
-        }
-        catch(Exception ex)
-        {
-            Debug.WriteLine(ex);
-            await Shell.Current.DisplayAlert("Error", $"No se lograron cargar las centrales: {ex.Message}", "OK");
-        }
-        finally
-        {
-            IsBusy = false;
-        }
+                { "Usuario", Usuario }
+            });
     }
+    [RelayCommand]
+    async Task CambiarCorreo()
+    {
+        await Shell.Current.GoToAsync($"{nameof(CambiarCorreo)}", true,
+            new Dictionary<string, object>
+            {
+                { "Usuario", Usuario }
+            });
+    }
+
 }

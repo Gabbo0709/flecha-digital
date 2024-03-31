@@ -13,7 +13,7 @@ GO
 CREATE TABLE  Central( -- Centrales de autobuses
 	cve_central					INT PRIMARY KEY NOT NULL,
 	nombre_central				NVARCHAR(128) NOT NULL,
-	abreviacion					NVARCHAR(128) NOT NULL,
+	abreviatura					NVARCHAR(128) NOT NULL,
 	municipio					NVARCHAR(128) NOT NULL,
 	estado						NVARCHAR(128) NOT NULL
 )
@@ -142,7 +142,7 @@ CREATE TABLE Boleto( -- Boletos comprados por los usuarios
 	cve_tipo 					INT FOREIGN KEY (cve_tipo) REFERENCES Tipo_Boleto(cve_tipo) NOT NULL,
 	no_operacion				INT FOREIGN KEY (no_operacion) REFERENCES Operacion (no_operacion) NOT NULL,
 	cve_asiento					INT FOREIGN KEY (cve_asiento) REFERENCES Asiento(cve_asiento)NOT NULL,
-	cve_estado					INT FOREIGN KEY (cve_estado) REFERENCES Estado_Boleto(cve_estado) NOT NULL,
+	cve_estado					INT FOREIGN KEY (cve_estado) REFERENCES Estado_Boleto(cve_estado) DEFAULT 2,
 	nombre_pas					NVARCHAR (128) NOT NULL,
 	token_fac					NVARCHAR(128) NOT NULL,
 	no_asiento_boleto			INT NOT NULL,

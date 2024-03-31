@@ -2,11 +2,13 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Flecha_Digital.View.RegistroPass"
+             xmlns:model="clr-namespace:Flecha_Digital.Model"
+             xmlns:viewmodel="clr-namespace:Flecha_Digital.ViewModel"
+             x:DataType="viewmodel:RegistroPassViewModel"
              Title="RegistroPass">
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <Entry x:Name="txtPass" Placeholder="Contraseña" IsPassword="True"/>
+        <Entry x:Name="txtPass2" Placeholder="Confirmar Contraseña" IsPassword="True" />
+        <Button Text="Registrar" Command="{Binding RegistrarUsuarioCommand}"/>
     </VerticalStackLayout>
 </ContentPage>

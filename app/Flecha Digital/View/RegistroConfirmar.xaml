@@ -4,9 +4,10 @@
              x:Class="Flecha_Digital.View.RegistroConfirmar"
              Title="RegistroConfirmar">
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <Label Text="Veriica tu correo"/>
+        <Entry MaxLength="1"/>
+        <Entry MaxLength="1"/>
+        <Entry MaxLength="1"/>
+        <Entry MaxLength="1"/>
     </VerticalStackLayout>
 </ContentPage>

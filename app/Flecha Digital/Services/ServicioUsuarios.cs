@@ -1,6 +1,7 @@
 ﻿namespace Flecha_Digital.Services;
 using Flecha_Digital.Model;
 using System.Configuration;
+using System.Diagnostics.Eventing.Reader;
 
 public class ServicioUsuarios
 {
@@ -35,6 +36,8 @@ public class ServicioUsuarios
     public async Task<bool> AutenticarUsuario(string email, string pass)
     {
         var response = await httpClient.PostAsync($"{url}/iniciar", new StringContent(JsonSerializer.Serialize(new { email, pass }), Encoding.UTF8, "application/json"));
+        if (response.Content.Headers.ContentLength != null)
+            await File.WriteAllTextAsync("usuario.json", await response.Content.ReadAsStringAsync());
         return response.IsSuccessStatusCode;
     }
 

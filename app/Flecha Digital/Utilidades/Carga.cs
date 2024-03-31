@@ -40,8 +40,16 @@ namespace Flecha_Digital.Utilidades
 				await File.WriteAllTextAsync("centrales.json", JsonSerializer.Serialize(centrales));
 			}
 		}
-
-		public static async Task EnviarFirebaseToken()
+        public static async Task RegistroToken()
+        {
+			// Reivsar si el archivo existe en los archivos de la aplicación
+			var fileExists = File.Exists("usuario.json");
+			if(!fileExists)
+			{
+				await Shell.Current.GoToAsync($"{nameof(InicioSesion)}");
+			}
+        }
+        public static async Task EnviarFirebaseToken()
 		{
 			await CrossFirebaseCloudMessaging.Current.CheckIfValidAsync();
 			var token = await CrossFirebaseCloudMessaging.Current.GetTokenAsync();

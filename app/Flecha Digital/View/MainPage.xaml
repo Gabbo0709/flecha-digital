@@ -69,5 +69,11 @@
                     CommandParameter="{Binding Viaje}"
                     Command="{Binding Source={RelativeSource AncestorType={x:Type model:Viaje}}, Path=GoToAgendarViajeCommand}"/>
         </VerticalStackLayout>
+        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                   IsRunning="{Binding IsNotBusy}"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   Grid.RowSpan="2"
+                   Grid.ColumnSpan="4"/>
     </Grid>
 </ContentPage>

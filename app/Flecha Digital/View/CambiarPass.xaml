@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Flecha_Digital.View.CambiarPass"
+             xmlns:model="clr-namespace:Flecha_Digital.Model"
+             xmlns:viewModel="clr-namespace:Flecha_Digital.ViewModel"
+             x:DataType="viewModel:CambiarPassViewModel"
+             Title="CambiarPass">
+    <VerticalStackLayout>
+        <Label Text="Cambiar Contraseña" FontSize="Large" HorizontalOptions="Center" />
+        <Entry Placeholder="Contraseña Actual" 
+               x:Name="actualPass"/>
+        <Entry Placeholder="Nueva Contraseña" 
+               x:Name="newPass"/>
+        <Entry Placeholder="Repetir Contraseña" 
+               x:Name="repetirPass"/>
+        <Button Text="Cambiar" Command="{Binding CambiarPassCommand}"/>
+        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                   IsRunning="{Binding IsNotBusy}"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   Grid.RowSpan="2"
+                   Grid.ColumnSpan="4"/>
+    </VerticalStackLayout>
+</ContentPage>

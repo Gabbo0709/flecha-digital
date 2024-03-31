@@ -13,53 +13,6 @@ SELECT descripcion_clase, descripcion_servicio, nombre_linea FROM Linea AS l
 GO
 
 
-CREATE PROCEDURE GetViajes
-		@origen_viaje INT,
-		@destino_viaje INT,
-        @fecha_salida DATE
-	AS
-	BEGIN
-SELECT 
-    R.no_servicio,
-	L.cve_linea,
-    L.nombre_linea,
-    V.origen_viaje,
-    V.destino_viaje,
-    C.descripcion_clase,
-    V.fecha_salida,
-    V.fecha_llegada,
-    STRING_AGG(S.descripcion_servicio, ', ') AS descripcion_servicio,
-    TV.descripcion_viaje
-FROM 
-    Viaje V
-JOIN 
-    Ruta R ON V.no_servicio = R.no_servicio
-JOIN 
-    Camion CM ON R.id_camion = CM.id_camion
-JOIN 
-    Linea L ON CM.cve_linea = L.cve_linea
-JOIN 
-    Clase C ON L.cve_clase = C.cve_clase
-JOIN 
-    Clase_Servicio CS ON C.cve_clase = CS.cve_clase
-JOIN 
-    Servicio S ON CS.cve_servicio = S.cve_servicio
-JOIN 
-    Tipo_Viaje TV ON V.cve_tipo = TV.cve_tipo
-WHERE (V.origen_viaje = @origen_viaje AND V.destino_viaje = @destino_viaje)
-AND CONVERT(DATE , V.fecha_salida) = @fecha_salida
-GROUP BY 
-    R.no_servicio,
-    L.nombre_linea,
-    V.origen_viaje,
-    V.destino_viaje,
-    C.descripcion_clase,
-    V.fecha_salida,
-    V.fecha_llegada,
-    TV.descripcion_viaje;
-	END
-GO
-
 EXEC GetViajes 1, 1, "01/04/2024";
 GO
 
@@ -104,6 +57,23 @@ END
 GO
 
 EXEC GetActividad 1;
+GO
+
+CREATE PROCEDURE GuardarUsuarioYToken
+    @nombre_user NVARCHAR(128),
+    @apellido NVARCHAR(128),
+    @pass NVARCHAR(256),
+    @email NVARCHAR(128),
+    @tel_user NUMERIC(10),
+    @token_usuario NVARCHAR(128)
+AS
+BEGIN
+    INSERT INTO Usuario(nombre_user, apellido, pass, email, tel_user)
+    VALUES (@nombre_user, @apellido, @pass, @email, @tel_user)
+
+    INSERT INTO Token(token_usuario, id_usuario)
+    VALUES (@token_usuario, SCOPE_IDENTITY())
+END
 GO
 
 CREATE PROCEDURE InsertarOperacionYBoletos
@@ -196,3 +166,178 @@ UPDATE Viaje
 END
 
 EXEC UpdateViaje '01:00:00', 1;
+GO
+
+--Obtener viajes y boletos con un arreglo de id's de viaje
+CREATE PROCEDURE GetViajes
+--los datos que dará el usuario para la consulta
+    @origen_viaje INT,
+    @destino_viaje INT,
+    @fecha_salida DATE
+AS
+BEGIN
+    SELECT 
+    --Los datos que vamos a obtener
+        R.no_servicio,
+        L.cve_linea,
+        L.nombre_linea,
+        V.origen_viaje,
+        V.destino_viaje,
+        C.descripcion_clase,
+        V.fecha_salida,
+        V.fecha_llegada,
+        --Se juntan las cve_viaje en una sola columna separados por ","
+        STRING_AGG(CONVERT(VARCHAR(10), V.cve_viaje), ', ') AS cve_viajes,
+        --Se juntan las descripciones de los servicios en una sola columna separados por ","
+        STRING_AGG(S.descripcion_servicio, ', ') AS descripcion_servicio,
+        TV.descripcion_viaje
+    FROM 
+        Viaje V
+    JOIN 
+        Ruta R ON V.no_servicio = R.no_servicio
+    JOIN 
+        Camion CM ON R.id_camion = CM.id_camion
+    JOIN 
+        Linea L ON CM.cve_linea = L.cve_linea
+    JOIN 
+        Clase C ON L.cve_clase = C.cve_clase
+    JOIN 
+        Clase_Servicio CS ON C.cve_clase = CS.cve_clase
+    JOIN 
+        Servicio S ON CS.cve_servicio = S.cve_servicio
+    JOIN 
+        Tipo_Viaje TV ON V.cve_tipo = TV.cve_tipo
+    WHERE 
+        V.origen_viaje = @origen_viaje 
+        AND V.destino_viaje = @destino_viaje
+        --Debería mostrar los viajes que su fecha salida sea la misma a la que da el usuario
+        AND CONVERT(DATE , V.fecha_salida) = @fecha_salida
+    GROUP BY 
+        R.no_servicio,
+        L.cve_linea,
+        L.nombre_linea,
+        V.origen_viaje,
+        V.destino_viaje,
+        C.descripcion_clase,
+        V.fecha_salida,
+        V.fecha_llegada,
+        TV.descripcion_viaje;
+END
+GO
+
+CREATE PROCEDURE ObtenerBoletosDisponibles
+    @cve_viaje_lista NVARCHAR(MAX)
+AS
+BEGIN
+    -- Crear una tabla temporal para almacenar los cve_viaje que obtuvimos
+    -- del procedimiento almacenado de GetViajes
+    DECLARE @cve_viaje_table TABLE (cve_viaje INT)
+
+    -- Llenar la tabla con los cve_viaje de la lista
+    INSERT INTO @cve_viaje_table
+    SELECT value FROM STRING_SPLIT(@cve_viaje_list, ',')
+
+    -- Realizar la consulta
+    SELECT 
+        TB.descripcion_tipo_boleto AS 'Tipo de Boleto',
+        -- Se obtiene el mínimo de los boletos disponibles dependiendo el 
+        --intervalo de viajes que se buscó
+        MIN(CT.disponibles) AS 'Boletos Disponibles'
+    FROM 
+        Costo_Tipo CT
+    JOIN 
+        Tipo_Boleto TB ON CT.cve_tipo = TB.cve_tipo
+    WHERE 
+        CT.cve_viaje IN (SELECT cve_viaje FROM @cve_viaje_table)
+    GROUP BY 
+        TB.descripcion_tipo_boleto
+END
+GO
+
+--El mamón del gabbo quiere que se obtengan estos dos juntos
+--EXEC OBTENER BOLETOS DISPONIBLES @"ARREGLO DE CVE_VIAJES"
+
+--Para revisar y probar
+-- CREATE PROCEDURE GetViajes
+-- --los datos que dará el usuario para la consulta
+--     @origen_viaje INT,
+--     @destino_viaje INT,
+--     @fecha_salida DATE
+-- AS
+-- BEGIN
+--     SELECT 
+--     --Los datos que vamos a obtener
+--         R.no_servicio,
+--         L.cve_linea,
+--         L.nombre_linea,
+--         V.origen_viaje,
+--         V.destino_viaje,
+--         C.descripcion_clase,
+--         V.fecha_salida,
+--         V.fecha_llegada,
+--         --Se juntan las descripciones de los servicios en una sola columna separados por ","
+--         STRING_AGG(S.descripcion_servicio, ', ') AS descripcion_servicio,
+--         TV.descripcion_viaje
+--     FROM 
+--         Viaje V
+--     JOIN 
+--         Ruta R ON V.no_servicio = R.no_servicio
+--     JOIN 
+--         Camion CM ON R.id_camion = CM.id_camion
+--     JOIN 
+--         Linea L ON CM.cve_linea = L.cve_linea
+--     JOIN 
+--         Clase C ON L.cve_clase = C.cve_clase
+--     JOIN 
+--         Clase_Servicio CS ON C.cve_clase = CS.cve_clase
+--     JOIN 
+--         Servicio S ON CS.cve_servicio = S.cve_servicio
+--     JOIN 
+--         Tipo_Viaje TV ON V.cve_tipo = TV.cve_tipo
+--     WHERE 
+--         V.origen_viaje = @origen_viaje 
+--         AND V.destino_viaje = @destino_viaje
+--         --Debería mostrar los viajes que su fecha salida sea la misma a la que da el usuario
+--         AND CONVERT(DATE , V.fecha_salida) = @fecha_salida
+--     GROUP BY 
+--         R.no_servicio,
+--         L.cve_linea,
+--         L.nombre_linea,
+--         V.origen_viaje,
+--         V.destino_viaje,
+--         C.descripcion_clase,
+--         V.fecha_salida,
+--         V.fecha_llegada,
+--         TV.descripcion_viaje;
+-- END
+-- GO
+
+-- CREATE PROCEDURE ObtenerBoletosDisponibles
+--     @origen_viaje INT,
+--     @destino_viaje INT,
+--     @fecha_salida DATE
+-- AS
+-- BEGIN
+--     -- Crear una tabla temporal para almacenar los cve_viaje obtenidos
+--     DECLARE @cve_viaje_table TABLE (cve_viaje INT)
+
+--     -- Ejecutar el procedimiento GetViajes para obtener los cve_viaje
+--     INSERT INTO @cve_viaje_table
+--     EXEC GetViajes @origen_viaje, @destino_viaje, @fecha_salida
+
+--     -- Realizar la consulta para obtener los boletos disponibles
+--     SELECT 
+--         TB.descripcion_tipo_boleto AS 'Tipo de Boleto',
+--         MIN(CT.disponibles) AS 'Boletos Disponibles'
+--     FROM 
+--         Costo_Tipo CT
+--     JOIN 
+--         Tipo_Boleto TB ON CT.cve_tipo = TB.cve_tipo
+--     WHERE 
+--         CT.cve_viaje IN (SELECT cve_viaje FROM @cve_viaje_table)
+--     GROUP BY 
+--         TB.descripcion_tipo_boleto
+-- END
+
+--Con esto se obtienen los boletos disponibles de los viajes que se obtuvieron
+-- EXEC ObtenerBoletosDisponibles 1, 3, '2024-04-01'
