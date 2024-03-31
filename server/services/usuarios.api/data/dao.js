@@ -10,11 +10,9 @@ const conexion = async () => {
     }
 };
 
-const pool = await conexion();
-
 const ejecutarQuery = async (query) => {
     try {
-        let result = await pool.request().query(query);
+        let result = await conexion.request().query(query);
         return result.rowsAffected[0] > 0;
     }
     catch (error) {
@@ -24,7 +22,7 @@ const ejecutarQuery = async (query) => {
 
 const consultar = async (query) => {
     try {
-        let result = await pool.request().query(query);
+        let result = await conexion.request().query(query);
         return result.recordset;
     }
     catch (error) {
@@ -32,4 +30,4 @@ const consultar = async (query) => {
     }
 };
 
-module.exports = { ejecutarQuery, consultar };
+module.exports = { ejecutarQuery, consultar, conexion };

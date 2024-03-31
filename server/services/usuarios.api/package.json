@@ -2,7 +2,7 @@
     "name": "flecha-digital",
     "version": "0.1a",
     "description": "Sistema de gestion de viajes y boleto digital para el grupo Flecha Amarilla",
-    "main": "index.js",
+    "main": "server.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
@@ -15,16 +15,13 @@
         "express": "^4.17.1",
         "jsonwebtoken": "^9.0.2",
         "mssql": "^10.0.0",
+        "nodemailer": "6.9.13",
         "nodemon": "^2.0.6",
         "passport": "^0.7.0",
-        "passport-jwt": "^4.0.0",
-        "nodemailer": "6.9.13",
-        "firebase": "^10.9.0",
-        "@googleapis/walletobjects": "^1.0.0",
-        "googleapis": "^133.0.0",
-        "uuidv4": "^6.2.13"
+        "passport-jwt": "^4.0.0"
     },
     "devDependencies": {
+        "jest": "^29.7.0",
         "nodemon": "^2.0.6"
     }
 }
