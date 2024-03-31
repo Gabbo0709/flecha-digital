@@ -2,10 +2,15 @@ const Usuario = require('../models/classes/usuario');
 const RepositorioUsuario = require('../models/classes/usuarios-repositorio');
 
 describe('Test de autenticacion de usuario', () => {
-    test('Autenticar usuario valido', async () => {
-        const usuario = {email: 'gabbo0709@gmail.com', pass: '123'};
+    test('Autenticar usuario valido y activo', async () => {
+        const usuario = {email: 'e.gus.gg@gmail.com', pass: '12345'};
         const result = await RepositorioUsuario.autenticarUsuario(new Usuario(usuario));
         expect(result).toBeTruthy();
+    });
+    test('Autenticar usuario valido y no activo', async () => {
+        const usuario = {email: 'gabbo0709@gmail.com', pass: '12345'};
+        const result = await RepositorioUsuario.autenticarUsuario(new Usuario(usuario));
+        expect(result).toBeFalsy();
     });
     test('Autenticar usuario no valido', async () => {
         const usuario = {email: 'a@a', pass: '123'};
@@ -36,7 +41,7 @@ describe('Test de autenticacion de usuario', () => {
         expect(result).toBeFalsy();
     });
     test('Autenticar usuario con pass no valido', async () => {
-        const result = await RepositorioUsuario.autenticarUsuario({email: 'gabbo0709@gmail.com', pass: '1234'});
+        const result = await RepositorioUsuario.autenticarUsuario({email: 'e.gus.gg@gmail.com', pass: '1234'});
         expect(result).toBeFalsy();
     });
 });

@@ -23,7 +23,7 @@ class UsuariosRepositorio {
             return false;
         }
         // A futuro, se añadirá la encriptación de la contraseña
-        let query = `SELECT * FROM Usuario WHERE email = '${usuario.email}' AND pass = '${usuario.pass}'`;
+        let query = `SELECT * FROM Usuario WHERE email = '${usuario.email}' AND pass = '${usuario.pass}' AND cve_estado = 1`; // Activo
         let result = await dao.consultar(query);
         return result != null && result.length > 0;
     }
@@ -66,16 +66,16 @@ class UsuariosRepositorio {
     static obtenerTipoActualizacionUsuario(usuario) {
         let result = "";
         if (usuario.email != null) {
-            result += `email = ${usuario.email}, `;
+            result += `email = '${usuario.email}', `;
         }
         if (usuario.tel_user != null) {
           result += `tel_user = ${usuario.tel_user}, `;
         }
         if (usuario.nombre_user != null) {
-          result += `nombre_user = ${usuario.nombre_user}, `;
+          result += `nombre_user = '${usuario.nombre_user}', `;
         }
         if (usuario.apellido != null) {
-          result += `apellido = ${usuario.apellido}, `;
+          result += `apellido = '${usuario.apellido}', `;
         }
         return result.substring(0, result.length - 2);
     }
