@@ -12,7 +12,8 @@ const conexion = async () => {
 
 const ejecutarQuery = async (query) => {
     try {
-        let result = await conexion.request().query(query);
+        let pool = await conexion();
+        let result = await pool.request().query(query);
         return result.rowsAffected[0] > 0;
     }
     catch (error) {
@@ -22,7 +23,8 @@ const ejecutarQuery = async (query) => {
 
 const consultar = async (query) => {
     try {
-        let result = await conexion.request().query(query);
+        let pool = await conexion();
+        let result = await pool.request().query(query);
         return result.recordset;
     }
     catch (error) {
