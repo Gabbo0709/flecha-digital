@@ -165,17 +165,17 @@ SELECT * FROM Clase
 SELECT * FROM Clase_Servicio
 SELECT * FROM Linea
 SELECT * FROM Camion
-SELECT * FROM Tipo_Asiento
+SELECT * FROM Estado_Asiento
 SELECT * FROM Tipo_Viaje
 SELECT * FROM Asiento
 SELECT * FROM Boleto
 SELECT * FROM Operacion
 SELECT * FROM Viaje
-SELECT * FROM Estado_Asiento
 SELECT * FROM Estado_Boleto
 SELECT * FROM Usuario
 SELECT * FROM Servicio
 SELECT * FROM Ruta
-
-
-	
+SELECT * FROM MetodoPago_Operacion
+SELECT * FROM Costo_Tipo
+SELECT * FROM Estado_Usuario
+SELECT * FROM Token

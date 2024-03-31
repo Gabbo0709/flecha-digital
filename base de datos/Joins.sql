@@ -9,7 +9,7 @@ SELECT descripcion_clase, descripcion_servicio, nombre_linea FROM Linea AS l
 	ON c.cve_clase = cs.cve_clase
 	INNER JOIN Servicio AS s
 	ON cs.cve_servicio = s.cve_servicio
-	WHERE cve_linea = 1;
+	WHERE cve_linea = 2;
 GO
 
 

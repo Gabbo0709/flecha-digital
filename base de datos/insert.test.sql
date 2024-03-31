@@ -1,6 +1,11 @@
 Use db_flecha 
 GO
 
+
+INSERT INTO Usuario (nombre_user, apellido, pass, email, tel_user) VALUES 
+('Gustavo', 'Garcia', '123', 'e.gus.gg@gmail.com', 5573408674),
+('Gabriel', 'Arcos', '123', 'gabbo0709@gmail.com', 5575539391)
+
 INSERT INTO Clase(descripcion_clase) VALUES
 ('Economico'),
 ('SEMI_DIRECTA'),
@@ -96,13 +101,13 @@ INSERT INTO Linea (cve_linea, nombre_linea, cve_clase)
 VALUES
 (1, 'Primera Plus', 1),
 (2, 'ADO', 2),
-(3, 'Linea', 3);
+(3, 'Linea', 3)
 
 
 INSERT INTO Camion (id_camion, cve_linea, no_camion, cant_asientos)
 VALUES
 (1, 1, 123, 30),
 (2, 2, 456, 40),
-(3, 3, 789, 36);
+(3, 3, 789, 36)
 
 
