@@ -173,7 +173,8 @@ CREATE PROCEDURE GetViajes
 --los datos que dará el usuario para la consulta
     @origen_viaje INT,
     @destino_viaje INT,
-    @fecha_salida DATE
+    @fecha_salida DATE,
+    @fecha_usuario  TIME
 AS
 BEGIN
     SELECT 
@@ -212,6 +213,9 @@ BEGIN
         AND V.destino_viaje = @destino_viaje
         --Debería mostrar los viajes que su fecha salida sea la misma a la que da el usuario
         AND CONVERT(DATE , V.fecha_salida) = @fecha_salida
+        --Otra opcion es agregar estado a los viajes(disponible, no disponible)
+        --Debe mostrar una fecha y hora mayor a la que solicita el usuario(solicitud del mismo dia)
+        AND V.fecha_salida > @fecha_usuario 
     GROUP BY 
         R.no_servicio,
         L.cve_linea,
@@ -223,6 +227,8 @@ BEGIN
         V.fecha_llegada,
         TV.descripcion_viaje;
 END
+GO
+EXEC GetViajes 1,4,"31/03/2024", "31/03/2024 10:00:00"
 GO
 
 CREATE PROCEDURE ObtenerBoletosDisponibles
