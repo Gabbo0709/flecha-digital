@@ -1,8 +1,8 @@
 const sqlConfig = {
     user: 'sa',
-    password: 'password',
-    database: 'test',
-    server: '192.168.100.11',
+    password: 'gus',
+    database: 'db_flecha',
+    server: '192.168.1.6',
     pool : {
         max: 10,
         min: 0,
@@ -14,4 +14,4 @@ const sqlConfig = {
     }
 }
 
-export default sqlConfig;
+module.exports = sqlConfig;
