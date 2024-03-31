@@ -23,7 +23,7 @@ class UsuariosRepositorio {
             return false;
         }
         // A futuro, se añadirá la encriptación de la contraseña
-        let query = `SELECT * FROM Usuario WHERE email = '${usuario.correo}' AND pass = '${usuario.pass}'`;
+        let query = `SELECT * FROM Usuario WHERE email = '${usuario.email}' AND pass = '${usuario.pass}'`;
         let result = await dao.consultar(query);
         return result != null && result.length > 0;
     }
