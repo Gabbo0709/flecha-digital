@@ -239,7 +239,7 @@ BEGIN
 END;
 GO
 
-EXEC GetViajes 1,4, '2024-04-01'
+EXEC GetViajes 40,3, '2024-05-14'
 GO
 --Obtener boletos con el arreglo de cve_viajes que ya se obtuvo
 CREATE PROCEDURE ObtenerBoletosDisponibles
