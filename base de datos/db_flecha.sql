@@ -80,7 +80,7 @@ CREATE TABLE Viaje( -- Viajes que se realizan en una ruta (Pueden ser de A a B o
 	fecha_llegada				DATETIME NOT NULL,
 	escalas_pendientes			INT NOT NULL
 )
---Estado: Disponible, ocupado
+--Estado: Disponible (1), ocupado (2)
 CREATE TABLE Estado_Asiento( -- Estados de los asientos
 	cve_estado					INT PRIMARY KEY IDENTITY (1,1),
 	descripcion_edo_asiento		NVARCHAR (128) NOT NULL

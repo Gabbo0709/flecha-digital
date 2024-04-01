@@ -16,6 +16,3 @@ class TokensRepositorio {
     
 }; 
 
-
-//CHINGA TU MADRE GABO
- 

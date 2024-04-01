@@ -23,10 +23,9 @@ class ViajeRepositorio{
             return null;
         }
     };
-    
 
     /**
-     * 
+     * @description Se actualizan los viajes de un no_servicio 
      * @param {Viaje} viaje 
      * @param {string} tiempo 
      * @returns {Promise<boolean>}
@@ -39,7 +38,7 @@ class ViajeRepositorio{
         return await dao.ejecutarQuery(query);
     }
     /**
-     * 
+     * @description Obtiene el estado de los boletos y la cantidad disponible de los mismos.
      * @param {ConcentradoViaje} concentradoViaje
      * @returns {Promise<TipoBoleto[]>}
      */
@@ -47,7 +46,7 @@ class ViajeRepositorio{
         if(!(concentradoViaje instanceof ConcentradoViaje)){
             return null;
         }
-        const query = `EXEC ObtenerBoletosDisponibles`;
+        const query = `EXEC ObtenerBoletosDisponibles $()`;
         let result = await dao.consultar(query);
     }
 }

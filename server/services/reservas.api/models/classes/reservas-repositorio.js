@@ -3,13 +3,14 @@ const Operacion = require('./operacion');
 const dao = require('../../data/dao');
 
 class reservasRepositorio{
+        
     /**
-     *
      * @param {Operacion} operacion
      * @param {Boleto[]} boleto
      * @param {Reserva} reserva
      * @returns {Promise<boolean>}
      */
+
     static async crearOperacionYBoleto(operacion, boleto, reserva){
         if(!(operacion instanceof Operacion || boleto instanceof Boleto)){
             return false;
@@ -32,6 +33,7 @@ class reservasRepositorio{
         query += ` EXEC InsertarOperacionYBoleto ${operacion.no_operacion}, ${operacion.id_usuario}, ${operacion.cve_metodo}, ${operacion.cant_boletos}, ${operacion.costo_total}`;
         return dao.ejecutarQuery(query);
     }
+
     /**
      * @param {Boleto[]} boleto
      * @returns {string}
@@ -44,6 +46,7 @@ class reservasRepositorio{
         }
         return result.substring(0, result.length - 1);
     }
+    static 
 }
 
 module.exports = reservasRepositorio;
