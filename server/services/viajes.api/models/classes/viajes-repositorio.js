@@ -7,30 +7,24 @@ const dao = require('../../data/dao');
 class ViajeRepositorio{
 
     /**
+     * @description Se obtienen los concentrados de viajes que cumplan con los requisitos de viaje. Estos viajes tendran las paradas (de existir) desde el origen hasta el destino.
      * @param {Viaje} viaje
-     * @param {string} fecha_usuario
      * @returns {Promise<ConcentradoViaje[]>}
      */
-    static async buscarViaje(viaje){
+    static async obtenerViajes(viaje){
         if(!(viaje instanceof Viaje)){
             return null;
         }
-        let query = `EXEC GetViajes ${viaje.origen_viaje}, ${viaje.destino_viaje}, ${viaje.fecha_salida}, ${fecha_usuario};`;
+        const query = `EXEC GetViajes ${viaje.origen_viaje}, ${viaje.destino_viaje}, ${viaje.fecha_salida};`;
         let result = await dao.consultar(query);
-        return result != null && result.length > 0 ? new Viaje(result[0]) : null;
-    };
-    /**
-     * @param {Viaje} viaje 
-     * @returns {Promise<Asiento[]>} 
-     */
-    static async obtenerAsiento(viaje){
-        if (!(viaje instanceof Viaje)){
+        if (result != null && result.length > 0) {
+            return result.map(viajeData => new ConcentradoViaje(viajeData));
+        } else {
             return null;
         }
-        let query = `EXEC GetAsientos ${viaje.origen_viaje}, ${viaje.destino_viaje}, ${no_servicio};`;
-        result = await dao.consultar(query);
-        return result != null && result.length > 0 ? new Asiento() : null;
-    }
+    };
+    
+
     /**
      * 
      * @param {Viaje} viaje 
@@ -58,6 +52,20 @@ class ViajeRepositorio{
         let result = await dao.consultar(query);
         return result != null && result.length > 0 ? new TipoBoleto(result[0]) : null;
     }
+    
+    /**
+     * @param {Viaje} Viaje
+     * @returns {Promise<ConcentradoViaje[]>}
+     */
+    static async obtenerViaje(viaje){
+        if(!(viaje instanceof Viaje)){
+            return null;
+        }
+        const query = `EXEC GetViajes ${viaje.origen_viaje}, ${viaje.destino_viaje}, ${viaje.fecha_salida};`;
+        const result = await dao.consultar(query);
+    
+    }
+    
 }
 
 module.exports = ViajeRepositorio;
