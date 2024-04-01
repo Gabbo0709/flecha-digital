@@ -46,16 +46,6 @@ CREATE TABLE Camion( -- Camiones de la linea
 	no_camion					INT NOT NULL,
 	cant_asientos				INT NOT NULL
 )
---Estado: Disponible, ocupado, exlusivo para mujer
-CREATE TABLE Estado_Asiento( -- Estados de los asientos
-	cve_estado					INT PRIMARY KEY IDENTITY (1,1),
-	descripcion_edo_asiento		NVARCHAR (128) NOT NULL
-)
-
-CREATE TABLE Asiento( -- Asiento y su número de asiento 
-	cve_asiento					INT PRIMARY KEY NOT NULL,
-	no_asiento					INT NOT NULL
-)
 
 --Paso: La ruta de este autobús comenzó en otra terminal y/o central, es decir, el autobús realiza una parada en este origen.
 --Local:  La ruta de este autobús comienza en esta terminal y/o central.
@@ -82,11 +72,32 @@ CREATE TABLE Viaje( -- Viajes que se realizan en una ruta (Pueden ser de A a B o
 	duracion					TIME NOT NULL,
 	fecha_llegada				DATETIME NOT NULL
 )
+--Estado: Disponible, ocupado
+CREATE TABLE Estado_Asiento( -- Estados de los asientos
+	cve_estado					INT PRIMARY KEY IDENTITY (1,1),
+	descripcion_edo_asiento		NVARCHAR (128) NOT NULL
+)
+
+CREATE TABLE Asiento( -- Asiento y su número de asiento 
+	cve_asiento					INT PRIMARY KEY NOT NULL,
+	no_asiento					INT NOT NULL
+)
 
 CREATE TABLE Asiento_Edo_Viaje(--El estado de los asientos dependen del VIAJE
 	cve_asiento					INT FOREIGN KEY (cve_asiento) REFERENCES Asiento(cve_asiento) NOT NULL,
 	cve_viaje					INT FOREIGN KEY (cve_viaje) REFERENCES Viaje(cve_viaje) NOT NULL,
 	cve_estado					INT FOREIGN KEY (cve_estado) REFERENCES Estado_Asiento(cve_estado) NOT NULL
+)
+--Adulto, niño, adulto mayor, estudiante, profesor
+CREATE TABLE Tipo_Boleto( -- Tipos de boletos que se pueden comprar
+	cve_tipo					INT PRIMARY KEY IDENTITY (1,1),
+	descripcion_tipo_boleto		NVARCHAR(128) NOT NULL
+)
+
+CREATE TABLE Costo_Tipo( -- Disponibilidad de boletos de un tipo en un viaje.
+	cve_viaje					INT FOREIGN KEY (cve_viaje) REFERENCES Viaje(cve_viaje) NOT NULL,
+	cve_tipo					INT FOREIGN KEY (cve_tipo) REFERENCES Tipo_Boleto(cve_tipo) NOT NULL,
+	disponibles					INT NOT NULL
 )
 --Activo, falta confirmacion, suspendido, inactivo
 CREATE TABLE Estado_Usuario( -- Estados de las cuentas de usuario
@@ -120,17 +131,7 @@ CREATE TABLE Operacion_Viaje( -- Relación entre la compra de boletos y los viaj
 	no_operacion				INT FOREIGN KEY (no_operacion) REFERENCES Operacion(no_operacion) NOT NULL,
 	cve_viaje					INT FOREIGN KEY (cve_viaje) REFERENCES Viaje(cve_viaje) NOT NULL
 )
---Adulto, niño, adulto mayor, estudiante, profesor
-CREATE TABLE Tipo_Boleto( -- Tipos de boletos que se pueden comprar
-	cve_tipo					INT PRIMARY KEY IDENTITY (1,1),
-	descripcion_tipo_boleto		NVARCHAR(128) NOT NULL
-)
 
-CREATE TABLE Costo_Tipo( -- Disponibilidad de boletos de un tipo en un viaje.
-	cve_viaje					INT FOREIGN KEY (cve_viaje) REFERENCES Viaje(cve_viaje) NOT NULL,
-	cve_tipo					INT FOREIGN KEY (cve_tipo) REFERENCES Tipo_Boleto(cve_tipo) NOT NULL,
-	disponibles					INT NOT NULL
-)
 --1. Pagado, 2. pendiente, 3. cancelado, 4. reembolsado, 5. usado 
 CREATE TABLE Estado_Boleto( -- Estados de los boletos comprados
 	cve_estado					INT PRIMARY KEY IDENTITY NOT NULL,
@@ -149,13 +150,20 @@ CREATE TABLE Boleto( -- Boletos comprados por los usuarios
 	puerta						NVARCHAR(128),
 	carril						INT,
 	anden						INT,
-	tel_cliente					NUMERIC(12) NOT NULL,
 	costo_boleto				MONEY NOT NULL
 )
 
 CREATE TABLE Token( --Token de usuario para firebase
 	token_usuario				NVARCHAR(256) PRIMARY KEY NOT NULL,
 	id_usuario					INT FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario) NOT NULL
+)
+
+CREATE TABLE Actividad_Usuario(
+	no_operacion				INT FOREIGN KEY (no_operacion) REFERENCES Operacion(no_operacion) NOT NULL,
+	cve_central_origen			INT FOREIGN KEY (cve_central_origen) REFERENCES Central(cve_central) NOT NULL,
+	cve_central_destino			INT FOREIGN KEY (cve_central_destino) REFERENCES Central(cve_central) NOT NULL,
+	fecha_salida				DATETIME NOT NULL,
+	fecha_operacion				DATETIME DEFAULT GETDATE()
 )
 
 ALTER AUTHORIZATION ON DATABASE::db_flecha TO sa
@@ -179,3 +187,4 @@ SELECT * FROM MetodoPago_Operacion
 SELECT * FROM Costo_Tipo
 SELECT * FROM Estado_Usuario
 SELECT * FROM Token
+SELECT * FROM Actividad_Usuario

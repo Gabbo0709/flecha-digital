@@ -2,35 +2,32 @@ Use db_flecha
 GO
 
 
-SELECT descripcion_clase, descripcion_servicio, nombre_linea FROM Linea AS l
-	INNER JOIN Clase AS c
-	ON l.cve_clase = c.cve_clase
-	INNER JOIN Clase_Servicio AS cs
-	ON c.cve_clase = cs.cve_clase
-	INNER JOIN Servicio AS s
-	ON cs.cve_servicio = s.cve_servicio
-	WHERE cve_linea = 2;
-GO
-
-
-EXEC GetViajes 1, 1, "01/04/2024";
-GO
-
 CREATE PROCEDURE GetAsientos
-    @origen INT,
-    @destino INT,
-    @no_servicio INT
+	@cve_viajes NVARCHAR(MAX),
+	@no_servicio	INT
 AS
 BEGIN
-    SELECT A.cve_asiento, A.no_asiento, AEV.cve_estado
-    FROM Asiento_Edo_Viaje AEV
-        JOIN Asiento A ON AEV.cve_asiento = A.cve_asiento
-        JOIN Viaje V ON AEV.cve_viaje = V.cve_viaje
-        JOIN Ruta R ON V.no_servicio = R.no_servicio
-    WHERE V.origen_viaje = @origen AND V.destino_viaje = @destino AND R.no_servicio = @no_servicio
-    GROUP BY A.cve_asiento, A.no_asiento, AEV.cve_estado;
-END
+	SELECT  A.cve_asiento,
+			A.no_asiento,
+			C.cant_asientos,
+			E.descripcion_edo_asiento
+	FROM Ruta R
+	CROSS JOIN Asiento_Edo_Viaje EA
+	JOIN Camion C ON
+	C.id_camion = R.id_camion
+	JOIN Asiento A ON 
+	A.cve_asiento = EA.cve_asiento
+	JOIN Estado_Asiento E ON
+	EA.cve_estado = E.cve_estado
+	JOIN Viaje V ON
+	V.no_servicio = R.no_servicio
+	WHERE R.no_servicio = @no_servicio AND
+	V.cve_viaje IN (SELECT value FROM STRING_SPLIT (@cve_viajes, ','))
+END;
 GO
+	
+	
+
 
 EXEC GetAsientos 1, 3;
 GO
@@ -56,8 +53,10 @@ BEGIN
     WHERE
         O.id_usuario = @id_usuario;
 END;
+GO
 
-EXEC GetActividad 1;
+
+EXEC GetActividadUsuario  1;
 GO
 
 CREATE PROCEDURE GuardarUsuarioYToken
@@ -85,8 +84,7 @@ CREATE PROCEDURE InsertarOperacionYBoletos
     @costo_total MONEY,
     @cve_central_origen INT,
     @cve_central_destino INT,
-    @fecha_salida DATETIME,
-    @fecha_operacion DATETIME
+    @fecha_salida DATETIME
 AS
 BEGIN
     -- Insertar la operación
@@ -94,14 +92,15 @@ BEGIN
     VALUES (@no_operacion, @id_usuario, @cve_metodo, @cant_boletos, @costo_total)
 
     --Insertar la actividad del usuario
-    INSERT INTO Actividad_Usuario(no_operacion, cve_central_origen, cve_central_destino, fecha_salida, fecha_operacion)
-    VALUES (@no_operacion, @cve_central_origen, @cve_central_destino, @fecha_salida, @fecha_operacion)
+    INSERT INTO Actividad_Usuario(no_operacion, cve_central_origen, cve_central_destino, fecha_salida)
+    VALUES (@no_operacion, @cve_central_origen, @cve_central_destino, @fecha_salida)
 
     -- Insertar los boletos
     INSERT INTO Boleto(no_boleto, cve_tipo, no_operacion, cve_asiento, cve_estado, nombre_pas, token_fac, no_asiento_boleto, puerta, carril, anden, tel_cliente, costo_boleto)
     SELECT no_boleto, cve_tipo_boleto, @no_operacion, cve_asiento, cve_estado, nombre_pas, token_fac, no_asiento_boleto, puerta, carril, anden, tel_cliente, costo_boleto
     FROM #BoletosTemporales
-END
+END;
+GO
 --Se crea tabla temporal para los boletos
 CREATE TABLE #BoletosTemporales(
     no_boleto INT,
@@ -123,7 +122,7 @@ INSERT INTO #BoletosTemporales VALUES
 (1, 1, 1, 2, 'Juan Perez', '123456', 1, 'A', 1, 1, 'En linea', 1234567890, 100.00),
 (2, 2, 1, 3, 'Mariana Perez', '123457', 2, 'B', 2, 2, 'En linea', 1234567891, 50.00),
 (3, 3, 1, 2, 'Pedro Perez', '123458', 3, 'C', 3, 3, 'En linea', 1234567892, 300.00)
-EXEC InsertarOperacionYBoletos 1, 1, 1, 2, 300.00, 1, 3, '2024-04-01 10:00:00', '2024-03-31 10:00:00';
+EXEC InsertarOperacionYBoletos 1, 1, 1, 2, 300.00, 1, 3, '2024-04-01 10:00:00';
 GO
 
 CREATE PROCEDURE CancelarBoletosPorServicio
@@ -164,8 +163,8 @@ BEGIN
     ON ov.cve_viaje = v.cve_viaje
     JOIN Boleto b
     ON o.no_operacion = b.no_operacion
-    WHERE v.no_servicio = @no_servicio AND b.cve_estado = 1
-END 
+    WHERE v.no_servicio = @no_servicio AND b.cve_estado = 1;
+END ;
 GO
 
 CREATE PROCEDURE UpdateViaje
@@ -174,9 +173,9 @@ CREATE PROCEDURE UpdateViaje
 AS
 BEGIN
 UPDATE Viaje
-        SET fecha_salida = ADDTIME(fecha_salida, @tiempo),
-            hora_llegada = ADDTIME(hora_llegada, @tiempo)
-        WHERE EXISTS (SELECT 1 FROM Viaje v WHERE v.no_servicio = @no_servicio GROUP BY v.no_servicio HAVING COUNT > 1)
+        SET fecha_salida = DATEADD(HOUR, DATEPART(HOUR, @tiempo), fecha_salida),
+            fecha_llegada = DATEADD(HOUR, DATEPART(HOUR, @tiempo), fecha_salida)
+        WHERE EXISTS (SELECT 1 FROM Viaje v WHERE v.no_servicio = @no_servicio GROUP BY v.no_servicio)
 END
 
 EXEC UpdateViaje '01:00:00', 1;
@@ -187,8 +186,7 @@ CREATE PROCEDURE GetViajes
 --los datos que dará el usuario para la consulta
     @origen_viaje INT,
     @destino_viaje INT,
-    @fecha_salida DATE,
-    @fecha_usuario  TIME
+    @fecha_salida DATE
 AS
 BEGIN
     SELECT 
@@ -201,8 +199,8 @@ BEGIN
         C.descripcion_clase,
         V.fecha_salida,
         V.fecha_llegada,
-        --Se juntan las cve_viaje en una sola columna separados por ","
-        STRING_AGG(CONVERT(VARCHAR(10), V.cve_viaje), ', ') AS cve_viajes,
+		--Se juntan las cve_viajes que se repitan en la busqueda separados por ","
+		STRING_AGG(cve_viaje, ',') AS cve_viajes,
         --Se juntan las descripciones de los servicios en una sola columna separados por ","
         STRING_AGG(S.descripcion_servicio, ', ') AS descripcion_servicio,
         TV.descripcion_viaje
@@ -229,7 +227,7 @@ BEGIN
         AND CONVERT(DATE , V.fecha_salida) = @fecha_salida
         --Otra opcion es agregar estado a los viajes(disponible, no disponible)
         --Debe mostrar una fecha y hora mayor a la que solicita el usuario(solicitud del mismo dia)
-        AND V.fecha_salida > @fecha_usuario 
+        AND V.fecha_salida > GETDATE()
     GROUP BY 
         R.no_servicio,
         L.cve_linea,
@@ -240,28 +238,27 @@ BEGIN
         V.fecha_salida,
         V.fecha_llegada,
         TV.descripcion_viaje;
-END
-GO
-EXEC GetViajes 1,4,"31/03/2024", "31/03/2024 10:00:00"
+END;
 GO
 
+EXEC GetViajes 1,4, '2024-04-01'
+GO
+--Obtener boletos con el arreglo de cve_viajes que ya se obtuvo
 CREATE PROCEDURE ObtenerBoletosDisponibles
-    @cve_viaje_lista NVARCHAR(MAX)
+    @cve_viajes NVARCHAR(MAX)
 AS
 BEGIN
-    -- Crear una tabla temporal para almacenar los cve_viaje que obtuvimos
-    -- del procedimiento almacenado de GetViajes
+    -- Crear una tabla temporal para almacenar los cve_viaje obtenidos
     DECLARE @cve_viaje_table TABLE (cve_viaje INT)
 
-    -- Llenar la tabla con los cve_viaje de la lista
+    -- Insertar los cve_viajes en la tabla temporal
     INSERT INTO @cve_viaje_table
-    SELECT value FROM STRING_SPLIT(@cve_viaje_list, ',')
+    SELECT value
+    FROM STRING_SPLIT(@cve_viajes, ',')
 
-    -- Realizar la consulta
+    -- Realizar la consulta para obtener los boletos disponibles
     SELECT 
         TB.descripcion_tipo_boleto AS 'Tipo de Boleto',
-        -- Se obtiene el mínimo de los boletos disponibles dependiendo el 
-        --intervalo de viajes que se buscó
         MIN(CT.disponibles) AS 'Boletos Disponibles'
     FROM 
         Costo_Tipo CT
@@ -271,93 +268,81 @@ BEGIN
         CT.cve_viaje IN (SELECT cve_viaje FROM @cve_viaje_table)
     GROUP BY 
         TB.descripcion_tipo_boleto
-END
+END;
 GO
 
---El mamón del gabbo quiere que se obtengan estos dos juntos
---EXEC OBTENER BOLETOS DISPONIBLES @"ARREGLO DE CVE_VIAJES"
+EXEC ObtenerBoletosDisponibles '1,2,3'
+GO
 
---Para revisar y probar
--- CREATE PROCEDURE GetViajes
--- --los datos que dará el usuario para la consulta
---     @origen_viaje INT,
---     @destino_viaje INT,
---     @fecha_salida DATE
--- AS
--- BEGIN
---     SELECT 
---     --Los datos que vamos a obtener
---         R.no_servicio,
---         L.cve_linea,
---         L.nombre_linea,
---         V.origen_viaje,
---         V.destino_viaje,
---         C.descripcion_clase,
---         V.fecha_salida,
---         V.fecha_llegada,
---         --Se juntan las descripciones de los servicios en una sola columna separados por ","
---         STRING_AGG(S.descripcion_servicio, ', ') AS descripcion_servicio,
---         TV.descripcion_viaje
---     FROM 
---         Viaje V
---     JOIN 
---         Ruta R ON V.no_servicio = R.no_servicio
---     JOIN 
---         Camion CM ON R.id_camion = CM.id_camion
---     JOIN 
---         Linea L ON CM.cve_linea = L.cve_linea
---     JOIN 
---         Clase C ON L.cve_clase = C.cve_clase
---     JOIN 
---         Clase_Servicio CS ON C.cve_clase = CS.cve_clase
---     JOIN 
---         Servicio S ON CS.cve_servicio = S.cve_servicio
---     JOIN 
---         Tipo_Viaje TV ON V.cve_tipo = TV.cve_tipo
---     WHERE 
---         V.origen_viaje = @origen_viaje 
---         AND V.destino_viaje = @destino_viaje
---         --Debería mostrar los viajes que su fecha salida sea la misma a la que da el usuario
---         AND CONVERT(DATE , V.fecha_salida) = @fecha_salida
---     GROUP BY 
---         R.no_servicio,
---         L.cve_linea,
---         L.nombre_linea,
---         V.origen_viaje,
---         V.destino_viaje,
---         C.descripcion_clase,
---         V.fecha_salida,
---         V.fecha_llegada,
---         TV.descripcion_viaje;
--- END
--- GO
+--Actualización de asientos
+--Restar los asientos disponibles por tipo y los asientos disponibles para cada viaje
+CREATE PROCEDURE ActualizarDisponibles
+    @cve_viaje_list NVARCHAR(MAX),
+    @restar_cantidad INT
+AS
+BEGIN
+    -- Actualizar los registros en Costo_Tipo
+    UPDATE CT
+    SET CT.disponibles = CT.disponibles - @restar_cantidad
+    FROM Costo_Tipo CT
+    WHERE CT.cve_viaje IN (SELECT value FROM STRING_SPLIT(@cve_viaje_list, ','))
 
--- CREATE PROCEDURE ObtenerBoletosDisponibles
---     @origen_viaje INT,
---     @destino_viaje INT,
---     @fecha_salida DATE
--- AS
--- BEGIN
---     -- Crear una tabla temporal para almacenar los cve_viaje obtenidos
---     DECLARE @cve_viaje_table TABLE (cve_viaje INT)
+    -- Actualizar el estado de los asientos
+    UPDATE AEV
+    SET cve_estado = 2
+    FROM Asiento_Edo_Viaje AEV
+    INNER JOIN Asiento A ON AEV.cve_asiento = A.cve_asiento
+    WHERE AEV.cve_viaje IN (SELECT value FROM STRING_SPLIT(@cve_viaje_list, ','))
+END;
+GO
 
---     -- Ejecutar el procedimiento GetViajes para obtener los cve_viaje
---     INSERT INTO @cve_viaje_table
---     EXEC GetViajes @origen_viaje, @destino_viaje, @fecha_salida
+--Mandamos la cantidad a restar para cada tipo y actualiza todos los asientos a ocupado
+--Procedimiento que actualiza los 4 tipos de boleto dependiendo de cuales mandemos a llamar
+CREATE PROCEDURE ActualizarDisponiblesMultiplesTipos
+    @cve_viaje_list NVARCHAR(MAX),
+    @restar_cantidad_tipo1 INT,
+    @restar_cantidad_tipo2 INT,
+    @restar_cantidad_tipo3 INT,
+    @restar_cantidad_tipo4 INT,
+	@cve_asiento_list NVARCHAR(MAX)
+AS
+BEGIN
+    -- Actualizar los registros en Costo_Tipo para el tipo 1
+    UPDATE CT
+    SET CT.disponibles = CT.disponibles - @restar_cantidad_tipo1
+    FROM Costo_Tipo CT
+    WHERE CT.cve_viaje IN (SELECT value FROM STRING_SPLIT(@cve_viaje_list, ','))
+      AND CT.cve_tipo = 1;
 
---     -- Realizar la consulta para obtener los boletos disponibles
---     SELECT 
---         TB.descripcion_tipo_boleto AS 'Tipo de Boleto',
---         MIN(CT.disponibles) AS 'Boletos Disponibles'
---     FROM 
---         Costo_Tipo CT
---     JOIN 
---         Tipo_Boleto TB ON CT.cve_tipo = TB.cve_tipo
---     WHERE 
---         CT.cve_viaje IN (SELECT cve_viaje FROM @cve_viaje_table)
---     GROUP BY 
---         TB.descripcion_tipo_boleto
--- END
+    -- Actualizar los registros en Costo_Tipo para el tipo 2
+    UPDATE CT
+    SET CT.disponibles = CT.disponibles - @restar_cantidad_tipo2
+    FROM Costo_Tipo CT
+    WHERE CT.cve_viaje IN (SELECT value FROM STRING_SPLIT(@cve_viaje_list, ','))
+      AND CT.cve_tipo = 2;
 
---Con esto se obtienen los boletos disponibles de los viajes que se obtuvieron
--- EXEC ObtenerBoletosDisponibles 1, 3, '2024-04-01'
+    UPDATE CT
+    SET CT.disponibles = CT.disponibles - @restar_cantidad_tipo2
+    FROM Costo_Tipo CT
+    WHERE CT.cve_viaje IN (SELECT value FROM STRING_SPLIT(@cve_viaje_list, ','))
+      AND CT.cve_tipo = 3;
+
+	UPDATE CT
+    SET CT.disponibles = CT.disponibles - @restar_cantidad_tipo2
+    FROM Costo_Tipo CT
+    WHERE CT.cve_viaje IN (SELECT value FROM STRING_SPLIT(@cve_viaje_list, ','))
+      AND CT.cve_tipo = 4;
+    -- Actualizar el estado de los asientos
+    UPDATE AEV
+    SET cve_estado = 2
+    FROM Asiento_Edo_Viaje AEV
+    INNER JOIN Asiento A ON AEV.cve_asiento = A.cve_asiento
+    WHERE AEV.cve_viaje IN (SELECT value FROM STRING_SPLIT(@cve_viaje_list, ','))
+		AND AEV.cve_asiento IN (SELECT value FROM STRING_SPLIT(@cve_asiento_list, ','));
+END;
+GO
+
+EXEC ActualizarDisponiblesMultiplesTipos '1,2', 1, 0, 2, 1
+GO
+
+
