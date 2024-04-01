@@ -1,6 +1,24 @@
 Use db_flecha 
 GO
 
+INSERT INTO Tipo_Boleto(descripcion_boleto) VALUES
+('Adulto'),
+('Menor'),
+('Adulto Mayor'),
+('Estudiante')
+
+INSERT INTO Estado_Asiento(descripcion_edo_asiento) VALUES
+('Disponible'),
+('Ocupado')
+
+INSERT INTO Estado_Boleto(descripcion_edo_boleto) VALUES
+('Pagado'),
+('Pendiente'),
+('Cancelado'),
+('Reembolsado'),
+('Usado')
+
+
 INSERT INTO Estado_Usuario(descripcion_edo_usuario) VALUES
 ('Activo'),
 ('Falta confirmacion'),
@@ -30,16 +48,22 @@ INSERT INTO Servicio(descripcion_servicio) VALUES
 
 
 INSERT INTO Clase_Servicio (cve_clase, cve_servicio) VALUES 
-(1, 2),
-(1, 3),
-(2, 1),
-(2, 2),
-(2, 3),
-(3, 1),
+(1,1),
+(2,2),
 (3, 2),
 (3, 3),
+(3, 4),
+(3, 5),
+(3, 6),
+(3, 7),
+(3, 8),
 (4, 2),
 (4, 3),
+(4, 4),
+(4, 5),
+(4, 6),
+(4, 7),
+(4, 8),
 (5, 2),
 (5, 3),
 (5, 4),
@@ -47,6 +71,8 @@ INSERT INTO Clase_Servicio (cve_clase, cve_servicio) VALUES
 (5, 6),
 (5, 7),
 (5, 8);
+
+
 
 INSERT INTO Tipo_Viaje(tipo, descripcion_viaje) VALUES
 ('Local', 'La ruta de este autobús comienza en esta terminal y/o central.'),
