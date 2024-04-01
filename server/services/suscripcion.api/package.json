@@ -1,0 +1,11 @@
+{
+  "name": "suscripcion.api",
+  "version": "0.0.2",
+  "description": "Microservicio de gestión de suscripción. Manejará las suscripciones a las carteras digitales u otras plataformas de almacenamiento digital para los boletos.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gabriel Arcos Martínez, Ian Alexei Escalona Álvarez, Eric Gustavo González García, Valente Arturo Cárdenas Lara, César Alberto Rodríguez Pacheco",
+  "license": "ISC"
+}

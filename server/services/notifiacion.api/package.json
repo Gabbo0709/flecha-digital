@@ -1,0 +1,11 @@
+{
+  "name": "notifiacion.api",
+  "version": "0.0.2",
+  "description": "Microservicio para la gestión de notificaciones. Se notificará a los clientes cambios con respecto a sus boletos.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gabriel Arcos Martínez, Ian Alexei Escalona Álvarez, Eric Gustavo González García, Valente Arturo Cárdenas Lara, César Alberto Rodríguez Pacheco",
+  "license": "ISC"
+}

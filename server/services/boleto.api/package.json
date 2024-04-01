@@ -1,0 +1,11 @@
+{
+  "name": "boleto.api",
+  "version": "0.0.2",
+  "description": "Microservicio para gestión de boletos digitales en carteras digitales y otras plataformas.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gabriel Arcos Martínez, Ian Alexei Escalona Álvarez, Valente Arturo Cárdenas Lara, Eric Gustavo González García, César Alberto Rodríguez Pacheco",
+  "license": "ISC"
+}
