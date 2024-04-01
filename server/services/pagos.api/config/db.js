@@ -2,7 +2,7 @@ const sqlConfig = {
     user: 'sa',
     password: 'gus',
     database: 'db_flecha',
-    server: '192.168.1.6',
+    server: '192.168.100.82',
     pool : {
         max: 10,
         min: 0,
