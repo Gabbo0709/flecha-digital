@@ -1,7 +1,10 @@
 class tipoBoleto{
-    constructor(cve_tipo, descripciom, disponibles){
+    //Clave tipo: se obtiene 
+    //Descripción: se obtiene
+    //Disponibles: se obtiene
+    constructor(cve_tipo, descripcion, disponibles){
         this.cve_tipo = cve_tipo || null;
-        this.descripciom = descripciom || null;
+        this.descripcion = descripcion || null;
         this.disponibles = disponibles || null;
     }
 }

@@ -40,32 +40,16 @@ class ViajeRepositorio{
     }
     /**
      * 
-     * @param {Viaje} viaje
-     * @param {string} fecha_usuario
+     * @param {ConcentradoViaje} concentradoViaje
      * @returns {Promise<TipoBoleto[]>}
      */
-    static async obtenerTipoBoleto(tipoBoleto){
-        if(!(tipoBoleto instanceof TipoBoleto)){
+    static async obtenerTipoBoleto(concentradoViaje){
+        if(!(concentradoViaje instanceof ConcentradoViaje)){
             return null;
         }
-        const query = `EXEC ObtenerBoletosDisponibles ${viaje.origen_viaje}, ${viaje.destino_viaje},${viaje.fecha_salida}, ${fecha_usuario};`;
+        const query = `EXEC ObtenerBoletosDisponibles`;
         let result = await dao.consultar(query);
-        return result != null && result.length > 0 ? new TipoBoleto(result[0]) : null;
     }
-    
-    /**
-     * @param {Viaje} Viaje
-     * @returns {Promise<ConcentradoViaje[]>}
-     */
-    static async obtenerViaje(viaje){
-        if(!(viaje instanceof Viaje)){
-            return null;
-        }
-        const query = `EXEC GetViajes ${viaje.origen_viaje}, ${viaje.destino_viaje}, ${viaje.fecha_salida};`;
-        const result = await dao.consultar(query);
-    
-    }
-    
 }
 
 module.exports = ViajeRepositorio;
