@@ -4,7 +4,7 @@
     "description": "Sistema de gestion de viajes y boleto digital para el grupo Flecha Amarilla",
     "main": "server.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "jest"
     },
     "author": "Gabriel Arcos Martinez, Eric Gustavo Gonzalez Garcia, Ian Alexei Escalona Alvarez, Valente Arturo Cardenas Lara, Cesar Alberto Rodriguez Pacheco ",
     "license": "ISC",
