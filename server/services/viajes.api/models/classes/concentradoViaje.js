@@ -1,6 +1,7 @@
 class ConcentradoViaje{
     constructor(concentradoViaje){
         this.cve_ruta = concentradoViaje.cve_linea || null;
+        this.cve_viajes = concentradoViaje.cve_viajes || null;
         this.no_servicio = concentradoViaje.no_servicio || null;
         this.orige_ruta = concentradoViaje.origen || null;
         this.destino_ruta = concentradoViaje.destino || null;
