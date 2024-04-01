@@ -50,17 +50,17 @@ class UsuariosRepositorio {
 
     
     /**
-     * @param {Usuario} usuario
+     * @param {string} email // Correo del usuario que será actualizado
+     * @param {Usuario} usuario // Objeto con los datos a actualizar
      * @returns {Promise<boolean>}
      */
-
-    
-    static async actualizarUsuario(usuario) {
-        const user = await this.buscarUsuarioCorreo(usuario.email);
+  
+    static async actualizarUsuario(email, usuario) {
+        const user = await this.buscarUsuarioCorreo(email);
         if(user == null || user.length == 0) {
             return false;
         }
-        let query = `UPDATE Usuario SET ${obtenerTipoActualizacionUsuario(user)} WHERE id_usuario = ${user[0].id_usuario}`;
+        let query = `UPDATE Usuario SET ${this.obtenerTipoActualizacionUsuario(usuario)} WHERE id_usuario = ${user.id_usuario}`;
         return await dao.ejecutarQuery(query);
     }
 
