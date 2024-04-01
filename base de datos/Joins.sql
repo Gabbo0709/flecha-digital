@@ -1,7 +1,6 @@
 Use db_flecha
 GO
 
-
 CREATE PROCEDURE GetAsientos
 	@cve_viajes NVARCHAR(MAX),
 	@no_servicio	INT
@@ -23,11 +22,10 @@ BEGIN
 	V.no_servicio = R.no_servicio
 	WHERE R.no_servicio = @no_servicio AND
 	V.cve_viaje IN (SELECT value FROM STRING_SPLIT (@cve_viajes, ','))
+	GROUP BY 
+	A.cve_asiento, A.no_asiento, C.cant_asientos, E.descripcion_edo_asiento
 END;
 GO
-	
-	
-
 
 EXEC GetAsientos 1, 3;
 GO
@@ -73,7 +71,7 @@ BEGIN
 
     INSERT INTO Token(token_usuario, id_usuario)
     VALUES (@token_usuario, SCOPE_IDENTITY())
-END
+END;
 GO
 
 CREATE PROCEDURE InsertarOperacionYBoletos
