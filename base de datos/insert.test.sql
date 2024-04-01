@@ -1,16 +1,19 @@
 Use db_flecha 
 GO
 
+--Descripcion de los boletos
 INSERT INTO Tipo_Boleto(descripcion_tipo_boleto) VALUES
 ('Adulto'),
 ('Menor'),
 ('Adulto Mayor'),
 ('Estudiante')
 
+--Estados de los asientos
 INSERT INTO Estado_Asiento(descripcion_edo_asiento) VALUES
 ('Disponible'),
 ('Ocupado')
 
+--Estados que puede tener un boleto
 INSERT INTO Estado_Boleto(descripcion_edo_boleto) VALUES
 ('Pagado'),
 ('Pendiente'),
@@ -18,25 +21,25 @@ INSERT INTO Estado_Boleto(descripcion_edo_boleto) VALUES
 ('Reembolsado'),
 ('Usado')
 
-
+--Estados que puede tener un usuario
 INSERT INTO Estado_Usuario(descripcion_edo_usuario) VALUES
 ('Activo'),
 ('Falta confirmacion'),
 ('Inactivo'),
 ('Suspendido')
-
+--GenerarUsuarios
 INSERT INTO Usuario (nombre_user, apellido, pass, email, tel_user) VALUES 
 ('Gustavo', 'Garcia', '123', 'e.gus.gg@gmail.com', 5573408674),
 ('Gabriel', 'Arcos', '123', 'gabbo0709@gmail.com', 5575539391)
-
+--Clases existentes
 INSERT INTO Clase(descripcion_clase) VALUES
 ('Economico'),
 ('SEMI_DIRECTA'),
 ('Ejecutivo'),
 ('Primer Select'),
 ('Primera')
-
-INSERT INTO Servicio(descripcion_servicio) VALUES
+--Descripcion de los servicio
+INSERT INTO Servicio_Camion(descripcion_servicio) VALUES
 ('No hay servicios disponibles'),
 ('Aire acondicionado'),
 ('Toma corriente'),
@@ -46,7 +49,7 @@ INSERT INTO Servicio(descripcion_servicio) VALUES
 ('Pantalla general'),
 ('Wi-Fi')
 
-
+--Servicio que ofrece una clase
 INSERT INTO Clase_Servicio (cve_clase, cve_servicio) VALUES 
 (1,1),
 (2,2),
@@ -73,21 +76,20 @@ INSERT INTO Clase_Servicio (cve_clase, cve_servicio) VALUES
 (5, 8);
 
 
-
+--Tipos viaje
 INSERT INTO Tipo_Viaje(tipo, descripcion_viaje) VALUES
 ('Local', 'La ruta de este autobús comienza en esta terminal y/o central.'),
 ('Paso', 'La ruta de este autobús comenzó en otra terminal y/o central, es decir, el autobús realiza una parada en este origen.')
 
 
-
+--Insert linea
 INSERT INTO Linea (cve_linea, nombre_linea, cve_clase)
 VALUES
 (1, 'Primera Plus', 1),
 (2, 'ADO', 2),
 (3, 'Linea', 3)
 
-
-
+--INSERT CAMION
 INSERT INTO Camion (id_camion, cve_linea, no_camion, cant_asientos)
 VALUES
 (1, 1, 123, 35),
@@ -142,6 +144,7 @@ VALUES
 (50, 2, 012, 38);
 GO
 
+--INSERT CENTRAL
 INSERT INTO Central (cve_central, nombre_central, abreviatura, municipio, estado)
 VALUES 
 (1, 'Central de Autobuses de Aguascalientes', 'AGS', 'Aguascalientes', 'AGS'),
@@ -334,10 +337,53 @@ VALUES
 (188, 'Central de Autobuses de Zacatecas', 'ZAC', 'Zacatecas', 'ZAC')
 GO
 --Por si hay que reniciar los inserts (y)
-DELETE FROM Ruta
+DELETE FROM Servicio_Viaje
 DBCC CHECKIDENT (Ruta, RESEED, 0);
 
---INSERTS Para Ruta
+--INSERTS Para Servicios
+--Rutas de CDMX (norte y poniente) a Jalisco
+INSERT INTO Servicio_Viaje (origen_servicio, destino_servicio)
+SELECT c1.cve_central AS origen, c2.cve_central AS destino
+FROM Central c1
+JOIN Central c2 ON c1.cve_central <> c2.cve_central
+WHERE c1.cve_central IN (21, 22)
+AND c2.cve_central BETWEEN 78 AND 93;
+--Servicios de Jalisco(Todas las centrales) a CDMX (Norte y Poniente)
+INSERT INTO Servicio_Viaje (origen_servicio, destino_servicio)
+VALUES (78, 21),
+       (78, 22),
+       (79, 21),
+       (79, 22),
+       (80, 21),
+       (80, 22),
+       (81, 21),
+       (81, 22),
+       (82, 21),
+       (82, 22),
+       (83, 21),
+       (83, 22),
+       (84, 21),
+       (84, 22),
+       (85, 21),
+       (85, 22),
+       (86, 21),
+       (86, 22),
+       (87, 21),
+       (87, 22),
+       (88, 21),
+       (88, 22),
+       (89, 21),
+       (89, 22),
+       (90, 21),
+       (90, 22),
+       (91, 21),
+       (91, 22),
+       (92, 21),
+       (92, 22),
+       (93, 21),
+       (93, 22);
+
+
 --INSERTS DE CDMX A TODO EL PAIS
 INSERT INTO Ruta (origen_ruta, destino_ruta)
 SELECT c1.cve_central AS origen, c2.cve_central AS destino
@@ -352,17 +398,22 @@ WHERE c1.cve_central BETWEEN 21 AND 32
   AND c2.cve_central NOT BETWEEN 78 AND 93;
 
 
+
+--INSERTS para origen: todas las centrales fuera de CDMX, destino Cualqueir central CDMX
 SELECT * FROM Ruta
 INSERT INTO Ruta (origen_ruta, destino_ruta)
 SELECT TOP 100 c1.cve_central, c2.cve_central
 FROM Central c1, Central c2
 WHERE c1.cve_central IN (21, 22)
 AND c2.cve_central BETWEEN 78 AND 93;
+
 INSERT INTO Ruta (origen_ruta, destino_ruta)
 SELECT TOP 100 c2.cve_central, c1.cve_central
 FROM Central c1, Central c2
 WHERE c1.cve_central IN (21, 22)
 AND c2.cve_central BETWEEN 78 AND 93;
+
+--INSERTS Viajes 
 
 
 

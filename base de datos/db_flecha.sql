@@ -17,6 +17,7 @@ CREATE TABLE  Central( -- Centrales de autobuses
 	municipio					NVARCHAR(128) NOT NULL,
 	estado						NVARCHAR(128) NOT NULL
 )
+
 --Clases: ejecutivo, SEMI_DIRECTA, Economico, Primer Select
 --Semidirecta y primer select ofrecen servicios, los otros dos no.
 CREATE TABLE Clase(  -- Clases de autobuses. Por clase se entiende el tipo de autobús que se ofrece. Se diferencian por la calidad de los servicios que ofrecen.
@@ -24,14 +25,14 @@ CREATE TABLE Clase(  -- Clases de autobuses. Por clase se entiende el tipo de au
 	descripcion_clase			NVARCHAR(128) NOT NULL
 )
 
-CREATE TABLE Servicio( -- Servicios que se ofrecen en las clases SEMI_DIRECTA y Primer Select
+CREATE TABLE Servicio_Camion( -- Servicios que se ofrecen en las clases SEMI_DIRECTA y Primer Select
 	cve_servicio				INT PRIMARY KEY IDENTITY (1,1),
 	descripcion_servicio		NVARCHAR(128) NOT NULL
 )
 
 CREATE TABLE Clase_Servicio( -- Clases de autobuses y servicios que se ofrecen
 	cve_clase					INT FOREIGN KEY (cve_clase) REFERENCES Clase (cve_clase) NOT NULL,
-	cve_servicio				INT FOREIGN KEY (cve_servicio) REFERENCES Servicio (cve_servicio) NOT NULL
+	cve_servicio				INT FOREIGN KEY (cve_servicio) REFERENCES Servicio_Camion (cve_servicio) NOT NULL
 )
 
 CREATE TABLE Linea( -- Lineas de autobuses
@@ -55,22 +56,29 @@ CREATE TABLE Tipo_Viaje( -- Tipos de viaje que se pueden realizar
 	descripcion_viaje			NVARCHAR(128)
 )
 
-CREATE TABLE Ruta(	-- Rutas de los camiones: conjunto de viajes que se realizan en un camión (Pueden ser a A a C pero no de A a B y de B a C)
-	no_servicio					INT PRIMARY KEY IDENTITY (1,1),
-	origen_ruta					INT FOREIGN KEY (origen_ruta) REFERENCES Central(cve_central) NOT NULL,
-	destino_ruta				INT FOREIGN KEY (destino_ruta) REFERENCES Central(cve_central) NOT NULL,
-	id_camion					INT FOREIGN KEY (id_camion) REFERENCES Camion(id_camion)
+CREATE TABLE Servicio_Viaje (--Servicios con origen y destino ya establecidos
+	no_servicio					INT PRIMARY KEY IDENTITY(1,1),
+	origen_servicio				INT FOREIGN KEY (origen_servicio) REFERENCES Central(cve_central) NOT NULL,
+	destino_servicio			INT FOREIGN KEY(destino_servicio) REFERENCES Central(cve_central) NOT NULL
+)
+--Rutas de los camiones: Estan asociadas directamente con un no_servicio, o sea un origen y destino fijos
+CREATE TABLE Ruta(	--Las rutas pueden tener escalas (paradas intermedias) EJ: Ruta punto A a C, viajes: A a B y B a C
+	cve_ruta					INT PRIMARY KEY NOT NULL,
+	no_servicio					INT FOREIGN KEY (no_servicio) REFERENCES Servicio_Viaje (no_servicio)NOT NULL,
+	id_camion					INT FOREIGN KEY (id_camion) REFERENCES Camion(id_camion),
+	escalas						INT NOT NULL
 )
 
 CREATE TABLE Viaje( -- Viajes que se realizan en una ruta (Pueden ser de A a B o de B a C pero no de A a C)
 	cve_viaje					INT PRIMARY KEY NOT NULL,
-	no_servicio					INT FOREIGN KEY (no_servicio) REFERENCES Ruta(no_servicio) NOT NULL,
+	cve_ruta					INT FOREIGN KEY (cve_ruta) REFERENCES Ruta(cve_ruta) NOT NULL,
 	origen_viaje				INT FOREIGN KEY (origen_viaje) REFERENCES Central(cve_central) NOT NULL,
 	destino_viaje				INT FOREIGN KEY (destino_viaje) REFERENCES Central(cve_central) NOT NULL,
 	cve_tipo					INT FOREIGN KEY (cve_tipo) REFERENCES Tipo_Viaje(cve_tipo) NOT NULL,
 	fecha_salida				DATETIME NOT NULL,
 	duracion					TIME NOT NULL,
-	fecha_llegada				DATETIME NOT NULL
+	fecha_llegada				DATETIME NOT NULL,
+	escalas_pendientes			INT NOT NULL
 )
 --Estado: Disponible, ocupado
 CREATE TABLE Estado_Asiento( -- Estados de los asientos
@@ -167,24 +175,35 @@ CREATE TABLE Actividad_Usuario(
 )
 
 ALTER AUTHORIZATION ON DATABASE::db_flecha TO sa
-
+--Select central
 SELECT * FROM Central
+--Select Clase, linea y sus servicios
 SELECT * FROM Clase
 SELECT * FROM Clase_Servicio
 SELECT * FROM Linea
+SELECT * FROM Servicio_Camion
+
+--Select seccion de viajes y asientos (tipoBoleto)
+SELECT * FROM Servicio_Viaje
+SELECT * FROM Ruta
+SELECT * FROM Viaje
 SELECT * FROM Camion
 SELECT * FROM Estado_Asiento
 SELECT * FROM Tipo_Viaje
 SELECT * FROM Asiento
+SELECT * FROM Asiento_Edo_Viaje
+SELECT * FROM Costo_Tipo
+--Select Usuario
+SELECT * FROM Estado_Usuario
+SELECT * FROM Usuario
+SELECT * FROM Token
+--Select operacion, boleto y actividad
 SELECT * FROM Boleto
 SELECT * FROM Operacion
-SELECT * FROM Viaje
 SELECT * FROM Estado_Boleto
-SELECT * FROM Usuario
-SELECT * FROM Servicio
-SELECT * FROM Ruta
 SELECT * FROM MetodoPago_Operacion
-SELECT * FROM Costo_Tipo
-SELECT * FROM Estado_Usuario
-SELECT * FROM Token
 SELECT * FROM Actividad_Usuario
+
+
+
+
