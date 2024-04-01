@@ -14,4 +14,4 @@ const sqlConfig = {
     }
 }
 
-export default sqlConfig;
+module.exports = sqlConfig;

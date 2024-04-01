@@ -13,7 +13,7 @@ class ActividadesRepositorio {
         if(user == null || user.length == 0 || !(user instanceof Usuario)){
             return null;
         }
-        let query = `EXEC GetActividadesUsuario ${user.id_usuario}`;
+        let query = `EXEC GetActividadUsuario ${user.id_usuario}`;
         let result = await dao.consultar(query);
         return result.map(actividad => new Actividad(actividad));
     }

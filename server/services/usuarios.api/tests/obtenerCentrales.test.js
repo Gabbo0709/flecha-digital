@@ -6,6 +6,7 @@ describe('Test de obtener centrales', () => {
         const result = await CentralesRepositorio.obtenerCentrales();
         expect(result).not.toBeNull();
         expect(result).toBeInstanceOf(Array); // Array de objetos Central
+        expect(result[0]).toBeInstanceOf(Central); // Objeto Central
         console.log(result);
     });
 });
