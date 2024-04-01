@@ -33,23 +33,28 @@ class UsuariosRepositorio {
      * @returns {Promise<boolean>}
      */
 
+    
+    
     static async registrarUsuario(usuario) {
         if(!(usuario instanceof Usuario)) {
             return false;
         }
-        if(usuario.tel_user == null || usuario.tel_user == "")
-            usuario.tel_user = "123456";
+
         // A futuro, se añadirá la encriptación de la contraseña
-        let query = `INSERT INTO Usuario (nombre_user, apellido, pass, email, tel_user, cve_estado) VALUES ('${usuario.nombre}', '${usuario.apellido}', '${usuario.pass}', '${usuario.correo}', ${usuario.telefono}, ${usuario.cve_estado})`;
-        return await dao.ejecutarQuery(query);
+        let query = `INSERT INTO Usuario (nombre_user, apellido, pass, email, tel_user, cve_estado) VALUES ('${usuario.nombre}', '${usuario.apellido}', '${usuario.pass}', '${usuario.correo}', ${usuario.tel_user}, ${usuario.cve_estado})`;
+        const result = await dao.ejecutarQuery(query);
+        return result;
     }
 
+    
+
+    
     /**
      * @param {string} email // Correo del usuario que será actualizado
      * @param {Usuario} usuario // Objeto con los datos a actualizar
      * @returns {Promise<boolean>}
      */
-
+  
     static async actualizarUsuario(email, usuario) {
         const user = await this.buscarUsuarioCorreo(email);
         if(user == null || user.length == 0) {

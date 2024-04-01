@@ -1,6 +1,11 @@
 Use db_flecha 
 GO
 
+INSERT INTO Estado_Usuario(descripcion_edo_usuario) VALUES
+('Activo'),
+('Falta confirmacion'),
+('Inactivo'),
+('Suspendido')
 
 INSERT INTO Usuario (nombre_user, apellido, pass, email, tel_user) VALUES 
 ('Gustavo', 'Garcia', '123', 'e.gus.gg@gmail.com', 5573408674),
