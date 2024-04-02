@@ -1,51 +1,26 @@
 version: "3.8"
 
+# Microservicios de la aplicación
+
 services:
-  usuarios:
+# Microservicio de manejo de boletos
+  boletos:
     build:
-      context: ./services/usuarios.api
+      context: ./services/boleto.api
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
-
-  boletos:
+# Microservicio de manejo del notificaciones.
+  notificaciones:
     build:
-      context: ./services/boletos.api
+      context: ./services/notificaion.api
       dockerfile: Dockerfile
     ports:
       - "3001:3000"
-  
-  # incidencias:
-  #   build:
-  #     context: ./services/incidencias.api
-  #     dockerfile: Dockerfile
-  #   ports:
-  #     - "3002:3000"
-    
-  pagos:
+# Microservicio de manejo de suscripciones a boletos en billetera virtual.
+  suscripciones:
     build:
-      context: ./services/pagos.api
+      context: ./services/suscripcion.api
       dockerfile: Dockerfile
     ports:
-      - "3003:3000"
-
-  notificaciones:
-    build:
-      context: ./services/notificaciones.api
-      dockerfile: Dockerfile
-    ports:
-      - "3004:3000"
-
-  reservas:
-    build:
-      context: ./services/reservas.api
-      dockerfile: Dockerfile
-    ports:
-      - "3005:3000"
-  
-  viajes:
-    build:
-      context: ./services/viajes.api
-      dockerfile: Dockerfile
-    ports:
-      - "3006:3000"
+      - "3002:3000"

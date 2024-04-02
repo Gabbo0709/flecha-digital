@@ -7,5 +7,15 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Gabriel Arcos Martínez, Ian Alexei Escalona Álvarez, Eric Gustavo González García, Valente Arturo Cárdenas Lara, César Alberto Rodríguez Pacheco",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@googleapis/walletobjects": "^2.0.0",
+    "express": "^4.19.2",
+    "googleapis": "^134.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "uuidv4": "^6.2.13"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
 }
