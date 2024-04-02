@@ -22,7 +22,7 @@
  */
 class Boleto {
     /**
-     * 
+     *
      * @param { any } boleto
      * @returns { Boleto }
      * @description Constructor de la clase Boleto
