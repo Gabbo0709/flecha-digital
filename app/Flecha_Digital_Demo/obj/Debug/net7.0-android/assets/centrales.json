@@ -1,0 +1,1626 @@
+﻿[
+    {
+        "cve_central": "1",
+        "nombre_central": "Central de Autobuses de Aguascalientes",
+        "abreviatura": "Ags",
+        "municipio": "Aguascalientes",
+        "estado": "Aguascalientes"
+    },
+    {
+        "cve_central": "2",
+        "nombre_central": "Central de Autobuses de Ensenada",
+        "abreviatura": "BC",
+        "municipio": "Ensenada",
+        "estado": "Baja California"
+    },
+    {
+        "cve_central": "3",
+        "nombre_central": "Central de Autobuses de Mexicali",
+        "abreviatura": "BC",
+        "municipio": "Mexicali",
+        "estado": "Baja California"
+    },
+    {
+        "cve_central": "4",
+        "nombre_central": "Central de Autobuses de Tijuana",
+        "abreviatura": "BC",
+        "municipio": "Tijuana",
+        "estado": "Baja California"
+    },
+    {
+        "cve_central": "5",
+        "nombre_central": "Terminal de Autobuses ACN en Ensenada",
+        "abreviatura": "BC",
+        "municipio": "Ensenada",
+        "estado": "Baja California"
+    },
+    {
+        "cve_central": "6",
+        "nombre_central": "Terminal de Autobuses ACN Tijuana",
+        "abreviatura": "BC",
+        "municipio": "Tijuana",
+        "estado": "Baja California"
+    },
+    {
+        "cve_central": "7",
+        "nombre_central": "Terminal de Autobuses La Paz Malecón",
+        "abreviatura": "BCS",
+        "municipio": "La Paz",
+        "estado": "Baja California Sur"
+    },
+    {
+        "cve_central": "8",
+        "nombre_central": "Terminal de Autobuses San José del Cabo",
+        "abreviatura": "BCS",
+        "municipio": "San José del Cabo",
+        "estado": "Baja California Sur"
+    },
+    {
+        "cve_central": "9",
+        "nombre_central": "Terminal de Autobuses ADO Campeche",
+        "abreviatura": "Camp",
+        "municipio": "Campeche",
+        "estado": "Campeche"
+    },
+    {
+        "cve_central": "10",
+        "nombre_central": "Terminal de Autobuses ADO Ciudad del Carmen",
+        "abreviatura": "Camp",
+        "municipio": "Ciudad del Carmen",
+        "estado": "Campeche"
+    },
+    {
+        "cve_central": "11",
+        "nombre_central": "Viajes Medher Ciudad del Carmen",
+        "abreviatura": "Camp",
+        "municipio": "Ciudad del Carmen",
+        "estado": "Campeche"
+    },
+    {
+        "cve_central": "12",
+        "nombre_central": "Terminal de Autobuses Champoton",
+        "abreviatura": "Camp",
+        "municipio": "Champoton",
+        "estado": "Campeche"
+    },
+    {
+        "cve_central": "13",
+        "nombre_central": "Terminal de Autobuses de Escarcega",
+        "abreviatura": "Camp",
+        "municipio": "Escarcega",
+        "estado": "Campeche"
+    },
+    {
+        "cve_central": "14",
+        "nombre_central": "Central de Autobuses de Ciudad Juárez",
+        "abreviatura": "Chih",
+        "municipio": "Ciudad Juárez",
+        "estado": "Chihuahua"
+    },
+    {
+        "cve_central": "15",
+        "nombre_central": "Terminal de Autobuses Ciudad Cuauhtémoc",
+        "abreviatura": "Chih",
+        "municipio": "Ciudad Cuauhtémoc",
+        "estado": "Chihuahua"
+    },
+    {
+        "cve_central": "16",
+        "nombre_central": "Central de Autobuses de Chihuahua",
+        "abreviatura": "Chih",
+        "municipio": "Chihuahua",
+        "estado": "Chihuahua"
+    },
+    {
+        "cve_central": "17",
+        "nombre_central": "Terminal Estrella Blanca Delicias",
+        "abreviatura": "Chih",
+        "municipio": "Delicias",
+        "estado": "Chihuahua"
+    },
+    {
+        "cve_central": "18",
+        "nombre_central": "Terminal Ómnibus de México Delicias",
+        "abreviatura": "Chih",
+        "municipio": "Delicias",
+        "estado": "Chihuahua"
+    },
+    {
+        "cve_central": "19",
+        "nombre_central": "Terminal Ómnibus de México Ojinaga",
+        "abreviatura": "Chih",
+        "municipio": "Ojinaga",
+        "estado": "Chihuahua"
+    },
+    {
+        "cve_central": "20",
+        "nombre_central": "Central de Autobuses Parral",
+        "abreviatura": "Chih",
+        "municipio": "Parral",
+        "estado": "Chihuahua"
+    },
+    {
+        "cve_central": "21",
+        "nombre_central": "Central de Autobuses del Norte",
+        "abreviatura": "CDMX",
+        "municipio": "Ciudad de México",
+        "estado": "Ciudad de México"
+    },
+    {
+        "cve_central": "22",
+        "nombre_central": "Central de Autobuses del Poniente",
+        "abreviatura": "CDMX",
+        "municipio": "Ciudad de México",
+        "estado": "Ciudad de México"
+    },
+    {
+        "cve_central": "23",
+        "nombre_central": "Central de Autobuses del Sur",
+        "abreviatura": "CDMX",
+        "municipio": "Ciudad de México",
+        "estado": "Ciudad de México"
+    },
+    {
+        "cve_central": "24",
+        "nombre_central": "Terminal de Autobuses de Pasajeros de Oriente TAPO",
+        "abreviatura": "CDMX",
+        "municipio": "Ciudad de México",
+        "estado": "Ciudad de México"
+    },
+    {
+        "cve_central": "25",
+        "nombre_central": "Terminal Primera Plus Coapa – Calzada del Hueso",
+        "abreviatura": "CDMX",
+        "municipio": "Ciudad de México",
+        "estado": "Ciudad de México"
+    },
+    {
+        "cve_central": "26",
+        "nombre_central": "Terminal Indios Verdes autobuses ADO",
+        "abreviatura": "CDMX",
+        "municipio": "Ciudad de México",
+        "estado": "Ciudad de México"
+    },
+    {
+        "cve_central": "27",
+        "nombre_central": "Terminal Indios Verdes Autobuses Futura",
+        "abreviatura": "CDMX",
+        "municipio": "Ciudad de México",
+        "estado": "Ciudad de México"
+    },
+    {
+        "cve_central": "28",
+        "nombre_central": "Terminal de Autobuses Coordinados de Nayarit CDMX",
+        "abreviatura": "CDMX",
+        "municipio": "Ciudad de México",
+        "estado": "Ciudad de México"
+    },
+    {
+        "cve_central": "29",
+        "nombre_central": "Terminal Oasis de autobuses Santa Martha Acatitla",
+        "abreviatura": "CDMX",
+        "municipio": "Ciudad de México",
+        "estado": "Ciudad de México"
+    },
+    {
+        "cve_central": "30",
+        "nombre_central": "Terminal ADO Santa Martha Acatitla",
+        "abreviatura": "CDMX",
+        "municipio": "Ciudad de México",
+        "estado": "Ciudad de México"
+    },
+    {
+        "cve_central": "31",
+        "nombre_central": "Terminal Balbuena de autobuses TLA",
+        "abreviatura": "CDMX",
+        "municipio": "Ciudad de México",
+        "estado": "Ciudad de México"
+    },
+    {
+        "cve_central": "32",
+        "nombre_central": "Viajes Medher Ciudad de México",
+        "abreviatura": "CDMX",
+        "municipio": "Ciudad de México",
+        "estado": "Ciudad de México"
+    },
+    {
+        "cve_central": "33",
+        "nombre_central": "Terminal Balbuena AU",
+        "abreviatura": "CDMX",
+        "municipio": "Ciudad de México",
+        "estado": "Ciudad de México"
+    },
+    {
+        "cve_central": "34",
+        "nombre_central": "Aeropuerto Internacional de la Ciudad de México",
+        "abreviatura": "CDMX",
+        "municipio": "Ciudad de México",
+        "estado": "Ciudad de México"
+    },
+    {
+        "cve_central": "35",
+        "nombre_central": "Central de Autobuses de Saltillo",
+        "abreviatura": "Coah",
+        "municipio": "Saltillo",
+        "estado": "Coahuila"
+    },
+    {
+        "cve_central": "36",
+        "nombre_central": "Central de Autobuses de Torreón",
+        "abreviatura": "Coah",
+        "municipio": "Torreón",
+        "estado": "Coahuila"
+    },
+    {
+        "cve_central": "37",
+        "nombre_central": "Central de Autobuses de Monclova",
+        "abreviatura": "Coah",
+        "municipio": "Monclova",
+        "estado": "Coahuila"
+    },
+    {
+        "cve_central": "38",
+        "nombre_central": "Central de Autobuses de Piedras Negras",
+        "abreviatura": "Coah",
+        "municipio": "Piedras Negras",
+        "estado": "Coahuila"
+    },
+    {
+        "cve_central": "39",
+        "nombre_central": "Terminal de Autobuses en Ramos Arizpe",
+        "abreviatura": "Coah",
+        "municipio": "Ramos Arizpe",
+        "estado": "Coahuila"
+    },
+    {
+        "cve_central": "40",
+        "nombre_central": "Central de Autobuses de Colima",
+        "abreviatura": "Col",
+        "municipio": "Colima",
+        "estado": "Colima"
+    },
+    {
+        "cve_central": "41",
+        "nombre_central": "Central de Autobuses de Manzanillo",
+        "abreviatura": "Col",
+        "municipio": "Manzanillo",
+        "estado": "Colima"
+    },
+    {
+        "cve_central": "42",
+        "nombre_central": "Central de Autobuses de Tecoman",
+        "abreviatura": "Col",
+        "municipio": "Tecoman",
+        "estado": "Colima"
+    },
+    {
+        "cve_central": "43",
+        "nombre_central": "Central de Autobuses de Durango",
+        "abreviatura": "Dgo",
+        "municipio": "Durango",
+        "estado": "Durango"
+    },
+    {
+        "cve_central": "44",
+        "nombre_central": "Central de Autobuses de Gómez Palacio",
+        "abreviatura": "Dgo",
+        "municipio": "Gómez Palacio",
+        "estado": "Durango"
+    },
+    {
+        "cve_central": "45",
+        "nombre_central": "Terminal de autobuses Santiago Papasquiaro",
+        "abreviatura": "Dgo",
+        "municipio": "Santiago Papasquiaro",
+        "estado": "Durango"
+    },
+    {
+        "cve_central": "46",
+        "nombre_central": "Central de Autobuses de Atlacomulco",
+        "abreviatura": "EdoMex",
+        "municipio": "Atlacomulco",
+        "estado": "Estado de México"
+    },
+    {
+        "cve_central": "47",
+        "nombre_central": "Terminal SENDA en Cuautitlán – Tepotzotlán",
+        "abreviatura": "EdoMex",
+        "municipio": "Cuautitlán",
+        "estado": "Estado de México"
+    },
+    {
+        "cve_central": "48",
+        "nombre_central": "Terminal ADO Ixtapaluca",
+        "abreviatura": "EdoMex",
+        "municipio": "Ixtapaluca",
+        "estado": "Estado de México"
+    },
+    {
+        "cve_central": "49",
+        "nombre_central": "Terminal de Autobuses Ixtapan de la Sal",
+        "abreviatura": "EdoMex",
+        "municipio": "Ixtapan de la Sal",
+        "estado": "Estado de México"
+    },
+    {
+        "cve_central": "50",
+        "nombre_central": "Terminal de Autobuses ADO Tlalnepantla",
+        "abreviatura": "EdoMex",
+        "municipio": "Tlalnepantla",
+        "estado": "Estado de México"
+    },
+    {
+        "cve_central": "51",
+        "nombre_central": "Central de Autobuses Tepotzotlán",
+        "abreviatura": "EdoMex",
+        "municipio": "Tepotzotlán",
+        "estado": "Estado de México"
+    },
+    {
+        "cve_central": "52",
+        "nombre_central": "Terminal Toluca",
+        "abreviatura": "EdoMex",
+        "municipio": "Toluca",
+        "estado": "Estado de México"
+    },
+    {
+        "cve_central": "53",
+        "nombre_central": "Terminal Primera Plus Ecatepec",
+        "abreviatura": "EdoMex",
+        "municipio": "Ecatepec",
+        "estado": "Estado de México"
+    },
+    {
+        "cve_central": "54",
+        "nombre_central": "Central de Autobuses Valle de Bravo",
+        "abreviatura": "EdoMex",
+        "municipio": "Valle de Bravo",
+        "estado": "Estado de México"
+    },
+    {
+        "cve_central": "55",
+        "nombre_central": "Central de Autobuses de Celaya",
+        "abreviatura": "Gto",
+        "municipio": "Celaya",
+        "estado": "Guanajuato"
+    },
+    {
+        "cve_central": "56",
+        "nombre_central": "Central de Autobuses de Comonfort",
+        "abreviatura": "Gto",
+        "municipio": "Comonfort",
+        "estado": "Guanajuato"
+    },
+    {
+        "cve_central": "57",
+        "nombre_central": "Central de Autobuses de Dolores Hidalgo",
+        "abreviatura": "Gto",
+        "municipio": "Dolores Hidalgo",
+        "estado": "Guanajuato"
+    },
+    {
+        "cve_central": "58",
+        "nombre_central": "Central de Autobuses de Guanajuato",
+        "abreviatura": "Gto",
+        "municipio": "Guanajuato",
+        "estado": "Guanajuato"
+    },
+    {
+        "cve_central": "59",
+        "nombre_central": "Central de Autobuses de Irapuato",
+        "abreviatura": "Gto",
+        "municipio": "Irapuato",
+        "estado": "Guanajuato"
+    },
+    {
+        "cve_central": "60",
+        "nombre_central": "Central de Autobuses de León",
+        "abreviatura": "Gto",
+        "municipio": "León",
+        "estado": "Guanajuato"
+    },
+    {
+        "cve_central": "61",
+        "nombre_central": "Central de Autobuses de Salamanca",
+        "abreviatura": "Gto",
+        "municipio": "Salamanca",
+        "estado": "Guanajuato"
+    },
+    {
+        "cve_central": "62",
+        "nombre_central": "Central de Autobuses de San Luis de la Paz",
+        "abreviatura": "Gto",
+        "municipio": "San Luis de la Paz",
+        "estado": "Guanajuato"
+    },
+    {
+        "cve_central": "63",
+        "nombre_central": "Central de Autobuses de San Miguel de Allende",
+        "abreviatura": "Gto",
+        "municipio": "San Miguel de Allende",
+        "estado": "Guanajuato"
+    },
+    {
+        "cve_central": "64",
+        "nombre_central": "Terminal de autobuses Acapulco Centro",
+        "abreviatura": "Gro",
+        "municipio": "Acapulco",
+        "estado": "Guerrero"
+    },
+    {
+        "cve_central": "65",
+        "nombre_central": "Terminal de Autobuses Estrella de Oro Acapulco Costera",
+        "abreviatura": "Gro",
+        "municipio": "Acapulco",
+        "estado": "Guerrero"
+    },
+    {
+        "cve_central": "66",
+        "nombre_central": "Terminal de autobuses Acapulco Ejido",
+        "abreviatura": "Gro",
+        "municipio": "Acapulco",
+        "estado": "Guerrero"
+    },
+    {
+        "cve_central": "67",
+        "nombre_central": "Terminal Estrella de Oro Acapulco Diamante",
+        "abreviatura": "Gro",
+        "municipio": "Acapulco",
+        "estado": "Guerrero"
+    },
+    {
+        "cve_central": "68",
+        "nombre_central": "Terminal de Autobuses Estrella Roja del Sur Acapulco Diamante",
+        "abreviatura": "Gro",
+        "municipio": "Acapulco",
+        "estado": "Guerrero"
+    },
+    {
+        "cve_central": "69",
+        "nombre_central": "Terminal de lujo de autobuses Acapulco Papagayo",
+        "abreviatura": "Gro",
+        "municipio": "Acapulco",
+        "estado": "Guerrero"
+    },
+    {
+        "cve_central": "70",
+        "nombre_central": "Central de Autobuses de Atoyac",
+        "abreviatura": "Gro",
+        "municipio": "Atoyac",
+        "estado": "Guerrero"
+    },
+    {
+        "cve_central": "71",
+        "nombre_central": "Central de Autobuses de Iguala",
+        "abreviatura": "Gro",
+        "municipio": "Iguala",
+        "estado": "Guerrero"
+    },
+    {
+        "cve_central": "72",
+        "nombre_central": "Terminal de Autobuses Estrella de Oro Iguala",
+        "abreviatura": "Gro",
+        "municipio": "Iguala",
+        "estado": "Guerrero"
+    },
+    {
+        "cve_central": "73",
+        "nombre_central": "Terminal de Autobuses Costa Line Chilpancingo",
+        "abreviatura": "Gro",
+        "municipio": "Chilpancingo",
+        "estado": "Guerrero"
+    },
+    {
+        "cve_central": "74",
+        "nombre_central": "Terminal de autobuses Estrella de Oro Chilpancingo",
+        "abreviatura": "Gro",
+        "municipio": "Chilpancingo",
+        "estado": "Guerrero"
+    },
+    {
+        "cve_central": "75",
+        "nombre_central": "Central de Autobuses de Zihuatanejo",
+        "abreviatura": "Gro",
+        "municipio": "Zihuatanejo",
+        "estado": "Guerrero"
+    },
+    {
+        "cve_central": "76",
+        "nombre_central": "Terminal de Autobuses Estrella de Oro Zihuatanejo",
+        "abreviatura": "Gro",
+        "municipio": "Zihuatanejo",
+        "estado": "Guerrero"
+    },
+    {
+        "cve_central": "77",
+        "nombre_central": "Central de Autobuses de Ixmiquilpan",
+        "abreviatura": "Hgo",
+        "municipio": "Ixmiquilpan",
+        "estado": "Hidalgo"
+    },
+    {
+        "cve_central": "78",
+        "nombre_central": "Central de Autobuses de Pachuca",
+        "abreviatura": "Hgo",
+        "municipio": "Pachuca",
+        "estado": "Hidalgo"
+    },
+    {
+        "cve_central": "79",
+        "nombre_central": "Terminal de autobuses Villas de Pachuca",
+        "abreviatura": "Hgo",
+        "municipio": "Pachuca",
+        "estado": "Hidalgo"
+    },
+    {
+        "cve_central": "80",
+        "nombre_central": "Central de Autobuses de Tula",
+        "abreviatura": "Hgo",
+        "municipio": "Tula",
+        "estado": "Hidalgo"
+    },
+    {
+        "cve_central": "81",
+        "nombre_central": "Central de Autobuses de Tulancingo",
+        "abreviatura": "Hgo",
+        "municipio": "Tulancingo",
+        "estado": "Hidalgo"
+    },
+    {
+        "cve_central": "82",
+        "nombre_central": "Terminal de Autobuses Huejutla",
+        "abreviatura": "Hgo",
+        "municipio": "Huejutla",
+        "estado": "Hidalgo"
+    },
+    {
+        "cve_central": "83",
+        "nombre_central": "Terminal de Autobuses ADO Huejutla",
+        "abreviatura": "Hgo",
+        "municipio": "Huejutla",
+        "estado": "Hidalgo"
+    },
+    {
+        "cve_central": "84",
+        "nombre_central": "Terminal de Autobuses Primera Plus en Autlán",
+        "abreviatura": "Jal",
+        "municipio": "Autlán",
+        "estado": "Jalisco"
+    },
+    {
+        "cve_central": "85",
+        "nombre_central": "Central de Autobuses de Ciudad Guzmán",
+        "abreviatura": "Jal",
+        "municipio": "Ciudad Guzmán",
+        "estado": "Jalisco"
+    },
+    {
+        "cve_central": "86",
+        "nombre_central": "Antigua Central de Autobuses de Guadalajara",
+        "abreviatura": "Jal",
+        "municipio": "Guadalajara",
+        "estado": "Jalisco"
+    },
+    {
+        "cve_central": "87",
+        "nombre_central": "Central Nueva de Autobuses de Guadalajara",
+        "abreviatura": "Jal",
+        "municipio": "Guadalajara",
+        "estado": "Jalisco"
+    },
+    {
+        "cve_central": "88",
+        "nombre_central": "Terminal Guadalajara de Autobuses Vallarta Plus",
+        "abreviatura": "Jal",
+        "municipio": "Guadalajara",
+        "estado": "Jalisco"
+    },
+    {
+        "cve_central": "89",
+        "nombre_central": "Terminal Portal del Calzado Guadalajara",
+        "abreviatura": "Jal",
+        "municipio": "Guadalajara",
+        "estado": "Jalisco"
+    },
+    {
+        "cve_central": "90",
+        "nombre_central": "Central de Autobuses Lagos de Moreno",
+        "abreviatura": "Jal",
+        "municipio": "Lagos de Moreno",
+        "estado": "Jalisco"
+    },
+    {
+        "cve_central": "91",
+        "nombre_central": "Central de Autobuses Magdalena",
+        "abreviatura": "Jal",
+        "municipio": "Magdalena",
+        "estado": "Jalisco"
+    },
+    {
+        "cve_central": "92",
+        "nombre_central": "Central de Autobuses de Puerto Vallarta",
+        "abreviatura": "Jal",
+        "municipio": "Puerto Vallarta",
+        "estado": "Jalisco"
+    },
+    {
+        "cve_central": "93",
+        "nombre_central": "Terminal de Autobuses Vallarta Plus en Puerto Vallarta",
+        "abreviatura": "Jal",
+        "municipio": "Puerto Vallarta",
+        "estado": "Jalisco"
+    },
+    {
+        "cve_central": "94",
+        "nombre_central": "Central de Autobuses de San Juan de los Lagos",
+        "abreviatura": "Jal",
+        "municipio": "San Juan de los Lagos",
+        "estado": "Jalisco"
+    },
+    {
+        "cve_central": "95",
+        "nombre_central": "Terminal de Autobuses de Tamazula de Gordiano",
+        "abreviatura": "Jal",
+        "municipio": "Tamazula de Gordiano",
+        "estado": "Jalisco"
+    },
+    {
+        "cve_central": "96",
+        "nombre_central": "Terminal de Autobuses de Tequila",
+        "abreviatura": "Jal",
+        "municipio": "Tequila",
+        "estado": "Jalisco"
+    },
+    {
+        "cve_central": "97",
+        "nombre_central": "Central de Autobuses de Tepatitlán",
+        "abreviatura": "Jal",
+        "municipio": "Tepatitlán",
+        "estado": "Jalisco"
+    },
+    {
+        "cve_central": "98",
+        "nombre_central": "Terminal de Autobuses Tlaquepaque Periférico Sur Tren Ligero",
+        "abreviatura": "Jal",
+        "municipio": "Tlaquepaque",
+        "estado": "Jalisco"
+    },
+    {
+        "cve_central": "99",
+        "nombre_central": "Terminal Zapopan de Autobuses",
+        "abreviatura": "Jal",
+        "municipio": "Zapopan",
+        "estado": "Jalisco"
+    },
+    {
+        "cve_central": "100",
+        "nombre_central": "Terminal de Autobuses Nuevo Milenio de Zapopan",
+        "abreviatura": "Jal",
+        "municipio": "Zapopan",
+        "estado": "Jalisco"
+    },
+    {
+        "cve_central": "101",
+        "nombre_central": "Terminal de Autobuses 4 Caminos",
+        "abreviatura": "Mich",
+        "municipio": "4 Caminos",
+        "estado": "Michoacán"
+    },
+    {
+        "cve_central": "102",
+        "nombre_central": "Terminal de autobuses en Apatzingán",
+        "abreviatura": "Mich",
+        "municipio": "Apatzingán",
+        "estado": "Michoacán"
+    },
+    {
+        "cve_central": "103",
+        "nombre_central": "Terminal de Autobuses Morelia TAM",
+        "abreviatura": "Mich",
+        "municipio": "Morelia",
+        "estado": "Michoacán"
+    },
+    {
+        "cve_central": "104",
+        "nombre_central": "Central de Autobuses de Lázaro Cárdenas",
+        "abreviatura": "Mich",
+        "municipio": "Lázaro Cárdenas",
+        "estado": "Michoacán"
+    },
+    {
+        "cve_central": "105",
+        "nombre_central": "Terminal de Autobuses de Maravatio",
+        "abreviatura": "Mich",
+        "municipio": "Maravatio",
+        "estado": "Michoacán"
+    },
+    {
+        "cve_central": "106",
+        "nombre_central": "Central de Autobuses de Pátzcuaro",
+        "abreviatura": "Mich",
+        "municipio": "Pátzcuaro",
+        "estado": "Michoacán"
+    },
+    {
+        "cve_central": "107",
+        "nombre_central": "Central de Autobuses de la Piedad",
+        "abreviatura": "Mich",
+        "municipio": "La Piedad",
+        "estado": "Michoacán"
+    },
+    {
+        "cve_central": "108",
+        "nombre_central": "Terminal Primera Plus Sahuayo",
+        "abreviatura": "Mich",
+        "municipio": "Sahuayo",
+        "estado": "Michoacán"
+    },
+    {
+        "cve_central": "109",
+        "nombre_central": "Central de Autobuses de Uruapan",
+        "abreviatura": "Mich",
+        "municipio": "Uruapan",
+        "estado": "Michoacán"
+    },
+    {
+        "cve_central": "110",
+        "nombre_central": "Terminal de Autobuses de Zacapú",
+        "abreviatura": "Mich",
+        "municipio": "Zacapú",
+        "estado": "Michoacán"
+    },
+    {
+        "cve_central": "111",
+        "nombre_central": "Central de Autobuses de Zamora",
+        "abreviatura": "Mich",
+        "municipio": "Zamora",
+        "estado": "Michoacán"
+    },
+    {
+        "cve_central": "112",
+        "nombre_central": "Central de Autobuses de Zitacuaro",
+        "abreviatura": "Mich",
+        "municipio": "Zitacuaro",
+        "estado": "Michoacán"
+    },
+    {
+        "cve_central": "113",
+        "nombre_central": "Terminal de Autobuses OCC Cuautla",
+        "abreviatura": "Mor",
+        "municipio": "Cuautla",
+        "estado": "Morelos"
+    },
+    {
+        "cve_central": "114",
+        "nombre_central": "Terminal de Autobuses Oro Cuautla",
+        "abreviatura": "Mor",
+        "municipio": "Cuautla",
+        "estado": "Morelos"
+    },
+    {
+        "cve_central": "115",
+        "nombre_central": "Terminal de Autobuses Pullman de Morelos Cuautla",
+        "abreviatura": "Mor",
+        "municipio": "Cuautla",
+        "estado": "Morelos"
+    },
+    {
+        "cve_central": "116",
+        "nombre_central": "Terminal de Autobuses TER y Futura en Cuautla",
+        "abreviatura": "Mor",
+        "municipio": "Cuautla",
+        "estado": "Morelos"
+    },
+    {
+        "cve_central": "117",
+        "nombre_central": "Terminal Cuernavaca Casino de la Selva",
+        "abreviatura": "Mor",
+        "municipio": "Cuernavaca",
+        "estado": "Morelos"
+    },
+    {
+        "cve_central": "118",
+        "nombre_central": "Terminal de Autobuses Estrella Blanca Cuernavaca",
+        "abreviatura": "Mor",
+        "municipio": "Cuernavaca",
+        "estado": "Morelos"
+    },
+    {
+        "cve_central": "119",
+        "nombre_central": "Terminal de Autobuses Estrella de Oro Cuernavaca",
+        "abreviatura": "Mor",
+        "municipio": "Cuernavaca",
+        "estado": "Morelos"
+    },
+    {
+        "cve_central": "120",
+        "nombre_central": "Terminal Centro de autobuses Pullman de Morelos en Cuernavaca",
+        "abreviatura": "Mor",
+        "municipio": "Cuernavaca",
+        "estado": "Morelos"
+    },
+    {
+        "cve_central": "121",
+        "nombre_central": "Terminal de autobuses TER en Cuernavaca",
+        "abreviatura": "Mor",
+        "municipio": "Cuernavaca",
+        "estado": "Morelos"
+    },
+    {
+        "cve_central": "122",
+        "nombre_central": "Terminal Nuevo Vallarta de Autobuses ETN / TAP",
+        "abreviatura": "Nay",
+        "municipio": "Nuevo Vallarta",
+        "estado": "Nayarit"
+    },
+    {
+        "cve_central": "123",
+        "nombre_central": "Terminal de Autobuses Primera Plus Nuevo Vallarta",
+        "abreviatura": "Nay",
+        "municipio": "Nuevo Vallarta",
+        "estado": "Nayarit"
+    },
+    {
+        "cve_central": "124",
+        "nombre_central": "Terminal Nuevo Vallarta de Autobuses Vallarta Plus",
+        "abreviatura": "Nay",
+        "municipio": "Nuevo Vallarta",
+        "estado": "Nayarit"
+    },
+    {
+        "cve_central": "125",
+        "nombre_central": "Oficina autobuses Pacifico en la Peñita de Jaltemba",
+        "abreviatura": "Nay",
+        "municipio": "La Peñita de Jaltemba",
+        "estado": "Nayarit"
+    },
+    {
+        "cve_central": "126",
+        "nombre_central": "Oficina Vallarta Plus Peñita de Jaltemba",
+        "abreviatura": "Nay",
+        "municipio": "La Peñita de Jaltemba",
+        "estado": "Nayarit"
+    },
+    {
+        "cve_central": "127",
+        "nombre_central": "Terminal de Autobuses San Blas",
+        "abreviatura": "Nay",
+        "municipio": "San Blas",
+        "estado": "Nayarit"
+    },
+    {
+        "cve_central": "128",
+        "nombre_central": "Central de Autobuses de Tepic",
+        "abreviatura": "Nay",
+        "municipio": "Tepic",
+        "estado": "Nayarit"
+    },
+    {
+        "cve_central": "129",
+        "nombre_central": "Terminal de Autobuses Coordinados de Nayarit en Tepic",
+        "abreviatura": "Nay",
+        "municipio": "Tepic",
+        "estado": "Nayarit"
+    },
+    {
+        "cve_central": "130",
+        "nombre_central": "Terminal de Autobuses Tepic Plus en Tepic (centro)",
+        "abreviatura": "Nay",
+        "municipio": "Tepic",
+        "estado": "Nayarit"
+    },
+    {
+        "cve_central": "131",
+        "nombre_central": "Terminal de Autobuses Tufesa en Tepic",
+        "abreviatura": "Nay",
+        "municipio": "Tepic",
+        "estado": "Nayarit"
+    },
+    {
+        "cve_central": "132",
+        "nombre_central": "Terminal Colosio de Autobuses en Tepic",
+        "abreviatura": "Nay",
+        "municipio": "Tepic",
+        "estado": "Nayarit"
+    },
+    {
+        "cve_central": "133",
+        "nombre_central": "Central de Autobuses Linares",
+        "abreviatura": "NL",
+        "municipio": "Linares",
+        "estado": "Nuevo León"
+    },
+    {
+        "cve_central": "134",
+        "nombre_central": "Central de Autobuses de Monterrey",
+        "abreviatura": "NL",
+        "municipio": "Monterrey",
+        "estado": "Nuevo León"
+    },
+    {
+        "cve_central": "135",
+        "nombre_central": "Terminal Monterrey Churubusco",
+        "abreviatura": "NL",
+        "municipio": "Monterrey",
+        "estado": "Nuevo León"
+    },
+    {
+        "cve_central": "136",
+        "nombre_central": "Terminal de Autobuses Greyhound Monterrey",
+        "abreviatura": "NL",
+        "municipio": "Monterrey",
+        "estado": "Nuevo León"
+    },
+    {
+        "cve_central": "137",
+        "nombre_central": "Terminal de Autobuses Expresso del Noreste en Monterrey",
+        "abreviatura": "NL",
+        "municipio": "Monterrey",
+        "estado": "Nuevo León"
+    },
+    {
+        "cve_central": "138",
+        "nombre_central": "Terminal de Autobuses Transpais Monterrey",
+        "abreviatura": "NL",
+        "municipio": "Monterrey",
+        "estado": "Nuevo León"
+    },
+    {
+        "cve_central": "139",
+        "nombre_central": "Central de Autobuses de Montemorelos",
+        "abreviatura": "NL",
+        "municipio": "Montemorelos",
+        "estado": "Nuevo León"
+    },
+    {
+        "cve_central": "140",
+        "nombre_central": "Terminal de Autobuses Noreste Montemorelos",
+        "abreviatura": "NL",
+        "municipio": "Montemorelos",
+        "estado": "Nuevo León"
+    },
+    {
+        "cve_central": "141",
+        "nombre_central": "Terminal de Autobuses ADO Huajuapan de León",
+        "abreviatura": "Oax",
+        "municipio": "Huajuapan de León",
+        "estado": "Oaxaca"
+    },
+    {
+        "cve_central": "142",
+        "nombre_central": "Terminal ORO en Huajuapan de León",
+        "abreviatura": "Oax",
+        "municipio": "Huajuapan de León",
+        "estado": "Oaxaca"
+    },
+    {
+        "cve_central": "143",
+        "nombre_central": "Terminal de Autobuses ADO Huatulco",
+        "abreviatura": "Oax",
+        "municipio": "Huatulco",
+        "estado": "Oaxaca"
+    },
+    {
+        "cve_central": "144",
+        "nombre_central": "Terminal de Autobuses Altamar Huatulco",
+        "abreviatura": "Oax",
+        "municipio": "Huatulco",
+        "estado": "Oaxaca"
+    },
+    {
+        "cve_central": "145",
+        "nombre_central": "Terminal de Autobuses de Juchitán",
+        "abreviatura": "Oax",
+        "municipio": "Juchitán",
+        "estado": "Oaxaca"
+    },
+    {
+        "cve_central": "146",
+        "nombre_central": "Terminal de Autobuses ADO Oaxaca",
+        "abreviatura": "Oax",
+        "municipio": "Oaxaca",
+        "estado": "Oaxaca"
+    },
+    {
+        "cve_central": "147",
+        "nombre_central": "Terminal de Autobuses Oaxaca Periférico",
+        "abreviatura": "Oax",
+        "municipio": "Oaxaca",
+        "estado": "Oaxaca"
+    },
+    {
+        "cve_central": "148",
+        "nombre_central": "Terminal Expressos Colombo Oaxaca",
+        "abreviatura": "Oax",
+        "municipio": "Oaxaca",
+        "estado": "Oaxaca"
+    },
+    {
+        "cve_central": "149",
+        "nombre_central": "Terminal de Autobuses de Pochutla",
+        "abreviatura": "Oax",
+        "municipio": "Pochutla",
+        "estado": "Oaxaca"
+    },
+    {
+        "cve_central": "150",
+        "nombre_central": "Terminal de Autobuses Puerto Escondido",
+        "abreviatura": "Oax",
+        "municipio": "Puerto Escondido",
+        "estado": "Oaxaca"
+    },
+    {
+        "cve_central": "151",
+        "nombre_central": "Central de Autobuses de Puerto Escondido",
+        "abreviatura": "Oax",
+        "municipio": "Puerto Escondido",
+        "estado": "Oaxaca"
+    },
+    {
+        "cve_central": "152",
+        "nombre_central": "Terminal de Autobuses AU Santa Rosa",
+        "abreviatura": "Oax",
+        "municipio": "Santa Rosa",
+        "estado": "Oaxaca"
+    },
+    {
+        "cve_central": "153",
+        "nombre_central": "Terminal ADO de Salina Cruz",
+        "abreviatura": "Oax",
+        "municipio": "Salina Cruz",
+        "estado": "Oaxaca"
+    },
+    {
+        "cve_central": "154",
+        "nombre_central": "Terminal de Autobuses SUR en Salina Cruz",
+        "abreviatura": "Oax",
+        "municipio": "Salina Cruz",
+        "estado": "Oaxaca"
+    },
+    {
+        "cve_central": "155",
+        "nombre_central": "Terminal de Autobuses ADO Tehuantepec",
+        "abreviatura": "Oax",
+        "municipio": "Tehuantepec",
+        "estado": "Oaxaca"
+    },
+    {
+        "cve_central": "156",
+        "nombre_central": "Terminal de Autobuses ADO Tuxtepec",
+        "abreviatura": "Oax",
+        "municipio": "Tuxtepec",
+        "estado": "Oaxaca"
+    },
+    {
+        "cve_central": "157",
+        "nombre_central": "Terminal de Autobuses Oro en Acatlán de Osorio",
+        "abreviatura": "Pue",
+        "municipio": "Acatlán de Osorio",
+        "estado": "Puebla"
+    },
+    {
+        "cve_central": "158",
+        "nombre_central": "Terminal de Autobuses de Atlixco",
+        "abreviatura": "Pue",
+        "municipio": "Atlixco",
+        "estado": "Puebla"
+    },
+    {
+        "cve_central": "159",
+        "nombre_central": "Terminal ATAH Chignahuapan",
+        "abreviatura": "Pue",
+        "municipio": "Chignahuapan",
+        "estado": "Puebla"
+    },
+    {
+        "cve_central": "160",
+        "nombre_central": "Central de Autobuses Nueva en Huauchinango",
+        "abreviatura": "Pue",
+        "municipio": "Huauchinango",
+        "estado": "Puebla"
+    },
+    {
+        "cve_central": "161",
+        "nombre_central": "Terminal de Autobuses Oro en Izucar de Matamoros",
+        "abreviatura": "Pue",
+        "municipio": "Izucar de Matamoros",
+        "estado": "Puebla"
+    },
+    {
+        "cve_central": "162",
+        "nombre_central": "Central de Autobuses de Puebla CAPU",
+        "abreviatura": "Pue",
+        "municipio": "Puebla",
+        "estado": "Puebla"
+    },
+    {
+        "cve_central": "163",
+        "nombre_central": "Central de Autobuses Puebla CAP",
+        "abreviatura": "Pue",
+        "municipio": "Puebla",
+        "estado": "Puebla"
+    },
+    {
+        "cve_central": "164",
+        "nombre_central": "Viajes Medher Puebla",
+        "abreviatura": "Pue",
+        "municipio": "Puebla",
+        "estado": "Puebla"
+    },
+    {
+        "cve_central": "165",
+        "nombre_central": "Terminal Paseo Destino Puebla",
+        "abreviatura": "Pue",
+        "municipio": "Puebla",
+        "estado": "Puebla"
+    },
+    {
+        "cve_central": "166",
+        "nombre_central": "Terminal de Autobuses ORO Puebla",
+        "abreviatura": "Pue",
+        "municipio": "Puebla",
+        "estado": "Puebla"
+    },
+    {
+        "cve_central": "167",
+        "nombre_central": "Terminal de Autobuses en San Martín Texmelucan",
+        "abreviatura": "Pue",
+        "municipio": "San Martín Texmelucan",
+        "estado": "Puebla"
+    },
+    {
+        "cve_central": "168",
+        "nombre_central": "Terminal de Autobuses de Tehuacán",
+        "abreviatura": "Pue",
+        "municipio": "Tehuacán",
+        "estado": "Puebla"
+    },
+    {
+        "cve_central": "169",
+        "nombre_central": "Terminal de Autobuses ADO Teziutlán",
+        "abreviatura": "Pue",
+        "municipio": "Teziutlán",
+        "estado": "Puebla"
+    },
+    {
+        "cve_central": "170",
+        "nombre_central": "Central de Autobuses de Zacatlán",
+        "abreviatura": "Pue",
+        "municipio": "Zacatlán",
+        "estado": "Puebla"
+    },
+    {
+        "cve_central": "171",
+        "nombre_central": "Terminal de Autobuses ADO Zaragoza",
+        "abreviatura": "Pue",
+        "municipio": "Zaragoza",
+        "estado": "Puebla"
+    },
+    {
+        "cve_central": "172",
+        "nombre_central": "TAQ – Terminal de Autobuses Querétaro",
+        "abreviatura": "Qro",
+        "municipio": "Querétaro",
+        "estado": "Querétaro"
+    },
+    {
+        "cve_central": "173",
+        "nombre_central": "Terminal Norte de Autobuses de Querétaro 5 de Febrero",
+        "abreviatura": "Qro",
+        "municipio": "Querétaro",
+        "estado": "Querétaro"
+    },
+    {
+        "cve_central": "174",
+        "nombre_central": "Central de Autobuses de San Juan del Río",
+        "abreviatura": "Qro",
+        "municipio": "San Juan del Río",
+        "estado": "Querétaro"
+    },
+    {
+        "cve_central": "175",
+        "nombre_central": "Central de Autobuses de Tequisquiapan",
+        "abreviatura": "Qro",
+        "municipio": "Tequisquiapan",
+        "estado": "Querétaro"
+    },
+    {
+        "cve_central": "176",
+        "nombre_central": "Terminal de Autobuses ADO Cancún",
+        "abreviatura": "Q. Roo",
+        "municipio": "Cancún",
+        "estado": "Quintana Roo"
+    },
+    {
+        "cve_central": "177",
+        "nombre_central": "Terminal de Autobuses ADO Chetumal",
+        "abreviatura": "Q. Roo",
+        "municipio": "Chetumal",
+        "estado": "Quintana Roo"
+    },
+    {
+        "cve_central": "178",
+        "nombre_central": "Terminal de Autobuses Alterna Playa del Carmen",
+        "abreviatura": "Q. Roo",
+        "municipio": "Playa del Carmen",
+        "estado": "Quintana Roo"
+    },
+    {
+        "cve_central": "179",
+        "nombre_central": "Terminal de Autobuses ADO Quinta Avenida Playa del Carmen",
+        "abreviatura": "Q. Roo",
+        "municipio": "Playa del Carmen",
+        "estado": "Quintana Roo"
+    },
+    {
+        "cve_central": "180",
+        "nombre_central": "Terminal de Autobuses ADO Tulum",
+        "abreviatura": "Q. Roo",
+        "municipio": "Tulum",
+        "estado": "Quintana Roo"
+    },
+    {
+        "cve_central": "181",
+        "nombre_central": "Central de Autobuses de Ciudad Valles",
+        "abreviatura": "SLP",
+        "municipio": "Ciudad Valles",
+        "estado": "San Luis Potosí"
+    },
+    {
+        "cve_central": "182",
+        "nombre_central": "Central de Autobuses de Matehuala",
+        "abreviatura": "SLP",
+        "municipio": "Matehuala",
+        "estado": "San Luis Potosí"
+    },
+    {
+        "cve_central": "183",
+        "nombre_central": "Terminal Terrestre Potosina",
+        "abreviatura": "SLP",
+        "municipio": "San Luis Potosí",
+        "estado": "San Luis Potosí"
+    },
+    {
+        "cve_central": "184",
+        "nombre_central": "Central de Autobuses de Río Verde",
+        "abreviatura": "SLP",
+        "municipio": "Río Verde",
+        "estado": "San Luis Potosí"
+    },
+    {
+        "cve_central": "185",
+        "nombre_central": "Terminal Tamuín Autobuses Vencedor",
+        "abreviatura": "SLP",
+        "municipio": "Tamuín",
+        "estado": "San Luis Potosí"
+    },
+    {
+        "cve_central": "186",
+        "nombre_central": "Central Internacional de Autobuses de Culiacán",
+        "abreviatura": "Sin",
+        "municipio": "Culiacán",
+        "estado": "Sinaloa"
+    },
+    {
+        "cve_central": "187",
+        "nombre_central": "Terminal TAP Guamuchil",
+        "abreviatura": "Sin",
+        "municipio": "Guamuchil",
+        "estado": "Sinaloa"
+    },
+    {
+        "cve_central": "188",
+        "nombre_central": "Terminal TUFESA en Guamuchil",
+        "abreviatura": "Sin",
+        "municipio": "Guamuchil",
+        "estado": "Sinaloa"
+    },
+    {
+        "cve_central": "189",
+        "nombre_central": "Central de Autobuses de Mazatlán",
+        "abreviatura": "Sin",
+        "municipio": "Mazatlán",
+        "estado": "Sinaloa"
+    },
+    {
+        "cve_central": "190",
+        "nombre_central": "Terminal Internacional de Autobuses TUFESA Mazatlán",
+        "abreviatura": "Sin",
+        "municipio": "Mazatlán",
+        "estado": "Sinaloa"
+    },
+    {
+        "cve_central": "191",
+        "nombre_central": "Terminal de Autobuses Mazatlán Primera Plus",
+        "abreviatura": "Sin",
+        "municipio": "Mazatlán",
+        "estado": "Sinaloa"
+    },
+    {
+        "cve_central": "192",
+        "nombre_central": "Central de Autobuses de Los Mochis",
+        "abreviatura": "Sin",
+        "municipio": "Los Mochis",
+        "estado": "Sinaloa"
+    },
+    {
+        "cve_central": "193",
+        "nombre_central": "Terminal TAP en Los Mochis",
+        "abreviatura": "Sin",
+        "municipio": "Los Mochis",
+        "estado": "Sinaloa"
+    },
+    {
+        "cve_central": "194",
+        "nombre_central": "Terminal Internacional TUFESA en Los Mochis",
+        "abreviatura": "Sin",
+        "municipio": "Los Mochis",
+        "estado": "Sinaloa"
+    },
+    {
+        "cve_central": "195",
+        "nombre_central": "Central de Autobuses de Agua Prieta",
+        "abreviatura": "Son",
+        "municipio": "Agua Prieta",
+        "estado": "Sonora"
+    },
+    {
+        "cve_central": "196",
+        "nombre_central": "Terminal TUFESA Agua Prieta",
+        "abreviatura": "Son",
+        "municipio": "Agua Prieta",
+        "estado": "Sonora"
+    },
+    {
+        "cve_central": "197",
+        "nombre_central": "Terminal Ómnibus de México en Caborca",
+        "abreviatura": "Son",
+        "municipio": "Caborca",
+        "estado": "Sonora"
+    },
+    {
+        "cve_central": "198",
+        "nombre_central": "Central de Autobuses de Ciudad Obregón",
+        "abreviatura": "Son",
+        "municipio": "Ciudad Obregón",
+        "estado": "Sonora"
+    },
+    {
+        "cve_central": "199",
+        "nombre_central": "Terminal TAP Empalme",
+        "abreviatura": "Son",
+        "municipio": "Empalme",
+        "estado": "Sonora"
+    },
+    {
+        "cve_central": "200",
+        "nombre_central": "Central de Autobuses de Guaymas",
+        "abreviatura": "Son",
+        "municipio": "Guaymas",
+        "estado": "Sonora"
+    },
+    {
+        "cve_central": "201",
+        "nombre_central": "Terminal TAP Guaymas",
+        "abreviatura": "Son",
+        "municipio": "Guaymas",
+        "estado": "Sonora"
+    },
+    {
+        "cve_central": "202",
+        "nombre_central": "Terminal TUFESA Guaymas",
+        "abreviatura": "Son",
+        "municipio": "Guaymas",
+        "estado": "Sonora"
+    },
+    {
+        "cve_central": "203",
+        "nombre_central": "Central de Autobuses de Hermosillo",
+        "abreviatura": "Son",
+        "municipio": "Hermosillo",
+        "estado": "Sonora"
+    },
+    {
+        "cve_central": "204",
+        "nombre_central": "Terminal de Autobuses Albatros Hermosillo",
+        "abreviatura": "Son",
+        "municipio": "Hermosillo",
+        "estado": "Sonora"
+    },
+    {
+        "cve_central": "205",
+        "nombre_central": "Terminal TUFESA Hermosillo",
+        "abreviatura": "Son",
+        "municipio": "Hermosillo",
+        "estado": "Sonora"
+    },
+    {
+        "cve_central": "206",
+        "nombre_central": "Terminal de Autobuses Albatros Navojoa",
+        "abreviatura": "Son",
+        "municipio": "Navojoa",
+        "estado": "Sonora"
+    },
+    {
+        "cve_central": "207",
+        "nombre_central": "Terminal TUFESA Navojoa",
+        "abreviatura": "Son",
+        "municipio": "Navojoa",
+        "estado": "Sonora"
+    },
+    {
+        "cve_central": "208",
+        "nombre_central": "Central de Autobuses de Nogales",
+        "abreviatura": "Son",
+        "municipio": "Nogales",
+        "estado": "Sonora"
+    },
+    {
+        "cve_central": "209",
+        "nombre_central": "Terminal TAP Nogales",
+        "abreviatura": "Son",
+        "municipio": "Nogales",
+        "estado": "Sonora"
+    },
+    {
+        "cve_central": "210",
+        "nombre_central": "Terminal TUFESA Nogales",
+        "abreviatura": "Son",
+        "municipio": "Nogales",
+        "estado": "Sonora"
+    },
+    {
+        "cve_central": "211",
+        "nombre_central": "Terminal de autobuses ADO Villahermosa",
+        "abreviatura": "Tab",
+        "municipio": "Villahermosa",
+        "estado": "Tabasco"
+    },
+    {
+        "cve_central": "212",
+        "nombre_central": "Terminal de autobuses de Cárdenas",
+        "abreviatura": "Tab",
+        "municipio": "Cárdenas",
+        "estado": "Tabasco"
+    },
+    {
+        "cve_central": "213",
+        "nombre_central": "Central de Autobuses de Ciudad Victoria",
+        "abreviatura": "Tamps",
+        "municipio": "Ciudad Victoria",
+        "estado": "Tamaulipas"
+    },
+    {
+        "cve_central": "214",
+        "nombre_central": "Terminal Transpais de Ciudad Mante",
+        "abreviatura": "Tamps",
+        "municipio": "Ciudad Mante",
+        "estado": "Tamaulipas"
+    },
+    {
+        "cve_central": "215",
+        "nombre_central": "Terminal Nuevo Laredo de Estrella Blanca",
+        "abreviatura": "Tamps",
+        "municipio": "Nuevo Laredo",
+        "estado": "Tamaulipas"
+    },
+    {
+        "cve_central": "216",
+        "nombre_central": "Terminal Nuevo Laredo de Ómnibus de México",
+        "abreviatura": "Tamps",
+        "municipio": "Nuevo Laredo",
+        "estado": "Tamaulipas"
+    },
+    {
+        "cve_central": "217",
+        "nombre_central": "Terminal Nuevo Laredo de Grupo Senda",
+        "abreviatura": "Tamps",
+        "municipio": "Nuevo Laredo",
+        "estado": "Tamaulipas"
+    },
+    {
+        "cve_central": "218",
+        "nombre_central": "Central de Autobuses de Matamoros",
+        "abreviatura": "Tamps",
+        "municipio": "Matamoros",
+        "estado": "Tamaulipas"
+    },
+    {
+        "cve_central": "219",
+        "nombre_central": "Central de Autobuses de Reynosa",
+        "abreviatura": "Tamps",
+        "municipio": "Reynosa",
+        "estado": "Tamaulipas"
+    },
+    {
+        "cve_central": "220",
+        "nombre_central": "CAT – Central de Autobuses de Tampico",
+        "abreviatura": "Tamps",
+        "municipio": "Tampico",
+        "estado": "Tamaulipas"
+    },
+    {
+        "cve_central": "221",
+        "nombre_central": "Terminal de Autobuses de Acayucan",
+        "abreviatura": "Ver",
+        "municipio": "Acayucan",
+        "estado": "Veracruz"
+    },
+    {
+        "cve_central": "222",
+        "nombre_central": "Central de Autobuses de Coatzacoalcos",
+        "abreviatura": "Ver",
+        "municipio": "Coatzacoalcos",
+        "estado": "Veracruz"
+    },
+    {
+        "cve_central": "223",
+        "nombre_central": "Terminal de Autobuses ADO Córdoba",
+        "abreviatura": "Ver",
+        "municipio": "Córdoba",
+        "estado": "Veracruz"
+    },
+    {
+        "cve_central": "224",
+        "nombre_central": "Terminal de Autobuses de Tecolutla",
+        "abreviatura": "Ver",
+        "municipio": "Tecolutla",
+        "estado": "Veracruz"
+    },
+    {
+        "cve_central": "225",
+        "nombre_central": "Terminal de autobuses ADO de Tierra Blanca",
+        "abreviatura": "Ver",
+        "municipio": "Tierra Blanca",
+        "estado": "Veracruz"
+    },
+    {
+        "cve_central": "226",
+        "nombre_central": "Central de Autobuses de Veracruz – CAVE",
+        "abreviatura": "Ver",
+        "municipio": "Veracruz",
+        "estado": "Veracruz"
+    },
+    {
+        "cve_central": "227",
+        "nombre_central": "Central de Autobuses de Xalapa – CAXA",
+        "abreviatura": "Ver",
+        "municipio": "Xalapa",
+        "estado": "Veracruz"
+    },
+    {
+        "cve_central": "228",
+        "nombre_central": "Central de Autobuses de Fresnillo",
+        "abreviatura": "Zac",
+        "municipio": "Fresnillo",
+        "estado": "Zacatecas"
+    },
+    {
+        "cve_central": "229",
+        "nombre_central": "Central de Autobuses de Zacatecas",
+        "abreviatura": "Zac",
+        "municipio": "Zacatecas",
+        "estado": "Zacatecas"
+    },
+    {
+        "cve_central": "230",
+        "nombre_central": "Terminal de Autobuses ADO Mérida",
+        "abreviatura": "Yuc",
+        "municipio": "Mérida",
+        "estado": "Yucatán"
+    },
+    {
+        "cve_central": "231",
+        "nombre_central": "Terminal de Autobuses ADO Progreso",
+        "abreviatura": "Yuc",
+        "municipio": "Progreso",
+        "estado": "Yucatán"
+    },
+    {
+        "cve_central": "232",
+        "nombre_central": "Terminal de Autobuses ADO Valladolid",
+        "abreviatura": "Yuc",
+        "municipio": "Valladolid",
+        "estado": "Yucatán"
+    }
+]
