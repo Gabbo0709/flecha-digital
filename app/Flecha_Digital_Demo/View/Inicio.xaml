@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Flecha_Digital_Demo.View.Inicio"
+             xmlns:viewmodel="clr-namespace:Flecha_Digital_Demo.ViewModel"
+             xmlns:model="clr-namespace:Flecha_Digital_Demo.Model"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:DataType="viewmodel:InicioViewModel"
+             xmlns:editor="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
+             Title="Inicio">
+    
+    <Grid RowDefinitions="*, Auto"
+          RowSpacing="10"
+          Padding="15">
+        <ScrollView>
+            <VerticalStackLayout Spacing="20">
+                <Label Text="Nombre del pasajero:" 
+               HorizontalOptions="Start"/>
+                <Entry x:Name="nombretxt"
+               PlaceholderColor="Gray"
+               HorizontalOptions="FillAndExpand"
+                       Placeholder="Nombre del pasajero"
+                       FontSize="18"/>
+                <Label Text="Origen: "
+               HorizontalOptions="Start"
+               FontSize="Medium"/>
+                <editor:SfAutocomplete HorizontalOptions="FillAndExpand"
+                               VerticalTextAlignment="Center"
+                               Placeholder="Origen"
+                               TextColor="White"
+                               FontSize="18"
+                               BackgroundColor="Black"
+                               HorizontalTextAlignment="Start"
+                               TextSearchMode="Contains"
+                               MaxDropDownHeight="300"
+                               DisplayMemberPath="nombre_central"
+                               TextMemberPath="nombre_central"
+                               ItemsSource="{Binding Centrales}"/>
+                <Label Text="Destino: "
+                       HorizontalOptions="Start"/>
+                <editor:SfAutocomplete HorizontalOptions="FillAndExpand"
+                               VerticalTextAlignment="Center"
+                               Placeholder="Destino"
+                               BackgroundColor="Black"
+                               TextColor="White"
+                               FontSize="18"
+                               HorizontalTextAlignment="Start"
+                               TextSearchMode="Contains"
+                               MaxDropDownHeight="300"
+                               DisplayMemberPath="nombre_central"
+                               TextMemberPath="nombre_central"
+                               ItemsSource="{Binding Centrales}"/>
+                <Label Text="Fecha salida:" />
+                <DatePicker MinimumDate="{Binding MinDate}"
+                    HorizontalOptions="Fill"
+                    BackgroundColor="Black"
+                            FontSize="18"/>
+                <Label Text="Hora salida:" />
+                <TimePicker x:Name="HoraSalidatxt"
+                    Format="HH:mm"
+                            FontSize="18"/>
+                <Label Text="Número de asiento:"/>
+                <editor:SfNumericEntry BackgroundColor="Black"
+                                       TextColor="White"
+                                       CustomFormat="0"
+                                       Maximum="50"
+                                       Minimum="1"
+                                       HorizontalOptions="FillAndExpand"
+                                       ShowClearButton="False"
+                                       UpDownPlacementMode="Inline"
+                                       UpDownButtonColor="White"
+                                       FontSize="18"/>
+                <Label Text="Categoría:"/>
+                <Picker Title="Categoría"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="Black"
+                        TextColor="White"
+                        FontSize="18">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Completo</x:String>
+                            <x:String>Inapam</x:String>
+                            <x:String>Medio</x:String>
+                            <x:String>Profesor</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+                <Label Text="Costo:"
+                       FontSize="Medium"/>
+                <editor:SfNumericEntry Minimum="0"
+                                       FontSize="18"
+                                       Placeholder="Costo"
+                                       BackgroundColor="Black"
+                                       TextColor="White"
+                                       HorizontalOptions="FillAndExpand"
+                                       CustomFormat="$0.00"/>
+                <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           Grid.RowSpan="2"/>
+            </VerticalStackLayout>
+        </ScrollView>
+        <Button Text="Guardar"
+                Command="{Binding GuardarBoletoCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                Grid.Row="1"
+                TextColor="White"
+                BorderColor="BlanchedAlmond"
+                BackgroundColor="SteelBlue"
+                Padding="10"/>
+    </Grid>
+</ContentPage>

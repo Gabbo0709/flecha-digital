@@ -1,0 +1,328 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\egusg\\OneDrive\\Escritorio\\Hackathon\\Flecha_Digital_Demo\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4E203ADE-DC6C-48D6-BB8B-96E0D9A56CD5}|Flecha_Digital_Demo.csproj|c:\\users\\egusg\\onedrive\\escritorio\\hackathon\\flecha_digital_demo\\viewmodel\\inicioviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E203ADE-DC6C-48D6-BB8B-96E0D9A56CD5}|Flecha_Digital_Demo.csproj|solutionrelative:viewmodel\\inicioviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4E203ADE-DC6C-48D6-BB8B-96E0D9A56CD5}|Flecha_Digital_Demo.csproj|c:\\users\\egusg\\onedrive\\escritorio\\hackathon\\flecha_digital_demo\\view\\inicio.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E203ADE-DC6C-48D6-BB8B-96E0D9A56CD5}|Flecha_Digital_Demo.csproj|solutionrelative:view\\inicio.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4E203ADE-DC6C-48D6-BB8B-96E0D9A56CD5}|Flecha_Digital_Demo.csproj|c:\\users\\egusg\\onedrive\\escritorio\\hackathon\\flecha_digital_demo\\view\\inicio.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{4E203ADE-DC6C-48D6-BB8B-96E0D9A56CD5}|Flecha_Digital_Demo.csproj|solutionrelative:view\\inicio.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4E203ADE-DC6C-48D6-BB8B-96E0D9A56CD5}|Flecha_Digital_Demo.csproj|c:\\users\\egusg\\onedrive\\escritorio\\hackathon\\flecha_digital_demo\\services\\serviciocentral.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E203ADE-DC6C-48D6-BB8B-96E0D9A56CD5}|Flecha_Digital_Demo.csproj|solutionrelative:services\\serviciocentral.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4E203ADE-DC6C-48D6-BB8B-96E0D9A56CD5}|Flecha_Digital_Demo.csproj|c:\\users\\egusg\\onedrive\\escritorio\\hackathon\\flecha_digital_demo\\model\\boleto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E203ADE-DC6C-48D6-BB8B-96E0D9A56CD5}|Flecha_Digital_Demo.csproj|solutionrelative:model\\boleto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4E203ADE-DC6C-48D6-BB8B-96E0D9A56CD5}|Flecha_Digital_Demo.csproj|c:\\users\\egusg\\onedrive\\escritorio\\hackathon\\flecha_digital_demo\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E203ADE-DC6C-48D6-BB8B-96E0D9A56CD5}|Flecha_Digital_Demo.csproj|solutionrelative:mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4E203ADE-DC6C-48D6-BB8B-96E0D9A56CD5}|Flecha_Digital_Demo.csproj|c:\\users\\egusg\\onedrive\\escritorio\\hackathon\\flecha_digital_demo\\model\\central.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E203ADE-DC6C-48D6-BB8B-96E0D9A56CD5}|Flecha_Digital_Demo.csproj|solutionrelative:model\\central.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4E203ADE-DC6C-48D6-BB8B-96E0D9A56CD5}|Flecha_Digital_Demo.csproj|c:\\users\\egusg\\onedrive\\escritorio\\hackathon\\flecha_digital_demo\\flecha_digital_demo.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{4E203ADE-DC6C-48D6-BB8B-96E0D9A56CD5}|Flecha_Digital_Demo.csproj|solutionrelative:flecha_digital_demo.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4E203ADE-DC6C-48D6-BB8B-96E0D9A56CD5}|Flecha_Digital_Demo.csproj|c:\\users\\egusg\\onedrive\\escritorio\\hackathon\\flecha_digital_demo\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{4E203ADE-DC6C-48D6-BB8B-96E0D9A56CD5}|Flecha_Digital_Demo.csproj|solutionrelative:appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4E203ADE-DC6C-48D6-BB8B-96E0D9A56CD5}|Flecha_Digital_Demo.csproj|c:\\users\\egusg\\onedrive\\escritorio\\hackathon\\flecha_digital_demo\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E203ADE-DC6C-48D6-BB8B-96E0D9A56CD5}|Flecha_Digital_Demo.csproj|solutionrelative:app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4E203ADE-DC6C-48D6-BB8B-96E0D9A56CD5}|Flecha_Digital_Demo.csproj|c:\\users\\egusg\\onedrive\\escritorio\\hackathon\\flecha_digital_demo\\appshell.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E203ADE-DC6C-48D6-BB8B-96E0D9A56CD5}|Flecha_Digital_Demo.csproj|solutionrelative:appshell.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4E203ADE-DC6C-48D6-BB8B-96E0D9A56CD5}|Flecha_Digital_Demo.csproj|c:\\users\\egusg\\onedrive\\escritorio\\hackathon\\flecha_digital_demo\\viewmodel\\baseviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E203ADE-DC6C-48D6-BB8B-96E0D9A56CD5}|Flecha_Digital_Demo.csproj|solutionrelative:viewmodel\\baseviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4E203ADE-DC6C-48D6-BB8B-96E0D9A56CD5}|Flecha_Digital_Demo.csproj|c:\\users\\egusg\\onedrive\\escritorio\\hackathon\\flecha_digital_demo\\globalusing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E203ADE-DC6C-48D6-BB8B-96E0D9A56CD5}|Flecha_Digital_Demo.csproj|solutionrelative:globalusing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4E203ADE-DC6C-48D6-BB8B-96E0D9A56CD5}|Flecha_Digital_Demo.csproj|c:\\users\\egusg\\onedrive\\escritorio\\hackathon\\flecha_digital_demo\\services\\servicioviajes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E203ADE-DC6C-48D6-BB8B-96E0D9A56CD5}|Flecha_Digital_Demo.csproj|solutionrelative:services\\servicioviajes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4E203ADE-DC6C-48D6-BB8B-96E0D9A56CD5}|Flecha_Digital_Demo.csproj|c:\\users\\egusg\\onedrive\\escritorio\\hackathon\\flecha_digital_demo\\services\\servicioboletos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E203ADE-DC6C-48D6-BB8B-96E0D9A56CD5}|Flecha_Digital_Demo.csproj|solutionrelative:services\\servicioboletos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4E203ADE-DC6C-48D6-BB8B-96E0D9A56CD5}|Flecha_Digital_Demo.csproj|c:\\users\\egusg\\onedrive\\escritorio\\hackathon\\flecha_digital_demo\\model\\viaje.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E203ADE-DC6C-48D6-BB8B-96E0D9A56CD5}|Flecha_Digital_Demo.csproj|solutionrelative:model\\viaje.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4E203ADE-DC6C-48D6-BB8B-96E0D9A56CD5}|Flecha_Digital_Demo.csproj|c:\\users\\egusg\\onedrive\\escritorio\\hackathon\\flecha_digital_demo\\viewmodel\\viajeviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4E203ADE-DC6C-48D6-BB8B-96E0D9A56CD5}|Flecha_Digital_Demo.csproj|solutionrelative:viewmodel\\viajeviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4E203ADE-DC6C-48D6-BB8B-96E0D9A56CD5}|Flecha_Digital_Demo.csproj|c:\\users\\egusg\\onedrive\\escritorio\\hackathon\\flecha_digital_demo\\view\\modificarviaje.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{4E203ADE-DC6C-48D6-BB8B-96E0D9A56CD5}|Flecha_Digital_Demo.csproj|solutionrelative:view\\modificarviaje.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\egusg\\.nuget\\packages\\communitytoolkit.maui\\6.1.0\\ReadMe.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Boleto.cs",
+              "DocumentMoniker": "C:\\Users\\egusg\\OneDrive\\Escritorio\\Hackathon\\Flecha_Digital_Demo\\Model\\Boleto.cs",
+              "RelativeDocumentMoniker": "Model\\Boleto.cs",
+              "ToolTip": "C:\\Users\\egusg\\OneDrive\\Escritorio\\Hackathon\\Flecha_Digital_Demo\\Model\\Boleto.cs",
+              "RelativeToolTip": "Model\\Boleto.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAIwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-03T04:24:16.101Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ServicioCentral.cs",
+              "DocumentMoniker": "C:\\Users\\egusg\\OneDrive\\Escritorio\\Hackathon\\Flecha_Digital_Demo\\Services\\ServicioCentral.cs",
+              "RelativeDocumentMoniker": "Services\\ServicioCentral.cs",
+              "ToolTip": "C:\\Users\\egusg\\OneDrive\\Escritorio\\Hackathon\\Flecha_Digital_Demo\\Services\\ServicioCentral.cs",
+              "RelativeToolTip": "Services\\ServicioCentral.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABAAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-02T22:54:39.489Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "InicioViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\egusg\\OneDrive\\Escritorio\\Hackathon\\Flecha_Digital_Demo\\ViewModel\\InicioViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModel\\InicioViewModel.cs",
+              "ToolTip": "C:\\Users\\egusg\\OneDrive\\Escritorio\\Hackathon\\Flecha_Digital_Demo\\ViewModel\\InicioViewModel.cs",
+              "RelativeToolTip": "ViewModel\\InicioViewModel.cs",
+              "ViewState": "AQIAADUAAAAAAAAAAAAkwEUAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-02T22:53:06.169Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Inicio.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\egusg\\OneDrive\\Escritorio\\Hackathon\\Flecha_Digital_Demo\\View\\Inicio.xaml.cs",
+              "RelativeDocumentMoniker": "View\\Inicio.xaml.cs",
+              "ToolTip": "C:\\Users\\egusg\\OneDrive\\Escritorio\\Hackathon\\Flecha_Digital_Demo\\View\\Inicio.xaml.cs",
+              "RelativeToolTip": "View\\Inicio.xaml.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAkAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-02T22:52:37.92Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Inicio.xaml",
+              "DocumentMoniker": "C:\\Users\\egusg\\OneDrive\\Escritorio\\Hackathon\\Flecha_Digital_Demo\\View\\Inicio.xaml",
+              "RelativeDocumentMoniker": "View\\Inicio.xaml",
+              "ToolTip": "C:\\Users\\egusg\\OneDrive\\Escritorio\\Hackathon\\Flecha_Digital_Demo\\View\\Inicio.xaml",
+              "RelativeToolTip": "View\\Inicio.xaml",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAABIAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-04-02T22:51:33.318Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AppShell.xaml",
+              "DocumentMoniker": "C:\\Users\\egusg\\OneDrive\\Escritorio\\Hackathon\\Flecha_Digital_Demo\\AppShell.xaml",
+              "RelativeDocumentMoniker": "AppShell.xaml",
+              "ToolTip": "C:\\Users\\egusg\\OneDrive\\Escritorio\\Hackathon\\Flecha_Digital_Demo\\AppShell.xaml",
+              "RelativeToolTip": "AppShell.xaml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-04-02T23:00:36.085Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MauiProgram.cs",
+              "DocumentMoniker": "C:\\Users\\egusg\\OneDrive\\Escritorio\\Hackathon\\Flecha_Digital_Demo\\MauiProgram.cs",
+              "RelativeDocumentMoniker": "MauiProgram.cs",
+              "ToolTip": "C:\\Users\\egusg\\OneDrive\\Escritorio\\Hackathon\\Flecha_Digital_Demo\\MauiProgram.cs",
+              "RelativeToolTip": "MauiProgram.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-02T22:46:55.572Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Central.cs",
+              "DocumentMoniker": "C:\\Users\\egusg\\OneDrive\\Escritorio\\Hackathon\\Flecha_Digital_Demo\\Model\\Central.cs",
+              "RelativeDocumentMoniker": "Model\\Central.cs",
+              "ToolTip": "C:\\Users\\egusg\\OneDrive\\Escritorio\\Hackathon\\Flecha_Digital_Demo\\Model\\Central.cs",
+              "RelativeToolTip": "Model\\Central.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-03T01:21:07.521Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Flecha_Digital_Demo.csproj",
+              "DocumentMoniker": "C:\\Users\\egusg\\OneDrive\\Escritorio\\Hackathon\\Flecha_Digital_Demo\\Flecha_Digital_Demo.csproj",
+              "RelativeDocumentMoniker": "Flecha_Digital_Demo.csproj",
+              "ToolTip": "C:\\Users\\egusg\\OneDrive\\Escritorio\\Hackathon\\Flecha_Digital_Demo\\Flecha_Digital_Demo.csproj",
+              "RelativeToolTip": "Flecha_Digital_Demo.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-04-03T00:30:13.15Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\egusg\\OneDrive\\Escritorio\\Hackathon\\Flecha_Digital_Demo\\App.xaml.cs",
+              "RelativeDocumentMoniker": "App.xaml.cs",
+              "ToolTip": "C:\\Users\\egusg\\OneDrive\\Escritorio\\Hackathon\\Flecha_Digital_Demo\\App.xaml.cs",
+              "RelativeToolTip": "App.xaml.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-02T23:14:43.024Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AppShell.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\egusg\\OneDrive\\Escritorio\\Hackathon\\Flecha_Digital_Demo\\AppShell.xaml.cs",
+              "RelativeDocumentMoniker": "AppShell.xaml.cs",
+              "ToolTip": "C:\\Users\\egusg\\OneDrive\\Escritorio\\Hackathon\\Flecha_Digital_Demo\\AppShell.xaml.cs",
+              "RelativeToolTip": "AppShell.xaml.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-02T23:14:55.385Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "BaseViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\egusg\\OneDrive\\Escritorio\\Hackathon\\Flecha_Digital_Demo\\ViewModel\\BaseViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModel\\BaseViewModel.cs",
+              "ToolTip": "C:\\Users\\egusg\\OneDrive\\Escritorio\\Hackathon\\Flecha_Digital_Demo\\ViewModel\\BaseViewModel.cs",
+              "RelativeToolTip": "ViewModel\\BaseViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-02T23:06:36.31Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "GlobalUsing.cs",
+              "DocumentMoniker": "C:\\Users\\egusg\\OneDrive\\Escritorio\\Hackathon\\Flecha_Digital_Demo\\GlobalUsing.cs",
+              "RelativeDocumentMoniker": "GlobalUsing.cs",
+              "ToolTip": "C:\\Users\\egusg\\OneDrive\\Escritorio\\Hackathon\\Flecha_Digital_Demo\\GlobalUsing.cs",
+              "RelativeToolTip": "GlobalUsing.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-02T22:59:46.392Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ServicioViajes.cs",
+              "DocumentMoniker": "C:\\Users\\egusg\\OneDrive\\Escritorio\\Hackathon\\Flecha_Digital_Demo\\Services\\ServicioViajes.cs",
+              "RelativeDocumentMoniker": "Services\\ServicioViajes.cs",
+              "ToolTip": "C:\\Users\\egusg\\OneDrive\\Escritorio\\Hackathon\\Flecha_Digital_Demo\\Services\\ServicioViajes.cs",
+              "RelativeToolTip": "Services\\ServicioViajes.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-02T22:54:28.441Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ServicioBoletos.cs",
+              "DocumentMoniker": "C:\\Users\\egusg\\OneDrive\\Escritorio\\Hackathon\\Flecha_Digital_Demo\\Services\\ServicioBoletos.cs",
+              "RelativeDocumentMoniker": "Services\\ServicioBoletos.cs",
+              "ToolTip": "C:\\Users\\egusg\\OneDrive\\Escritorio\\Hackathon\\Flecha_Digital_Demo\\Services\\ServicioBoletos.cs",
+              "RelativeToolTip": "Services\\ServicioBoletos.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-02T22:54:16.689Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Viaje.cs",
+              "DocumentMoniker": "C:\\Users\\egusg\\OneDrive\\Escritorio\\Hackathon\\Flecha_Digital_Demo\\Model\\Viaje.cs",
+              "RelativeDocumentMoniker": "Model\\Viaje.cs",
+              "ToolTip": "C:\\Users\\egusg\\OneDrive\\Escritorio\\Hackathon\\Flecha_Digital_Demo\\Model\\Viaje.cs",
+              "RelativeToolTip": "Model\\Viaje.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-02T22:53:40.758Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "ViajeViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\egusg\\OneDrive\\Escritorio\\Hackathon\\Flecha_Digital_Demo\\ViewModel\\ViajeViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModel\\ViajeViewModel.cs",
+              "ToolTip": "C:\\Users\\egusg\\OneDrive\\Escritorio\\Hackathon\\Flecha_Digital_Demo\\ViewModel\\ViajeViewModel.cs",
+              "RelativeToolTip": "ViewModel\\ViajeViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-02T22:53:18.826Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "ModificarViaje.xaml",
+              "DocumentMoniker": "C:\\Users\\egusg\\OneDrive\\Escritorio\\Hackathon\\Flecha_Digital_Demo\\View\\ModificarViaje.xaml",
+              "RelativeDocumentMoniker": "View\\ModificarViaje.xaml",
+              "ToolTip": "C:\\Users\\egusg\\OneDrive\\Escritorio\\Hackathon\\Flecha_Digital_Demo\\View\\ModificarViaje.xaml",
+              "RelativeToolTip": "View\\ModificarViaje.xaml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-04-02T22:52:24.177Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "ReadMe.txt",
+              "DocumentMoniker": "C:\\Users\\egusg\\.nuget\\packages\\communitytoolkit.maui\\6.1.0\\ReadMe.txt",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\.nuget\\packages\\communitytoolkit.maui\\6.1.0\\ReadMe.txt",
+              "ToolTip": "C:\\Users\\egusg\\.nuget\\packages\\communitytoolkit.maui\\6.1.0\\ReadMe.txt",
+              "RelativeToolTip": "..\\..\\..\\..\\.nuget\\packages\\communitytoolkit.maui\\6.1.0\\ReadMe.txt",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2024-04-02T22:46:30.656Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

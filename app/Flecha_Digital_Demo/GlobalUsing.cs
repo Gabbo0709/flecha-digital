@@ -1,0 +1,14 @@
+﻿global using CommunityToolkit.Mvvm.ComponentModel;
+global using System.Collections.ObjectModel;
+global using CommunityToolkit.Mvvm.Input;
+global using Flecha_Digital_Demo.Model;
+global using Flecha_Digital_Demo.Services;
+global using System.ComponentModel;
+global using System.Diagnostics;
+global using System.Runtime.CompilerServices;
+global using System.Net.Http;
+global using System.Text.Json.Serialization;
+global using System.Collections;
+global using System.Text;
+global using System.Net.Http.Json;
+global using System.Threading.Tasks;

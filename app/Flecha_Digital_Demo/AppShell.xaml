@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Flecha_Digital_Demo.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Flecha_Digital_Demo"
+    xmlns:view="clr-namespace:Flecha_Digital_Demo.View"
+    Title="Demo"
+    Shell.FlyoutBehavior="Disabled">
+
+    <TabBar>
+        <ShellContent Title="Formulario Boletos"
+                      Icon="icon.png"
+                      ContentTemplate="{DataTemplate view:Inicio}" />
+        <ShellContent Title="Actualizar Viaje"
+                      Icon="icon.png"
+                      ContentTemplate="{DataTemplate view:ModificarViaje}" />
+    </TabBar>
+
+</Shell>
