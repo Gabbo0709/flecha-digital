@@ -5,7 +5,8 @@
  * @param { any } boleto Datos del boleto
  * @description Modelo de Boleto.
  * - Atributos:
- * @attribute { numeric } id | Identificador del boleto. Ejemplo: 1
+ * @attribute { numeric } id_viaje | Identificador del viaje. Ejemplo: 1
+ * @attribute { numeric } id_boleto | Identificador del boleto. Ejemplo: 1
  * @attribute { string } nombre_pasajero | Nombre del pasajero. Ejemplo: "Juan Perez"
  * @attribute { integer } numero_asiento | Numero de asiento asignado. Ejemplo: 23
  * @attribute { string } origen | Origen. Ejemplo: "GUADALAJARA"
@@ -29,6 +30,8 @@ class Boleto {
      * @constructs Boleto
      */
     constructor (boleto) {
+        this.id_viaje = boleto.id_viaje;
+        this.id_boleto = boleto.id_boleto;
         this.nombre_pasajero = boleto.nombre_pasajero;
         this.numero_asiento = boleto.numero_asiento;
         this.origen = boleto.origen;
