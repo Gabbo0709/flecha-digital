@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "level-approach-419200",
+  "private_key_id": "a328206b635b34eb8ee74e1a107d8c53468e6b45",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC1z4zwsLzxGJNJ\nI0O3dr6FCsJAzcTv+g78DahjI4WB25p+NNjJUt8C0dOSEfFjL1/JrZcdrGiLgyDU\ncofv6pSWTzat58+pt+e/rNNUPs287MuJFO+nZU2cY9TtkiId0lOUBkXSD971UzmP\nVJO86374DuFENP6qJQjVo/n2Xt8QqhbFkjqPJCYVc/haHNuu1Ys/cofuVdZwG+sQ\nUqDO71CNt5OEtahuZy0xijsGQuivKImdbAL05JgVVUU+nl+v3553vaSU+5OdIMO0\nAMK+8HbPq49UjVzxudp3IWPHlvMXUlH8dF68wh8IW9yIS2HpBCX06M3/qnAoggkg\niUoaSnLFAgMBAAECggEAUVjTG+JIN6uiQugnZVAZAJgGwE4RHrqIt9g4jlsXYjnq\nzytAEBwnMjDF9CZZFeLdffRQl/NLN5jtOIEiN4ODBhndQkRlEu/5Hjbqu1f6X9yn\nWOdoL0LRTfcRD1cCMsunn6SK2ulE/glFyM6z56SKw9yMiCMaCvDVGhnrPoPGVMK0\nAJWv0dz1QmC8afg6GHilhpSJkjVmNZQ3tpYPAdo2uhnHFxAkhKXd/HjxmDg1hgV3\n248qVRGXASf1+YN6knb+MS7CzN5iu37fE+9id8ve7g1d4CxNP6FMd2I9G6RHnxoW\ncamwNlsJrFbmMxdQQryDOCGVb0RnmpyAxgfXDFEipQKBgQDqg5liz3JD+aG/iiBt\nXgjIcECDyRx0Re02Ug0W5LeVCFlVIorCcsX3yl5qBBZOVUuw97JCy4U9BJsfnHND\nFaOKm0IcwJsRBrEZK30MQ8h7yt1G1fLLUBM0eBPKt3lUwGwteczpIJlWVoJmZjJk\nziL9gKs0l8ghwhe1WKeoWdyj5wKBgQDGd9LTygZZKVgzHTWJGlwR1aEMJQYLnL9A\neWQkY/XiFsJKtBCfqWvgy1OJ992LC3JfO/LQKYw6pJ6aA3tMmjiUZ8aRbW+SzQoM\nciA33zqssxHW2M3fmlANHzfiJ4touRm5uRG57u33pKudGwWEVnCfzRCdlIhMJ/4P\nEXtJCFJecwKBgAtWETQVkxB2ILuBkc+3m/UUeAnmztlQCAd4L+nLZJRvsuHKqap8\nodU4kxfM2scumFoVnyhbbjVk45rDlU7I3P72Qlvhc51/FVCCKalOHYLea5PhA7uQ\nQ11l8I78D4FpS9Fm8eDTEpZ52BPbHNSCom5eqegA7kuzdjHt9yzMKz5BAoGAPM2M\n65GjLEG8Ybx7IEvRFS2rrzrQhVI6TZhjE7sEI4XxdE2CIkgXYsEoEMa9OtIA8ig9\nlYSFD5pLdMfISIme9+hrLzalzgW/JFz6feOH6EzcFERLnkt6Zuq/hiuzTBwZQ4rt\nYVdP1GTAptsWb5rD2lFK29wbfalq7lbevFsuUP0CgYEAvPALb9vvLjljqBrB87q/\n/9Esh2H4L8vseNoBmPbVF1MHzFLtogd8BQIhHgTWCpfRVb682QhtILG3oSeZvH8j\nmI8KF9OhFEkARNZ4pB2ZAph32pEa7aRIph9piXpNZOlmaNS9BhbppD1ecq1KmmCF\nacKZzr90P+JIpXMSGqsu77A=\n-----END PRIVATE KEY-----\n",
+  "client_email": "flecha-digital@level-approach-419200.iam.gserviceaccount.com",
+  "client_id": "109141946143123257670",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/flecha-digital%40level-approach-419200.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

@@ -13,7 +13,7 @@ services:
 # Microservicio de manejo del notificaciones.
   notificaciones:
     build:
-      context: ./services/notificaion.api
+      context: ./services/viaje.api
       dockerfile: Dockerfile
     ports:
       - "3001:3000"

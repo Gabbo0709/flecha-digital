@@ -1,5 +1,5 @@
 /** 
- * Clase del modelo de Boleto
+ * Clase del modelo de Boleto cuyos atributos se adjuntarán al modelo de Suscripción para el envío de correos electrónicos de suscripción a Wallets.
  * @class Boleto
  * @constructor
  * @param { any } boleto Datos del boleto
@@ -7,6 +7,7 @@
  * - Atributos:
  * @attribute { numeric } viaje_id | Identificador del viaje. Ejemplo: 1
  * @attribute { numeric } boleto_id | Identificador del boleto. Ejemplo: 1
+ * @attribute { string } correo_pasajero | Correo del pasajero. Ejemplo: "ejemplo@gmail.com"
  * @attribute { string } nombre_pasajero | Nombre del pasajero. Ejemplo: "Juan Perez"
  * @attribute { integer } numero_asiento | Numero de asiento asignado. Ejemplo: 23
  * @attribute { string } origen | Origen. Ejemplo: "GUADALAJARA"
@@ -32,6 +33,7 @@ class Boleto {
     constructor (boleto) {
         this.viaje_id = boleto.viaje_id;
         this.boleto_id = boleto.boleto_id;
+        this.correo_pasajero = boleto.correo_pasajero;
         this.estado = boleto.estado;
         this.nombre_pasajero = boleto.nombre_pasajero;
         this.numero_asiento = boleto.numero_asiento;

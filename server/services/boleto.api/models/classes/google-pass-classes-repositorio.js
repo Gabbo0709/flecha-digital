@@ -1,11 +1,10 @@
 const { google } = require('googleapis');
-const jwt = require('jsonwebtoken');
-const { v4: uuidv4 } = require('uuid');
 const GooglePassClass = require('./google-pass-class');
 
 /**
  * @class GooglePassClassesRepositorio
- * @description Clase que se encarga de gestionar la persistencia de las clases de Google Pass
+ * @description Clase que se encarga de gestionar las clases de Google Pass
+ * @method obtenerClass
  * @method validarExistenciaDeClass
  * @method crearClass
  * @method obtenerClass
@@ -19,7 +18,7 @@ class GooglePassClassesRepositorio {
      * @memberof GooglePassClassesRepositorio
      */
     constructor() {
-        this.keyFilePath = process.env.GOOGLE_APPLICATION_CREDENTIALS || './key.json';
+        this.credentials = process.env.GOOGLE_APPLICATION_CREDENTIALS || '../config/keys/level-approach-419200-a328206b635b.json';
         this.auth();
     }
 
@@ -33,17 +32,33 @@ class GooglePassClassesRepositorio {
      */
     auth() {
         const auth = new google.auth.GoogleAuth({
-            keyFile: this.keyFilePath,
+            credentials: this.credentials,
             scopes: ['https://www.googleapis.com/auth/wallet_object.issuer']
         });
 
-        this.credentials = require(this.keyFilePath);
+        this.credentials = require(this.credentials);
 
         this.client = google.walletobjects({
             version: 'v1',
             auth: auth
         });
     }
+
+    /**
+     * @method obtenerClass
+     * @description Método que se encarga de obtener una clase de Google Pass
+     * @param { any } clase - Clase de Google Pass
+     * @returns { Promise<Object> } - Retorna una clase de Google Pass
+     */
+    async obtenerClass(clase) {
+        const googlePass = new GooglePassClass(clase);
+        let response;
+        response = await this.client.flightclass.get({
+            resourceId: `${googlePass.issuer_id}.${googlePass.viaje_id}`
+        });
+        const result = response;
+        return result;
+    };
 
     /**
      * @method validarExistenciaDeClass
@@ -57,20 +72,9 @@ class GooglePassClassesRepositorio {
      * @memberof GooglePassClassesRepositorio
      */
     async validarExistenciaDeClass(clase) {
-        let response;
-        const passClass = new GooglePassClass(clase);
-        try {
-            response = await this.client.flightclass.get({
-                resourceId: `${passClass.issuer_id}.${passClass.viaje_id}`
-            });
-            const result = response.status === 200 ? true : response.status === 404 ? false : null;
-        }
-        catch(err) {
-            if (err.response && err.response.status !== 404) {
-                console.log(err);
-                return false;
-            }
-        }
+        this.obtenerClass(clase).then(data => {
+            return data.status === 200;
+        });
     }
 
     /**
@@ -130,7 +134,7 @@ class GooglePassClassesRepositorio {
 
     /**
      * @method actualizarClass
-     * @description Método que se encarga de actualizar una clase de Google Pass
+     * @description Método que se encarga de actualizar la  una clase de Google Pass
      * @param { any } clase - Clase de Google Pass
      * @returns { Promise<boolean> } - Retorna la respuesta de la actualización de la clase
      */
@@ -143,7 +147,7 @@ class GooglePassClassesRepositorio {
             resourceId: `${googlePass.issuer_id}.${googlePass.viaje_id}`
         });
         let updatedClass = response.data;
-        updatedClass.localScheduledArrivalDateTime = googlePass.fecha_llegada;
+        updatedClass.localScheduledDepartureDateTime = googlePass.fecha_salida;
         response = await this.client.flightclass.update({
             resourceId: `${googlePass.issuer_id}.${googlePass.viaje_id}`,
             resource: updatedClass
@@ -152,3 +156,5 @@ class GooglePassClassesRepositorio {
         return result === 200;
     }
 }
+
+module.exports = GooglePassClassesRepositorio;
