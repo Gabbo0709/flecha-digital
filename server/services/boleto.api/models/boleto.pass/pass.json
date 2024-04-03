@@ -1,0 +1,43 @@
+{
+   
+    "passTypeIdentifier" : "pass.com.gfa.talendland",
+    "teamIdentifier" : "J83NHPZ786",
+
+    "description" : "Boarding pass for October 4, San Francisco to London",
+    "formatVersion" : 1,
+    "boardingPass" : {
+        "primaryFields" : [
+            {
+                "key" : "origin",
+                "label" : "San Francisco",
+                "value" : "SFO"
+            },
+            {
+                "key" : "destination",
+                "label" : "London",
+                "value" : "LHR"
+            }
+        ],
+        "secondaryFields" : [
+            {
+                "key" : "boarding-gate",
+                "label" : "Gate",
+                "value" : "F12"
+            }
+        ],
+        "auxiliaryFields" : [
+            {
+                "key" : "seat",
+                "label" : "Seat",
+                "value" : "7A"
+            },
+            {
+                "key" : "passenger-name",
+                "label" : "Passenger",
+                "value" : "John Appleseed"
+            }
+        ],
+        "transitType" : "PKTransitTypeAir"
+    }
+    
+}

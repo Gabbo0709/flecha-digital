@@ -9,7 +9,7 @@
   "author": "Gabriel Arcos Martínez, Ian Alexei Escalona Álvarez, Valente Arturo Cárdenas Lara, Eric Gustavo González García, César Alberto Rodríguez Pacheco",
   "license": "ISC",
   "dependencies": {
-    "@googleapis/walletobjects": "^2.0.0",
+    "@googleapis/walletobjects": "^1.0.0",
     "express": "^4.19.2",
     "googleapis": "^134.0.0",
     "jsonwebtoken": "^9.0.2",
