@@ -5,6 +5,8 @@ VisualStudioVersion = 17.9.34723.18
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "boleto-apple-wallet.api", "boleto-apple-wallet.api.csproj", "{0367E9F3-17B9-4C19-8F4E-798E0C9F13BC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "boleto-apple-wallet.apiTests", "..\boleto-apple-wallet.apiTests\boleto-apple-wallet.apiTests.csproj", "{90D0AC4A-B1B8-411B-80D0-BBD0D9BF5EFE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{0367E9F3-17B9-4C19-8F4E-798E0C9F13BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0367E9F3-17B9-4C19-8F4E-798E0C9F13BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0367E9F3-17B9-4C19-8F4E-798E0C9F13BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90D0AC4A-B1B8-411B-80D0-BBD0D9BF5EFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90D0AC4A-B1B8-411B-80D0-BBD0D9BF5EFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90D0AC4A-B1B8-411B-80D0-BBD0D9BF5EFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90D0AC4A-B1B8-411B-80D0-BBD0D9BF5EFE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
