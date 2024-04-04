@@ -25,14 +25,14 @@ class GooglePassClass {
      * @constructs GooglePassClass
      */
     constructor(googlePass) {
-        this.issuer_id = 3388000000022336175;
+        this.issuer_id = '3388000000022336175';
         this.viaje_id = googlePass.viaje_id || 1;
         this.logo = googlePass.logo || "https://www.flecha-amarilla.com.mx/wp-content/uploads/2019/07/FA-Logo-1.png";
         this.origen = googlePass.origen || "Guadalajara";
         this.destino = googlePass.destino || "Ciudad de México";
         this.fecha_salida = googlePass.fecha_salida || "01/01/2021 12:00";
         this.puerta_embarque = googlePass.puerta_embarque || "A1";
-        this.color = googlePass.color || "#FFCC00";
+        this.color = googlePass.color || "#FFD666";
         this.imagen_pie = googlePass.imagen_pie || "https://www.flecha-amarilla.com.mx/wp-content/uploads/2019/07/FA-Logo-1.png";
     }
 }

@@ -1,26 +1,33 @@
 version: "3.8"
 
-# Microservicios de la aplicación
+# * Microservicios de la aplicación
 
 services:
+# Microservicio de manejo de boletos en Apple Wallet. (Este microservicio correrá en un servidor de .NET Core)
+  boletos-apple-wallet:
+    build:
+      context: ./services/boleto-apple-wallet.api
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
 # Microservicio de manejo de boletos
   boletos:
     build:
       context: ./services/boleto.api
       dockerfile: Dockerfile
     ports:
-      - "3000:3000"
+      - "3001:3000"
 # Microservicio de manejo del notificaciones.
   notificaciones:
     build:
       context: ./services/viaje.api
       dockerfile: Dockerfile
     ports:
-      - "3001:3000"
+      - "3002:3000"
 # Microservicio de manejo de suscripciones a boletos en billetera virtual.
   suscripciones:
     build:
       context: ./services/suscripcion.api
       dockerfile: Dockerfile
     ports:
-      - "3002:3000"
+      - "3003:3000"

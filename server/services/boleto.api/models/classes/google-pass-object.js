@@ -26,7 +26,7 @@ class GooglePassObject {
      * @constructs GooglePassObject
      */
     constructor(googlePass) {
-        this.issuer_id = 3388000000022336175;
+        this.issuer_id = '3388000000022336175';
         this.viaje_id = googlePass.viaje_id || 1;
         this.boleto_id = googlePass.boleto_id || 1;
         this.estado = googlePass.estado || "Vigente";
