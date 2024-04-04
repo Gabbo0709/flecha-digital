@@ -35,7 +35,7 @@ class GooglePassObjectsRepositorio {
      */
     auth() {
         const auth = new google.auth.GoogleAuth({
-            keyFile: this.credentials,
+            credentials: this.credentials,
             scopes: ['https://www.googleapis.com/auth/wallet_object.issuer']
         });
 
@@ -58,6 +58,11 @@ class GooglePassObjectsRepositorio {
             'id': `${googlePass.issuer_id}.${googlePass.boleto_id}`,
             'classId': `${googlePass.issuer_id}.${googlePass.viaje_id}`,
             'state': 'ACTIVE',
+            'passengerName': `${googlePass.nombre_pasajero}`,
+            "reservationInfo": {
+                "confirmationCode": `${googlePass.boleto_id}`,
+                "eticketNumber": `${googlePass.numero_operacion}`,
+              },
             'textModulesData': [
                 {
                     'header': `Método de pago: ${googlePass.metodo_pago}`,
@@ -70,7 +75,7 @@ class GooglePassObjectsRepositorio {
                 }
             ],
             'boardingAndSeatingInfo': {
-                'seatNumber': `${googlePass.asiento}`,
+                'seatNumber': `${googlePass.numero_asiento}`,
                 'seatClass': `${googlePass.categoria}`
             },
             'barcode': {

@@ -50,13 +50,14 @@ class GooglePassClassesRepositorio {
     async obtenerClass(clase) {
         const googlePass = new GooglePassClass(clase);
         let response;
-        try{
-        response = await this.client.flightclass.get({
-            resourceId: `${googlePass.issuer_id}.${googlePass.viaje_id}`
-        }); }
-        catch(err){
-            if(response == 404){
-            return false;
+        try {
+            response = await this.client.flightclass.get({
+                resourceId: `${googlePass.issuer_id}.${googlePass.viaje_id}`
+            });
+        }
+        catch (err) {
+            if (response == 404) {
+                return false;
             }
         }
         const result = response;
@@ -75,36 +76,70 @@ class GooglePassClassesRepositorio {
      */
     async crearClass(clase) {
         this.obtenerClass(clase);
-        
+
         let response;
         const googlePass = new GooglePassClass(clase);
         const claseNueva = {
             'id': `${googlePass.issuer_id}.${googlePass.viaje_id}`,
+            "issuerName": "Flecha Amarilla",
+            "localizedIssuerName": {
+                "defaultValue": {
+                    "language": "en-US",
+                    "value": "Flecha Amarilla",
+                },
+            },
             'flightHeader': {
                 'carrier': {
+                    'carrierIataCode': 'FA',
                     'airlineLogo': {
                         'sourceUri': {
                             'uri': `${googlePass.logo}`
                         },
-                        'contentDescription': 'Logo de la aerolínea'
+                        'contentDescription': {
+                            'defaultValue': {
+                                'language': 'en-US',
+                                'value': 'Logo de Flecha Amarilla'
+                            }
+                        }
 
                     }
                 },
                 'flightNumber': googlePass.viaje_id,
             },
             'origin': {
+                'airportIataCode': `AAA`,
+                'terminal': 'T1',
                 'gate': googlePass.puerta_embarque,
-                'airportNameOverride': googlePass.origen,
+                'airportNameOverride': {
+                    'defaultValue': {
+                        'language': 'en-US',
+                        'value': `${googlePass.origen}`
+                    }
+                }
             },
             'destination': {
-                'airportNameOverride': googlePass.destino,
+                'airportIataCode': `${googlePass.destino}`,
+                'airportIataCode': `AAA`,
+                'airportNameOverride': {
+                    'defaultValue': {
+                        'language': 'en-US',
+                        'value': `${googlePass.destino}`
+                    },
+                }
             },
+            'localScheduledDepartureDateTime': googlePass.fecha_salida,
+            'reviewStatus': 'UNDER_REVIEW',
             'hexBackgroundColor': googlePass.color,
             'heroImage': {
                 'sourceUri': {
-                    'uri': `${googlePass.imagen}`
+                    'uri': `${googlePass.imagen_pie}`
                 },
-                'contentDescription': 'Imagen del viaje'
+                'contentDescription': {
+                    'defaultValue': {
+                        'language': 'en-US',
+                        'value': 'Imagen del viaje'
+                    },
+                },
             },
         };
         response = await this.client.flightclass.insert({
