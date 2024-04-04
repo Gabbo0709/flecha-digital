@@ -24,20 +24,19 @@ class SuscripcionesRepositorio {
      * Método que envía un correo electrónico de suscripción a través de un SMTP
      * @param { Suscripcion } suscripcion - Suscripción a enviar
      */
-    enviarCorreo(suscripcion) {
+    async enviarCorreo(suscripcion) {
         const transporter = nodemailer.createTransport(smptConfig);
         const mailOptions = {
             from: `${smptConfig.auth.user}`,
             to: suscripcion.boleto.correo_pasajero,
-            subject: `¡${suscripcion.boleto.nombre_pasajero}}! Aquí están los detalles de tu viaje a ${suscripcion.boleto.destino}`,
+            subject: `¡${suscripcion.boleto.nombre_pasajero}! Aquí están los detalles de tu viaje a ${suscripcion.boleto.destino}`,
             html: suscripcion.html
         };
-        transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-                console.log(error);
-            } else {
-                console.log(`Correo enviado: ${info.response}`);
-            }
+        let result = await transporter.sendMail(mailOptions, (error, info) => {
+
+            System.out.println("Correo enviado");
         });
     }
 }
+
+module.exports = SuscripcionesRepositorio;
