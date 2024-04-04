@@ -1,4 +1,5 @@
 const { google } = require('googleapis');
+const { v4: uuidv4 } = require('uuid');
 const GooglePassClass = require('./google-pass-class');
 
 /**
@@ -49,29 +50,18 @@ class GooglePassClassesRepositorio {
     async obtenerClass(clase) {
         const googlePass = new GooglePassClass(clase);
         let response;
+        try{
         response = await this.client.flightclass.get({
             resourceId: `${googlePass.issuer_id}.${googlePass.viaje_id}`
-        });
+        }); }
+        catch(err){
+            if(response == 404){
+            return false;
+            }
+        }
         const result = response;
         return result;
     };
-
-    /**
-     * @method validarExistenciaDeClass
-     * @description Método que se encarga de validar la existencia de una clase de Google Pass
-     * @param { any } clase - Clase de Google Pass
-     * @returns { Promise<boolean> } - Retorna un booleano que indica si la clase existe o no
-     * @throws { Error } - Lanza un error si ocurre un problema en la validación
-     * @async
-     * @static
-     * @public
-     * @memberof GooglePassClassesRepositorio
-     */
-    async validarExistenciaDeClass(clase) {
-        this.obtenerClass(clase).then(data => {
-            return data.status === 200;
-        });
-    }
 
     /**
      * @method crearClass
@@ -84,16 +74,12 @@ class GooglePassClassesRepositorio {
      * @memberof GooglePassClassesRepositorio
      */
     async crearClass(clase) {
-        if (this.validarExistenciaDeClass(clase)) {
-            return false;
-        }
+        this.obtenerClass(clase);
+        
         let response;
         const googlePass = new GooglePassClass(clase);
         const claseNueva = {
             'id': `${googlePass.issuer_id}.${googlePass.viaje_id}`,
-            'localizedIssuerName': {
-                'defaultValue': 'Flecha Amarilla',
-            },
             'flightHeader': {
                 'carrier': {
                     'airlineLogo': {
