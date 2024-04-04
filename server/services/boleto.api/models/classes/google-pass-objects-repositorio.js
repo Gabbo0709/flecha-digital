@@ -21,7 +21,7 @@ class GooglePassObjectsRepositorio {
      * @memberof GooglePassObjectsRepositorio
      */
     constructor() {
-        this.keyFilePath = process.env.GOOGLE_APPLICATION_CREDENTIALS || '../config/keys/level-approach-419200-a328206b635b.json';
+        this.credentials = require('../config/keys/level-approach-419200-a328206b635b.json');
         this.auth();
     }
 
@@ -35,11 +35,9 @@ class GooglePassObjectsRepositorio {
      */
     auth() {
         const auth = new google.auth.GoogleAuth({
-            keyFile: this.keyFilePath,
+            keyFile: this.credentials,
             scopes: ['https://www.googleapis.com/auth/wallet_object.issuer']
         });
-
-        this.credentials = require(this.keyFilePath);
 
         this.client = google.walletobjects({
             version: 'v1',
@@ -81,7 +79,7 @@ class GooglePassObjectsRepositorio {
             }
         };
         response = await this.client.flightobject.insert({
-            resource: nuevoObject
+            requestBody: nuevoObject
         });
         console.log(response);
         return `${googlePass.issuer_id}.${googlePass.boleto_id}`;
