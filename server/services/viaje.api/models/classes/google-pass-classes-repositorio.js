@@ -77,77 +77,44 @@ class GooglePassClassesRepositorio {
     async crearClass(clase) {
         this.obtenerClass(clase);
 
+        const googlePass = new GooglePassClass(objeto);
         let response;
-        const googlePass = new GooglePassClass(clase);
-        const claseNueva = {
-            'id': `${googlePass.issuer_id}.${googlePass.viaje_id}`,
-            "issuerName": "Flecha Amarilla",
-            "localizedIssuerName": {
-                "defaultValue": {
-                    "language": "en-US",
-                    "value": "Flecha Amarilla",
+        const nuevoObject = {
+            'id': `${googlePass.issuer_id}.${googlePass.boleto_id}`,
+            'classId': `${googlePass.issuer_id}.${googlePass.viaje_id}`,
+            'state': 'ACTIVE',
+            'passengerName': `${googlePass.nombre_pasajero}`,
+            "reservationInfo": {
+                "confirmationCode": `${googlePass.boleto_id}`,
+                "eticketNumber": `${googlePass.numero_operacion}`,
+              },
+            'textModulesData': [
+                {
+                    'header': `Método de pago: ${googlePass.metodo_pago}`,
+                    'body': `Número de operación: ${googlePass.numero_operacion}\nTotal de pago: ${googlePass.total_pago}`,
+                    'id': 'metodo_pago'
                 },
-            },
-            'flightHeader': {
-                'carrier': {
-                    'carrierIataCode': 'FA',
-                    'airlineLogo': {
-                        'sourceUri': {
-                            'uri': `${googlePass.logo}`
-                        },
-                        'contentDescription': {
-                            'defaultValue': {
-                                'language': 'en-US',
-                                'value': 'Logo de Flecha Amarilla'
-                            }
-                        }
-
-                    }
-                },
-                'flightNumber': googlePass.viaje_id,
-            },
-            'origin': {
-                'airportIataCode': `AAA`,
-                'terminal': 'T1',
-                'gate': googlePass.puerta_embarque,
-                'airportNameOverride': {
-                    'defaultValue': {
-                        'language': 'en-US',
-                        'value': `${googlePass.origen}`
-                    }
+                {
+                    'header': `Token de facturación: ${googlePass.token_facturacion}`,
+                    'id': 'token_facturacion'
                 }
+            ],
+            'boardingAndSeatingInfo': {
+                'seatNumber': `${googlePass.numero_asiento}`,
+                'seatClass': `${googlePass.categoria}`
             },
-            'destination': {
-                'airportIataCode': `${googlePass.destino}`,
-                'airportIataCode': `AAA`,
-                'airportNameOverride': {
-                    'defaultValue': {
-                        'language': 'en-US',
-                        'value': `${googlePass.destino}`
-                    },
-                }
-            },
-            'localScheduledDepartureDateTime': googlePass.fecha_salida,
-            'reviewStatus': 'UNDER_REVIEW',
-            'hexBackgroundColor': googlePass.color,
-            'heroImage': {
-                'sourceUri': {
-                    'uri': `${googlePass.imagen_pie}`
-                },
-                'contentDescription': {
-                    'defaultValue': {
-                        'language': 'en-US',
-                        'value': 'Imagen del viaje'
-                    },
-                },
-            },
+            'barcode': {
+                'type': 'qrCode',
+                'value': `https://www.flecha-amarilla.com.mx/boleto/${googlePass.boleto_id}`
+            }
         };
         response = await this.client.flightclass.insert({
-            resource: claseNueva
+            requestBody: nuevoObject
         });
-        const result = response.then(data => data.status);
-        return result === 200;
+        console.log(response);
+        return `${googlePass.issuer_id}.${googlePass.boleto_id}`;
     }
+
 
     /**
      * @method actualizarClass
@@ -156,9 +123,7 @@ class GooglePassClassesRepositorio {
      * @returns { Promise<boolean> } - Retorna la respuesta de la actualización de la clase
      */
     async actualizarClass(clase) {
-        if (!this.validarExistenciaDeClass(clase)) {
-            return false;
-        }
+        this.obtenerClass(clase);
         const googlePass = new GooglePassClass(clase);
         let response = await this.client.flightclass.get({
             resourceId: `${googlePass.issuer_id}.${googlePass.viaje_id}`
