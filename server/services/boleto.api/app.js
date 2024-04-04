@@ -50,7 +50,7 @@ app.post('/crearBoletos', async (req, res) => {
 });
 
 // Ruta para actualizar el estado de un boleto
-app.put('/actualizarBoleto', async (req, res) => {
+app.post('/actualizarBoleto', async (req, res) => {
     // Obtenemos los atributos del boleto del cuerpo de la petición
     const boletoRecibido = req.body;
     // Creamos un nuevo boleto y utilizamos el método actualizarBoleto del repositorio para actualizar el estado
