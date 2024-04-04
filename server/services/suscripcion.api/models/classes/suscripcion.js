@@ -8,7 +8,6 @@ const Boleto = require('./boleto');
  * @description Modelo de Suscripción.
  * - Atributos:
  * @attribute { Boleto } boleto | Boleto de la suscripción
- * @attribute { string } correo | Correo electrónico del suscriptor
  * @attribute { string } enlaceGoogleWallet | Enlace de Google Wallet
  * @attribute { string } enlaceAppleWallet | Enlace de Apple Wallet
  */
@@ -23,7 +22,7 @@ class Suscripcion {
      * @description Constructor de la clase Suscripcion
      * @constructs Suscripcion
      */
-    constructor (boleto, enlaceGoogleWallet, enlaceAppleWallet) {
+    constructor(boleto, enlaceGoogleWallet, enlaceAppleWallet) {
         this.boleto = boleto;
         this.correo = boleto.correo_pasajero;
         this.enlaceGoogleWallet = enlaceGoogleWallet;
@@ -36,7 +35,7 @@ class Suscripcion {
      * @returns { string }
      */
     generarCodigoHTML() {
-        const result = `
+        const result = (`
         <html>
             <head>
                 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -60,9 +59,7 @@ class Suscripcion {
                             <p>Total de pago: $${this.boleto.total_pago}</p>
                             <p>Token de facturación: ${this.boleto.token_facturacion}</p>
                             <hr>
-                            <h2>Enlaces a Wallets</h2>
-                            <button><a href="${this.enlaceGoogleWallet}">Google Wallet</a></button>
-                            <p>¡Buen viaje!</p>
+                            <h2>Enlaces a Wallets</h2>                            <p>¡Buen viaje!</p>
                             <button class='btn'><a href="${this.enlaceAppleWallet}">Apple Wallet</a></button>
                             <button class='btn'><a href="${this.enlaceGoogleWallet}">Google Wallet</a></button>
                             <hr>
@@ -73,7 +70,8 @@ class Suscripcion {
                         </div>
             </body>
         </html>
-        `;
+        `);
+        return result;
     }
 }
 
