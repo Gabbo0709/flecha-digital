@@ -7,7 +7,6 @@ const GooglePassClass = require('./google-pass-class');
  * @method obtenerClass
  * @method validarExistenciaDeClass
  * @method crearClass
- * @method obtenerClass
  * @method actualizarClass
  */
 class GooglePassClassesRepositorio {
@@ -18,7 +17,7 @@ class GooglePassClassesRepositorio {
      * @memberof GooglePassClassesRepositorio
      */
     constructor() {
-        this.credentials = process.env.GOOGLE_APPLICATION_CREDENTIALS || '../config/keys/level-approach-419200-a328206b635b.json';
+        this.credentials = require('../config/keys/level-approach-419200-a328206b635b.json');
         this.auth();
     }
 
@@ -35,9 +34,6 @@ class GooglePassClassesRepositorio {
             credentials: this.credentials,
             scopes: ['https://www.googleapis.com/auth/wallet_object.issuer']
         });
-
-        this.credentials = require(this.credentials);
-
         this.client = google.walletobjects({
             version: 'v1',
             auth: auth
