@@ -18,7 +18,7 @@ class GooglePassClassesRepositorio {
      * @memberof GooglePassClassesRepositorio
      */
     constructor() {
-        this.credentials = require('../config/keys/level-approach-419200-a328206b635b.json');
+        this.credentials = require('../../../boleto.api/models/config/keys/level-approach-419200-a328206b635b.json');
         this.auth();
     }
 
