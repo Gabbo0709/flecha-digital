@@ -11,9 +11,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="dotnet-passbook" Version="3.2.4" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.3" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.6" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Passes\" />
+    <Folder Include="Passes\Passes\" />
+    <Folder Include="Passes\PassesTemplates\" />
+    <Folder Include="Resources\images\" />
   </ItemGroup>
 
 </Project>
